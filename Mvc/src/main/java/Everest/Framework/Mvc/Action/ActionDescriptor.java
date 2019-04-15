@@ -32,6 +32,11 @@ public class ActionDescriptor {
      */
     private HttpMethod verbs;
 
+    /**
+     * The name of the action.
+     */
+    private String name;
+
     public ActionDescriptor() {
     }
 
@@ -74,5 +79,13 @@ public class ActionDescriptor {
 
     public void setVerbs(HttpMethod verbs) {
         this.verbs = verbs;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -10,7 +10,13 @@ import java.lang.reflect.Parameter;
 
 /**
  * Value resolver for the {@link RouteValue} annotated parameters.
- *  Provide one route value by the route parameter name.
+ * Provides one route value by the route parameter name.
+ *
+ * if the name of the route parameter is not provided,
+ * the method parameter name is used as route parameter name.
+ *
+ * @see Everest.Framework.Mvc.Routing.RouteData
+ * @see RouteValue
  *
  * @author Chendjou
  * @version 1

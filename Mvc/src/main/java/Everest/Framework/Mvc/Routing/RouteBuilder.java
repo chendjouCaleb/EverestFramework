@@ -43,18 +43,23 @@ public class RouteBuilder {
     }
 
     private RouteDescriptor getRouteModel(String name) {
-        RouteDescriptor route  = routeDescriptors.stream().filter(routeDescriptor -> routeDescriptor.getName().equals(name))
+        RouteDescriptor route  = routeDescriptors.stream()
+                .filter(routeDescriptor -> routeDescriptor.getActionDescriptor().getName().equals(name))
                 .findFirst().orElse(null);
         if(route == null){
-            route  = routeDescriptors.stream().filter(routeDescriptor -> routeDescriptor.getName().equals(name + "#GET"))
+            route  = routeDescriptors.stream()
+                    .filter(routeDescriptor -> routeDescriptor.getActionDescriptor().getName().equals(name + "#GET"))
                     .findFirst().orElse(null);
         }
         if(route == null){
             String regex = name.replaceFirst(".","\\.") + "#[A-Z]+";
-            route  = routeDescriptors.stream().filter(routeDescriptor -> routeDescriptor.getName().matches(regex))
+            route  = routeDescriptors.stream()
+                    .filter(routeDescriptor -> routeDescriptor.getActionDescriptor().getName().matches(regex))
                     .findFirst().orElse(null);
         }
-        Assert.notNull(route, "Aucune route trouvé avec le nom '" + name + "' ou '" + name + "#(verbs)' n'a été trouvé");
+        if(route == null){
+            throw new RouteNotFoundException("Aucune route trouvé avec le nom '" + name + "' ou '" + name + "#(verbs)' n'a été trouvé");
+        }
         return route;
     }
 

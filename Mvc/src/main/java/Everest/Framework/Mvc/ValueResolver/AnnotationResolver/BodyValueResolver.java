@@ -4,6 +4,7 @@ import Everest.Framework.Core.Exception.InputOutputException;
 import Everest.Framework.Core.StringUtils;
 import Everest.Framework.Http.HttpContext;
 import Everest.Framework.Http.HttpRequest;
+import Everest.Framework.Mvc.Action.ActionContext;
 import Everest.Framework.Mvc.Service.JsonConverter;
 import Everest.Framework.Mvc.ValueResolver.Annotations.BodyValue;
 import Everest.Framework.Mvc.ValueResolver.IAnnotationValueResolver;
@@ -20,6 +21,7 @@ import java.nio.charset.Charset;
 /**
  * Resolver to Converter the request body to a target class.
  * Only Json body can be handled for the moment.
+ * @see BodyValue
  *
  * @author Chendjou
  * @version 1
@@ -34,9 +36,9 @@ public class BodyValueResolver implements IAnnotationValueResolver<BodyValue> {
     }
 
     @Override
-    public Object getVariable(HttpContext httpContext, Parameter parameter, BodyValue annotation) {
+    public Object getVariable(ActionContext actionContext, Parameter parameter, BodyValue annotation) {
 
-        String body = getStringBody(httpContext.getRequest());
+        String body = getStringBody(actionContext.getHttpContext().getRequest());
         logger.info("body string: [{}]", body);
 
         Object object = converter.toObject(body, parameter.getType());

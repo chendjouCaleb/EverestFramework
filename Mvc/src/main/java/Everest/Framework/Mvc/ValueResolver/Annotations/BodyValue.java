@@ -7,9 +7,16 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * Decorator used to provider the request body.
+ * @see Everest.Framework.Mvc.ValueResolver.AnnotationResolver.BodyValueResolver
+ *
+ * @author Chendjou
+ * @version 1
+ * @since 15-04-2019
+ */
 @ValueResolver
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.PARAMETER)
 public @interface BodyValue {
-    String value() default "";
 }

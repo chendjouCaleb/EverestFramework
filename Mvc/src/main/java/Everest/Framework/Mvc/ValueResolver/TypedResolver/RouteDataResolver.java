@@ -10,6 +10,10 @@ import java.lang.reflect.Parameter;
 /**
  * Resolves all the route data of the request.
  * @see RouteData
+ *
+ * @author Chendjou
+ * @version 1
+ * @since 15-04-2019
  */
 public class RouteDataResolver implements ITypedValueResolver<RouteData> {
 

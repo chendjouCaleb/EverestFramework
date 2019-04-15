@@ -8,7 +8,13 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * The annotation to inject route value in action method.
+ * The annotation to inject route value in action method parameter.
+ * @see Everest.Framework.Mvc.Routing.RouteData
+ * @see Everest.Framework.Mvc.ValueResolver.TypedResolver.RouteDataResolver
+ *
+ * @author Chendjou
+ * @version 1
+ * @since 15-04-2019
  */
 @ValueResolver
 @Retention(RetentionPolicy.RUNTIME)
@@ -16,7 +22,8 @@ import java.lang.annotation.Target;
 public @interface RouteValue {
 
     /**
-     * The name of the route value parameters.
+     * The name of the target route parameter.
+     * If is empty, the method parameter will be used as route parameter name.
      */
     String value() default "";
 }
