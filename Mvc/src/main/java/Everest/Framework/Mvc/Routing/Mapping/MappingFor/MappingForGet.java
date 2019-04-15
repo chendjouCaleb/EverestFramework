@@ -1,11 +1,19 @@
 package Everest.Framework.Mvc.Routing.Mapping.MappingFor;
 
+import Everest.Framework.Http.HttpMethod;
 import Everest.Framework.Mvc.Routing.Mapping.GetMapping;
 import Everest.Framework.Mvc.Routing.Mapping.HttpMapping;
 import Everest.Framework.Mvc.Routing.Mapping.MappingDescriptor;
-import Everest.Http.HttpMethod;
-import org.everest.mvc.component.MappingDescriptor;
 
+/**
+ * Converts a {@link GetMapping} annotation to a {@link MappingDescriptor}.
+ * @see GetMapping
+ * @see MappingDescriptor
+ *
+ * @author Chendjou
+ * @version 1
+ * @since 15-04-2019
+ */
 public class MappingForGet extends MappingFor<GetMapping>{
     @Override
     public MappingDescriptor getDescriptor(GetMapping mapping) {

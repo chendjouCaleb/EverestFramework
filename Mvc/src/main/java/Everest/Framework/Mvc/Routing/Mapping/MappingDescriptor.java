@@ -13,6 +13,10 @@ import Everest.Framework.Http.HttpMethod;
  * @see PathMapping
  * @see DeleteMapping
  * @see OptionsMapping
+ *
+ * @author Chendjou
+ * @version 1
+ * @since 15-04-2019
  */
 public class MappingDescriptor {
 
