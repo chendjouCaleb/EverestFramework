@@ -1,0 +1,6 @@
+rootProject.name = 'Framework'
+include 'Mvc'
+include 'Http'
+include 'Core'
+include 'InversionOfControl'
+
