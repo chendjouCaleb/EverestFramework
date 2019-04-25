@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class QueryCollectionBuilderTest {
+class QueryCollectionBuilderTest {
     @Test
     void null_And_Empty_QueryString(){
         QueryCollection collection = new QueryCollectionBuilder(null).parse().getCollection();

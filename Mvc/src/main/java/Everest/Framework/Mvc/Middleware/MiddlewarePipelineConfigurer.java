@@ -1,5 +1,7 @@
 package Everest.Framework.Mvc.Middleware;
 
+import Everest.Framework.Mvc.MiddlewareRegister;
+
 import java.util.Collection;
 
 

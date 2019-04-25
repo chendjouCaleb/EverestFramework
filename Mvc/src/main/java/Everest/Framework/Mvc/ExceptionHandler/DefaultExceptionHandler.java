@@ -40,8 +40,9 @@ public class DefaultExceptionHandler{
                 model.setStatusCode(500);
             }
         }
-
+        model.setMessage(context.getException().getMessage());
         EntityResult<ErrorResponseModel> result = new EntityResult<>(model).setStatusCode(model.getStatusCode());
         context.setResult(result);
+        System.out.println(result.getBody().getMessage());
     }
 }

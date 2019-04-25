@@ -22,7 +22,7 @@ public class MiddlewareChain {
     /**
      * Invoke {@link IMiddleware#execute(MiddlewareChain, HttpContext)} of the next middleware
      * in the chain.
-     * @param context The context of the http request
+     * @param context The {@link HttpContext} of the http request
      */
     public void executeNext(@Nonnull HttpContext context){
         if(current < middlewares.size()){
@@ -31,7 +31,7 @@ public class MiddlewareChain {
             middlewares.get(current-1).execute(this, context);
 
         }else {
-            throw new InvalidOperationException("All middlewares in this request chain is already executed");
+            throw new InvalidOperationException("All middleware of this request chain is already executed");
         }
     }
 

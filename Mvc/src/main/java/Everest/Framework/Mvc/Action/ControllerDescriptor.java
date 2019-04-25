@@ -24,9 +24,9 @@ public class ControllerDescriptor {
     private String name;
 
     /**
-     * The controller instance.
+     * The controller class classType
      */
-    private Object object;
+    private Class<?> classType;
 
     /**
      * The descriptors of action methods present in the controller.
@@ -49,12 +49,13 @@ public class ControllerDescriptor {
         this.name = name;
     }
 
-    public Object getObject() {
-        return object;
+    public Class<?> getClassType() {
+        return classType;
     }
 
-    public void setObject(Object object) {
-        this.object = object;
+
+    public void setClassType(Class classType) {
+        this.classType = classType;
     }
 
     public List<ActionDescriptor> getActionDescriptors() {

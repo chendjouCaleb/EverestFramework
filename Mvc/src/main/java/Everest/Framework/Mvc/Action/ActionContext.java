@@ -14,6 +14,10 @@ import javax.annotation.Nonnull;
  */
 public class ActionContext {
 
+    public ActionContext(@Nonnull HttpContext httpContext){
+        this.httpContext = httpContext;
+    }
+
     public ActionContext(@Nonnull HttpContext httpContext, @Nonnull ActionDescriptor actionDescriptor, @Nonnull RouteData routeData, @Nonnull BindingState bindingState) {
         this.httpContext = httpContext;
         this.actionDescriptor = actionDescriptor;

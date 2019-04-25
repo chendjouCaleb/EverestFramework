@@ -2,6 +2,7 @@ package Everest.Framework.Mvc;
 
 
 import Everest.Framework.Mvc.Cors.CorsMiddleware;
+import Everest.Framework.Mvc.ExceptionHandler.ExceptionHandlerMiddleware;
 import Everest.Framework.Mvc.Middleware.IMiddleware;
 
 import javax.annotation.Nonnull;
@@ -37,6 +38,6 @@ public class MiddlewareRegister {
      * Add the Mvc component the the request pipeline
      */
     public void useMvc(){
-        use(MvcMiddleware.class);
+        //use(MvcMiddleware.class);
     }
 }

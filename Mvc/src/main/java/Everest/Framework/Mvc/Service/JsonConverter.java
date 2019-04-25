@@ -19,6 +19,7 @@ public class JsonConverter {
         this.mapper = new ObjectMapper();
         SimpleModule simpleModule = new SimpleModule();
         simpleModule.addSerializer(DateTime.class, new JsonDateSerializer());
+        simpleModule.addDeserializer(DateTime.class, new JsonDateTimeDeserializer());
         mapper.registerModule(simpleModule);
     }
 

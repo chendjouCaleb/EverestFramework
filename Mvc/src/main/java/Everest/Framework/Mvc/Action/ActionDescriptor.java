@@ -5,7 +5,7 @@ import Everest.Framework.Http.HttpMethod;
 import java.lang.reflect.Method;
 
 /**
- * Describe an method action.
+ * Describes an action method.
  * @author Chendjou
  * @version 1
  * @since 15-04-2019
