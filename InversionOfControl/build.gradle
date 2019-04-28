@@ -8,9 +8,22 @@ version '1.0-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile project(':Core')
+    compile 'org.slf4j:slf4j-api:1.8.0-beta0'
+    compile 'org.slf4j:slf4j-log4j12:1.8.0-beta0'
+    compile 'org.apache.logging.log4j:log4j-core:2.10.0'
+
+    compile 'org.apache.commons:commons-lang3:3.6'
+    compile 'commons-collections:commons-collections:3.2.2'
+    compile 'commons-beanutils:commons-beanutils:1.9.3'
+    compile 'javax.inject:javax.inject:1'
+
+
+    testCompile 'org.junit.jupiter:junit-jupiter-engine:5.1.0'
+    testCompile 'org.junit.jupiter:junit-jupiter-params:5.1.0'
 }

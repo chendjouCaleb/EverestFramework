@@ -33,7 +33,7 @@ public class HeaderCollection implements Map<String, String> {
     private Map<String, String> store = new HashMap<>();
     /**
      * * Strongly typed access to the Content-Length header.
-     *  * Implementations must keep this in sync with the string representation.
+     *  * DI must keep this in sync with the string representation.
      * @return The size of a content-Length
      */
     public long contentLength(){
