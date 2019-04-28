@@ -1,5 +1,6 @@
 package Everest.Framework.Mvc.ValueResolver.Annotations;
 
+import Everest.Framework.Mvc.Routing.RouteValues;
 import Everest.Framework.Mvc.ValueResolver.ValueResolver;
 
 import java.lang.annotation.ElementType;
@@ -9,7 +10,7 @@ import java.lang.annotation.Target;
 
 /**
  * The annotation to inject route value in action method parameter.
- * @see Everest.Framework.Mvc.Routing.RouteData
+ * @see RouteValues
  * @see Everest.Framework.Mvc.ValueResolver.TypedResolver.RouteDataResolver
  *
  * @author Chendjou

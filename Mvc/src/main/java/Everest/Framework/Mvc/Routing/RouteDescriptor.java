@@ -1,6 +1,5 @@
 package Everest.Framework.Mvc.Routing;
 
-import Everest.Framework.Http.HttpMethod;
 import Everest.Framework.Mvc.Action.ActionDescriptor;
 
 /**
@@ -17,6 +16,20 @@ public class RouteDescriptor {
      * Must be actionDescriptor mapping + controllerDescriptor mapping.
      */
     private String mapping;
+
+    /**
+     * Represents the url mapping transformed into a java Regexp.
+     */
+    private String mappingPattern;
+
+    /**
+     * The  parameters found in the urlMapping;
+     */
+    private RouteParameters parameters = new RouteParameters();
+
+    /**
+     * The {@link ActionDescriptor} of the route.
+     */
     private ActionDescriptor actionDescriptor;
 
 
@@ -35,5 +48,21 @@ public class RouteDescriptor {
 
     public void setActionDescriptor(ActionDescriptor actionDescriptor) {
         this.actionDescriptor = actionDescriptor;
+    }
+
+    public String getMappingPattern() {
+        return mappingPattern;
+    }
+
+    public void setMappingPattern(String mappingPattern) {
+        this.mappingPattern = mappingPattern;
+    }
+
+    public RouteParameters getParameters() {
+        return parameters;
+    }
+
+    public void setParameters(RouteParameters parameters) {
+        this.parameters = parameters;
     }
 }

@@ -1,6 +1,7 @@
 package Everest.Framework.Mvc.ValueResolver.AnnotationResolver;
 
 import Everest.Framework.Mvc.Action.ActionContext;
+import Everest.Framework.Mvc.Routing.RouteValues;
 import Everest.Framework.Mvc.ValueResolver.Annotations.RouteValue;
 import Everest.Framework.Mvc.ValueResolver.IAnnotationValueResolver;
 import org.slf4j.Logger;
@@ -15,7 +16,7 @@ import java.lang.reflect.Parameter;
  * if the name of the route parameter is not provided,
  * the method parameter name is used as route parameter name.
  *
- * @see Everest.Framework.Mvc.Routing.RouteData
+ * @see RouteValues
  * @see RouteValue
  *
  * @author Chendjou
@@ -29,6 +30,6 @@ public class RouteValueResolver implements IAnnotationValueResolver<RouteValue> 
         if(name.equals("")){
             name = parameter.getName();
         }
-        return actionContext.getRouteData().get(name, parameter.getType());
+        return actionContext.getRouteValues().get(name, parameter.getType());
     }
 }

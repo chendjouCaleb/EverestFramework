@@ -1,7 +1,6 @@
-package Everest.Framework.Mvc.Routing;
+package Everest.Framework.Mvc.Action;
 
 import Everest.Framework.Core.Exception.InvalidNameException;
-import Everest.Framework.Mvc.Action.ControllerDescriptor;
 import Everest.Framework.Mvc.Mapping.DeleteMapping;
 import Everest.Framework.Mvc.Mapping.GetMapping;
 import Everest.Framework.Mvc.Mapping.HttpMapping;

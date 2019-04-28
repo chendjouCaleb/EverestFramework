@@ -1,10 +1,10 @@
-package Everest.Framework.Mvc.Routing;
+package Everest.Framework.Mvc.Action;
 
 import Everest.Framework.Core.Exception.InvalidNameException;
-import Everest.Framework.Mvc.Action.ActionDescriptor;
-import Everest.Framework.Mvc.Action.ControllerDescriptor;
 import Everest.Framework.Mvc.Mapping.HttpMapping;
 import Everest.Framework.Mvc.Mapping.MappingFor.MappingGetter;
+import Everest.Framework.Mvc.Routing.MalformedUrlMappingException;
+import Everest.Framework.Mvc.Routing.UnMappedException;
 
 import javax.annotation.Nonnull;
 import java.lang.reflect.Method;
@@ -73,7 +73,7 @@ public class ControllerDescriptorLoader {
                 ActionDescriptorLoader loader = new ActionDescriptorLoader(mappingGetter);
                 ActionDescriptor actionDescriptor = loader.loadActionDescriptor(method);
                 descriptor.getActionDescriptors().add(actionDescriptor);
-
+                actionDescriptor.setControllerDescriptor(descriptor);
             }catch (UnMappedException ignore) {
                 // Is thrown is the method is not mapped with a mapping annotation.
             }

@@ -13,7 +13,7 @@ import java.util.List;
  * @version 1
  * @since 15-04-2019
  */
-public class RouteData extends HashMap<String, String>{
+public class RouteValues extends HashMap<String, String>{
     private List<String> parameterNames = new ArrayList<>();
 
     public <T> T get(String name, Class<? extends T> type){

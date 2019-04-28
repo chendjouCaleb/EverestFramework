@@ -2,7 +2,7 @@ package Everest.Framework.Mvc.Action;
 
 import Everest.Framework.Http.HttpContext;
 import Everest.Framework.Mvc.Binding.BindingState;
-import Everest.Framework.Mvc.Routing.RouteData;
+import Everest.Framework.Mvc.Routing.RouteValues;
 
 import javax.annotation.Nonnull;
 
@@ -18,10 +18,10 @@ public class ActionContext {
         this.httpContext = httpContext;
     }
 
-    public ActionContext(@Nonnull HttpContext httpContext, @Nonnull ActionDescriptor actionDescriptor, @Nonnull RouteData routeData, @Nonnull BindingState bindingState) {
+    public ActionContext(@Nonnull HttpContext httpContext, @Nonnull ActionDescriptor actionDescriptor, @Nonnull RouteValues routeValues, @Nonnull BindingState bindingState) {
         this.httpContext = httpContext;
         this.actionDescriptor = actionDescriptor;
-        this.routeData = routeData;
+        this.routeValues = routeValues;
         this.bindingState = bindingState;
     }
 
@@ -36,9 +36,9 @@ public class ActionContext {
     private ActionDescriptor actionDescriptor;
 
     /**
-     * the {@link RouteData} for the current request.
+     * the {@link RouteValues} for the current request.
      */
-    private RouteData routeData;
+    private RouteValues routeValues;
 
     /**
      * The request data state.
@@ -61,12 +61,12 @@ public class ActionContext {
         this.actionDescriptor = actionDescriptor;
     }
 
-    public RouteData getRouteData() {
-        return routeData;
+    public RouteValues getRouteValues() {
+        return routeValues;
     }
 
-    public void setRouteData(@Nonnull RouteData routeData) {
-        this.routeData = routeData;
+    public void setRouteValues(@Nonnull RouteValues routeValues) {
+        this.routeValues = routeValues;
     }
 
     public BindingState getBindingState() {
