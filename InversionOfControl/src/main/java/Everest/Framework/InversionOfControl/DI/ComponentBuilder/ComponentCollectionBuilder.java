@@ -7,6 +7,7 @@ import Everest.Framework.InversionOfControl.DI.ComponentBuilder.ComponentBuilder
 import Everest.Framework.InversionOfControl.DI.ComponentCollection;
 
 import javax.annotation.Nonnull;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -17,10 +18,10 @@ import java.util.List;
  * @since 28-04-2019
  */
 public class ComponentCollectionBuilder {
-    private List<ComponentBuilder> componentBuilders;
+    private Collection<ComponentBuilder> componentBuilders;
     private FactoryMethodComponentBuilder factoryMethodComponentBuilder;
 
-    public ComponentCollectionBuilder(@Nonnull List<ComponentBuilder> componentBuilders) {
+    public ComponentCollectionBuilder(@Nonnull Collection<ComponentBuilder> componentBuilders) {
         this.componentBuilders = componentBuilders;
     }
 
@@ -29,7 +30,7 @@ public class ComponentCollectionBuilder {
      * @param descriptors The list of description of component.
      * @return The {@link ComponentCollection}
      */
-    public ComponentCollection build(List<ComponentDescriptor> descriptors){
+    public ComponentCollection build(Collection<ComponentDescriptor> descriptors){
 
         ComponentCollection components = new ComponentCollection();
         for(ComponentDescriptor descriptor: descriptors){
