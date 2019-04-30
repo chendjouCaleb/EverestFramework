@@ -41,4 +41,9 @@ public class FactoryMethodComponent extends Component {
      * The base component which implementation type contains the method of this component.
      */
     private TypeComponent typeComponent;
+
+    @Override
+    public String instanceProviderToString() {
+        return factoryMethod.getName();
+    }
 }

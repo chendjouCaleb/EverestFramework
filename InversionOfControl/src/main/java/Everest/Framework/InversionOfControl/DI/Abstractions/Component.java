@@ -89,6 +89,15 @@ public abstract class Component {
         return this;
     }
 
+    /**
+     * Get the string representation of the instance object provider.
+     * Is a minimal representation of to String function.
+     * ex: For TypeComponent, get the implementationType
+     * ex: For MethodFactoryComponent, get the provider method.
+     * @return The string representation of the instance object provider.
+     */
+    public abstract String instanceProviderToString();
+
     public Class<?> getImplementationType() {
         return implementationType;
     }

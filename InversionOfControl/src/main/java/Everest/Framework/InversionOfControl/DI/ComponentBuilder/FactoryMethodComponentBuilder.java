@@ -1,6 +1,7 @@
 package Everest.Framework.InversionOfControl.DI.ComponentBuilder;
 
 import Everest.Framework.Core.Annotations;
+import Everest.Framework.Core.Inject.Principal;
 import Everest.Framework.Core.Inject.Scope;
 import Everest.Framework.Core.Inject.UseName;
 import Everest.Framework.InversionOfControl.Abstractions.ComponentLifetime;
@@ -64,6 +65,9 @@ public class FactoryMethodComponentBuilder {
         component.setLifetime(lifetime);
 
         component.setComponentType(method.getReturnType());
+        if(method.isAnnotationPresent(Principal.class)){
+            component.setPrincipal(true);
+        }
 
         UseName useName = method.getAnnotation(UseName.class);
         if(useName!= null){

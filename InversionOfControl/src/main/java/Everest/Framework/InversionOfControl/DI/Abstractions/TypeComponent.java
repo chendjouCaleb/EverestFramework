@@ -4,6 +4,7 @@ import Everest.Framework.InversionOfControl.Abstractions.ComponentDescriptor;
 
 import javax.annotation.Nonnull;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +18,15 @@ import java.util.List;
  */
 public class TypeComponent extends Component{
 
+    public TypeComponent(){}
     public TypeComponent(@Nonnull ComponentDescriptor descriptor){
         super(descriptor);
         this.implementationType = descriptor.getComponentType();
+    }
+
+    @Override
+    public String instanceProviderToString() {
+        return String.format("Type component: %s", implementationType.getName());
     }
 
     /**
@@ -27,7 +34,7 @@ public class TypeComponent extends Component{
      * The implementation type can be have many constructor.
      * This constructor is one who have selected for instance creation.
      */
-    private Constructor injectionMethod;
+    private Constructor injectionConstructor;
 
     /**
      * The methods that will be executed after the initialisation of the component instance.
@@ -42,7 +49,41 @@ public class TypeComponent extends Component{
     /**
      * The injection fields used to inject dependencies.
      */
-    private List<Method> injectionFields;
+    private List<Field> injectionFields;
 
+    public Constructor getInjectionConstructor() {
+        return injectionConstructor;
+    }
 
+    public TypeComponent setInjectionConstructor(Constructor injectionConstructor) {
+        this.injectionConstructor = injectionConstructor;
+        return this;
+    }
+
+    public List<Method> getPostInitMethods() {
+        return postInitMethods;
+    }
+
+    public TypeComponent setPostInitMethods(List<Method> postInitMethods) {
+        this.postInitMethods = postInitMethods;
+        return this;
+    }
+
+    public List<Method> getInjectionMethods() {
+        return injectionMethods;
+    }
+
+    public TypeComponent setInjectionMethods(List<Method> injectionMethods) {
+        this.injectionMethods = injectionMethods;
+        return this;
+    }
+
+    public List<Field> getInjectionFields() {
+        return injectionFields;
+    }
+
+    public TypeComponent setInjectionFields(List<Field> injectionFields) {
+        this.injectionFields = injectionFields;
+        return this;
+    }
 }

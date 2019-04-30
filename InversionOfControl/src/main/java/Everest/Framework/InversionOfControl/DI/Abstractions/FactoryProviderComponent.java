@@ -19,6 +19,11 @@ public class FactoryProviderComponent extends Component{
         this.factory = descriptor.getImplementationFactory();
     }
 
+    @Override
+    public String instanceProviderToString() {
+        return "Factory Provider: " + factory.toString();
+    }
+
     /**
      * The factory of this component.
      */

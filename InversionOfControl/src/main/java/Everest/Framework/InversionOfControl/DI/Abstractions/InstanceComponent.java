@@ -26,6 +26,11 @@ public class InstanceComponent extends Component{
         this.lifetime = ComponentLifetime.SINGLETON;
     }
 
+    @Override
+    public String instanceProviderToString() {
+        return String.format("Instance component: [Type: %s, object: %s]", instance.getClass().getName(), instance.toString());
+    }
+
     public Object getInstance() {
         return instance;
     }

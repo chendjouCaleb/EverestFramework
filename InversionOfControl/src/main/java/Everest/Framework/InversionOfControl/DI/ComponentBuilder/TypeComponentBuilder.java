@@ -26,6 +26,7 @@ public class TypeComponentBuilder implements ComponentBuilder<TypeComponent> {
     private InjectionMethodGetter injectionMethodGetter = new InjectionMethodGetter();
     private InjectionConstructorGetter injectionConstructorGetter = new InjectionConstructorGetter();
     private InjectionFieldGetter injectionFieldGetter = new InjectionFieldGetter();
+    private PostInitMethodGetter postInitMethodGetter = new PostInitMethodGetter();
 
     /**
      * The builder can build a {@link TypeComponent} if the specified descriptor have non null instance.
@@ -40,6 +41,10 @@ public class TypeComponentBuilder implements ComponentBuilder<TypeComponent> {
     @Override
     public TypeComponent build(ComponentDescriptor descriptor) {
         TypeComponent component = new TypeComponent(descriptor);
+        component.setInjectionFields(injectionFieldGetter.getInjectionField(component.getImplementationType()));
+        component.setInjectionMethods(injectionMethodGetter.getInjectionMethods(component.getImplementationType()));
+        component.setInjectionConstructor(injectionConstructorGetter.getConstructor(component.getImplementationType()));
+        component.setPostInitMethods(postInitMethodGetter.getPostInitMethods(component.getImplementationType()));
         return component;
     }
 

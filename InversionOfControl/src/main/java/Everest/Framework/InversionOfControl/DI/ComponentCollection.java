@@ -4,6 +4,7 @@ import Everest.Framework.InversionOfControl.DI.Abstractions.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -41,6 +42,15 @@ public class ComponentCollection extends ArrayList<Component> {
                 .map(c -> (TypeComponent)c)
                 .collect(Collectors.toList());
     }
+
+    public List<Class> getComponentTypes(){
+        return stream().map(Component::getComponentType).distinct().collect(Collectors.toList());
+    }
+
+    public List<Component> listByComponentTypes(Class type){
+        return stream().filter(c -> c.getComponentType().equals(type)).collect(Collectors.toList());
+    }
+
 
     public Component findByName(String name){
         return stream().filter(c -> c.isNamed() && c.getName().equals(name)).findFirst().orElse(null);
