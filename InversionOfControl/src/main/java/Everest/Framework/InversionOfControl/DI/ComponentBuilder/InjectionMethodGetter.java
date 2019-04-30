@@ -28,7 +28,6 @@ public class InjectionMethodGetter {
         Class current = type;
         while (current != Object.class){
             for(Method method: current.getDeclaredMethods()){
-                System.out.println(method);
                 if(method.isAnnotationPresent(Resolve.class)){
                     methods.add(method);
                 }

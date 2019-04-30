@@ -40,7 +40,7 @@ class InjectionMethodGetterTest {
         //System.out.println(planet.getMass());
     }
 
-    //To verify that the getter get the field of base class.
+    //To verify that the getter get the methods of base class.
     private class CelestialBody{
         private Double mass;
 
