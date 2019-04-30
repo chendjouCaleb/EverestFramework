@@ -1,4 +1,4 @@
-package Everest.Framework.Core.Decorator;
+package Everest.Framework.Core.Inject;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -6,14 +6,13 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Indicate that the value of the decorated element can be resolved by the DI container
+ * Indicates that the value of the decorated element can be resolved by the DI container
  *
  * @author Chendjou
  * @version 1
  * @since 15-04-2019
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.FIELD, ElementType.CONSTRUCTOR, ElementType.METHOD, ElementType.PARAMETER})
+@Target({ElementType.FIELD, ElementType.CONSTRUCTOR, ElementType.METHOD})
 public @interface Resolve {
-    String qualifier() default "";
 }

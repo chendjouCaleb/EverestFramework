@@ -1,5 +1,8 @@
 package Everest.Framework.InversionOfControl.Abstractions;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Provide a description of a stored component instance.
  *
@@ -8,19 +11,19 @@ package Everest.Framework.InversionOfControl.Abstractions;
  * @since 28-04-2019
  */
 public class ComponentDescriptor {
-    private static final String NULL_INSTANCE_TYPE_MESSAGE = "instanceType cannot be null";
+    private static final String NULL_INSTANCE_TYPE_MESSAGE = "componentType cannot be null";
     private static final String NULL_IMPLEMENTATION_TYPE_MESSAGE = "implementation cannot be null";
     private static final String NULL_FACTORY_MESSAGE = "Factory cannot be null";
     /**
-     * Initializes a new instance of {@link ComponentDescriptor "} with the specified {@param implementationType}
-     * @param instanceType" The type of the instance.
+     * Initializes a new instance of {@link ComponentDescriptor "} with the specified implementationType
+     * @param componentType" The type of the instance.
      * @param implementationType" The type implementing the instance.
      * @param lifetime" The {@link ComponentLifetime}" of the instance.
      */
-    public ComponentDescriptor(Class instanceType, Class implementationType, ComponentLifetime lifetime) {
-        this(instanceType, lifetime);
+    public ComponentDescriptor(Class componentType, Class implementationType, ComponentLifetime lifetime) {
+        this(componentType, lifetime);
 
-        if (instanceType == null)
+        if (componentType == null)
         {
             throw new NullPointerException(NULL_INSTANCE_TYPE_MESSAGE);
         }
@@ -36,15 +39,15 @@ public class ComponentDescriptor {
 
     /**
      * Initializes a new instance of {@link  ComponentDescriptor}
-     * with the specified {@param instance}}
+     * with the specified instance.
      * as a {@link  ComponentLifetime#SINGLETON} .
-     * @param instanceType The Type of the instance.
+     * @param componentType The Type of the instance.
      * @param instance The instance implementing the instance.
      */
-    public ComponentDescriptor(Class instanceType, Object instance){
-        this(instanceType, ComponentLifetime.SINGLETON);
+    public ComponentDescriptor(Class componentType, Object instance){
+        this(componentType, ComponentLifetime.SINGLETON);
 
-        if (instanceType == null)
+        if (componentType == null)
         {
             throw new NullPointerException(NULL_INSTANCE_TYPE_MESSAGE);
         }
@@ -58,17 +61,17 @@ public class ComponentDescriptor {
     }
 
     /**
-     * Initializes a new instance of {@link ComponentDescriptor}" with the specified {@param factory}.
+     * Initializes a new instance of {@link ComponentDescriptor}" with the specified factory.
 
-     * @param instanceType The Type of the instance.
+     * @param componentType The Type of the instance.
      * @param factory A factory used for creating instance instances.
      * @param lifetime The {@link ComponentLifetime} of the instance.
      */
-    public ComponentDescriptor(Class instanceType, ComponentFactory factory, ComponentLifetime lifetime)
+    public ComponentDescriptor(Class componentType, ComponentFactory factory, ComponentLifetime lifetime)
     {
-        this(instanceType, lifetime);
+        this(componentType, lifetime);
 
-        if (instanceType == null)
+        if (componentType == null)
         {
             throw new NullPointerException(NULL_INSTANCE_TYPE_MESSAGE);
         }
@@ -81,15 +84,15 @@ public class ComponentDescriptor {
         this.implementationFactory = factory;
     }
 
-    private ComponentDescriptor(Class instanceType, ComponentLifetime lifetime)
+    private ComponentDescriptor(Class componentType, ComponentLifetime lifetime)
     {
         this.lifetime = lifetime;
-        this.instanceType = instanceType;
+        this.componentType = componentType;
     }
 
     private ComponentLifetime lifetime;
 
-    private Class instanceType;
+    private Class componentType;
 
     private Class implementationType;
 
@@ -102,29 +105,40 @@ public class ComponentDescriptor {
      */
     private String name;
 
+    /**
+     * Indicates if this component is the principal component of all component which have also the same componentType.
+     */
+    private boolean isPrincipal;
+
+    /**
+     * Event listeners which will be executed after the creation of component instance.
+     */
+    private Set<AfterConstructListener> afterConstructListeners = new HashSet<>();
 
 
-    Class getImplementationType()
+
+    public Class getImplementationType()
     {
-        if (implementationType != null)
-        {
-            return implementationType;
-        }
-        else if (implementationInstance != null)
-        {
-            return implementationInstance.getClass();
-        }
-        else if (implementationFactory != null)
-
-            throw new IllegalStateException("ImplementationType, ImplementationInstance or ImplementationFactory must be non null");
-        return null;
+        return implementationType;
+//        if (implementationType != null)
+//        {
+//            return implementationType;
+//        }
+//        else if (implementationInstance != null)
+//        {
+//            return implementationInstance.getClass();
+//        }
+//        else if (implementationFactory != null)
+//
+//            throw new IllegalStateException("ImplementationType, ImplementationInstance or ImplementationFactory must be non null");
+//        return null;
     }
 
     @Override
     public String toString() {
         return "ComponentDescriptor{" +
                 "lifetime=" + lifetime +
-                ", instanceType=" + instanceType +
+                ", componentType=" + componentType +
                 ", implementationType=" + implementationType +
                 ", implementationInstance=" + implementationInstance +
                 ", ImplementationFactory=" + implementationFactory +
@@ -134,7 +148,7 @@ public class ComponentDescriptor {
 
     /**
      * Creates an instance of {@link ComponentDescriptor} with the specified
-     * instanceType and implementationType
+     * componentType and implementationType
      * and the  {@link ComponentLifetime#TRANSIENT} lifetime.
 
      * @param instanceType The type of the instance.
@@ -158,7 +172,7 @@ public class ComponentDescriptor {
 
     /**
      * Creates an instance of {@link ComponentDescriptor} with the specified
-     * {@param instanceType}, {@param implementationFactory},
+     *  componentType, implementationFactory,
      * and the {@link ComponentLifetime#TRANSIENT} lifetime.
 
      * @param instanceType The type of the instance.
@@ -183,7 +197,7 @@ public class ComponentDescriptor {
 
     /**
      * Creates an instance of {@link ComponentDescriptor} with the specified
-     * {@param instanceType}" and {@param implementationType}
+     *  componentType" and  implementationType.
      * and the {@link ComponentLifetime#SCOPED} lifetime.
 
      * @param instanceType The type of the instance.
@@ -197,7 +211,7 @@ public class ComponentDescriptor {
 
     /**
      * Creates an instance of {@link ComponentDescriptor} with the specified
-     * {@param instanceType}, {@param implementationFactory},
+     * componentType,  implementationFactory,
      * and the {@link ComponentLifetime#SCOPED} lifetime.
 
      * @param instanceType The type of the instance.
@@ -221,7 +235,7 @@ public class ComponentDescriptor {
 
     /**
      * Creates an instance of {@link ComponentDescriptor}. with the specified
-     * {@param instanceType}, {@param implementationFactory},
+     * componentType,  implementationFactory,
      * and the {@link ComponentLifetime#SINGLETON} lifetime.
 
      * @param instanceType The type of the instance.
@@ -245,7 +259,7 @@ public class ComponentDescriptor {
 
     /**
      * Creates an instance of {@link ComponentDescriptor} with the specified
-     * {@param instanceType}, {@param implementationFactory},
+     * componentType, implementationFactory,
      * and the {@link ComponentLifetime#SINGLETON} lifetime.
 
      * @param instanceType The type of the instance.
@@ -270,7 +284,7 @@ public class ComponentDescriptor {
 
     /**
      * Creates an instance of {@link ComponentDescriptor} with the specified
-     * {@param InstanceType}", {@param implementationInstance},
+     * InstanceType, implementationInstance,
      * and the {@link ComponentLifetime#SINGLETON}lifetime.
 
      * @param instanceType The type of the instance.
@@ -286,7 +300,7 @@ public class ComponentDescriptor {
 
         if (implementationInstance == null)
         {
-            throw new NullPointerException("You must provide a non null implementation of instanceType");
+            throw new NullPointerException("You must provide a non null implementation of componentType");
         }
 
         return new ComponentDescriptor(instanceType, implementationInstance);
@@ -294,8 +308,7 @@ public class ComponentDescriptor {
 
     /**
      * Creates an instance of {@link ComponentDescriptor} with the specified
-     * {@param InstanceType}, {@param implementationType},
-     * and {@param lifetime}.
+     * componentType, implementationType, and lifetime.
 
      * @param InstanceType The type of the instance.
      * @param implementationType The type of the implementation.
@@ -309,8 +322,7 @@ public class ComponentDescriptor {
 
     /**
      * Creates an instance of {@link ComponentDescriptor} with the specified
-     * {@param InstanceType }, @{param implementationFactory},
-     * and {@param lifetime}.
+     * componentType, implementationFactory, and lifetime.
 
      * @param InstanceType The type of the instance.
      * @param implementationFactory A factory to create new instances of the instance implementation.
@@ -331,12 +343,12 @@ public class ComponentDescriptor {
         return this;
     }
 
-    public Class getInstanceType() {
-        return instanceType;
+    public Class getComponentType() {
+        return componentType;
     }
 
-    public ComponentDescriptor setInstanceType(Class instanceType) {
-        this.instanceType = instanceType;
+    public ComponentDescriptor setComponentType(Class componentType) {
+        this.componentType = componentType;
         return this;
     }
 
@@ -369,6 +381,24 @@ public class ComponentDescriptor {
 
     public ComponentDescriptor setName(String name) {
         this.name = name;
+        return this;
+    }
+
+    public boolean isPrincipal() {
+        return isPrincipal;
+    }
+
+    public ComponentDescriptor setPrincipal(boolean principal) {
+        isPrincipal = principal;
+        return this;
+    }
+
+    public Set<AfterConstructListener> getAfterConstructListeners() {
+        return afterConstructListeners;
+    }
+
+    public ComponentDescriptor setAfterConstructListeners(Set<AfterConstructListener> afterConstructListeners) {
+        this.afterConstructListeners = afterConstructListeners;
         return this;
     }
 }

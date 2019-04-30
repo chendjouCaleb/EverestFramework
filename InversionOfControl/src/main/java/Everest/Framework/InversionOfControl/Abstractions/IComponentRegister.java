@@ -15,7 +15,7 @@ public interface IComponentRegister extends Collection<ComponentDescriptor> {
      * Adds a scoped instance of the type specified in  componentType with an implementation
      * of the type specified in implementationType
      *
-     * @param  componentType       The type of the instance to register
+     * @param componentType The type of the instance to register
      * @param implementationType The implementation type of the instance
      */
     <T, I extends T> IComponentRegister addScoped(Class<T>  componentType, Class<I> implementationType);
@@ -107,6 +107,7 @@ public interface IComponentRegister extends Collection<ComponentDescriptor> {
      *
      * @param  componentType       The type of the instance to register.
      * @param implementationType The implementation type of the instance.
+     *
      */
     <T, I extends T> IComponentRegister addTransient(Class<T>  componentType, Class<I> implementationType);
 }

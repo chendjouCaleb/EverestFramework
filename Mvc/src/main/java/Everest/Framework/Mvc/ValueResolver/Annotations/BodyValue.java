@@ -8,7 +8,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Decorator used to provider the request body.
+ * Inject used to provider the request body.
  * @see Everest.Framework.Mvc.ValueResolver.AnnotationResolver.BodyValueResolver
  *
  * @author Chendjou

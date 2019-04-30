@@ -1,6 +1,6 @@
 package Everest.Framework.Mvc.ActionResultExecutor;
 
-import Everest.Framework.Core.Decorator.Instance;
+import Everest.Framework.Core.Inject.Instance;
 import Everest.Framework.Core.Exception.InvalidOperationException;
 
 import javax.annotation.Nonnull;

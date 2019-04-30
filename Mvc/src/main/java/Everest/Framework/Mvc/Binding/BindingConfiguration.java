@@ -1,7 +1,7 @@
 package Everest.Framework.Mvc.Binding;
 
-import Everest.Framework.Core.Decorator.Instance;
-import Everest.Framework.Core.Decorator.InstanceFactory;
+import Everest.Framework.Core.Inject.Instance;
+import Everest.Framework.Core.Inject.Factory;
 import org.hibernate.validator.HibernateValidator;
 
 import javax.validation.ConstraintValidatorFactory;
@@ -11,7 +11,7 @@ import javax.validation.ValidatorFactory;
 @Instance
 public class BindingConfiguration {
 
-    @InstanceFactory
+    @Factory
     public ValidatorFactory validatorFactory(ConstraintValidatorFactory constraintValidatorFactory){
 
 

@@ -1,7 +1,7 @@
 package Everest.Framework.Mvc.Binding;
 
 
-import Everest.Framework.Core.Decorator.Instance;
+import Everest.Framework.Core.Inject.Instance;
 import Everest.Framework.Mvc.Binding.Converter.DateTimeConverter;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;

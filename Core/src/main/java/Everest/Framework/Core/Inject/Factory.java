@@ -1,4 +1,4 @@
-package Everest.Framework.Core.Decorator;
+package Everest.Framework.Core.Inject;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(value = {ElementType.METHOD})
-public @interface InstanceFactory {
-    String value() default "";
+public @interface Factory {
+    String name() default "";
 }
 

@@ -2,7 +2,7 @@ package Everest.Framework.Mvc.ExceptionHandler;
 
 
 
-import Everest.Framework.Core.Decorator.Instance;
+import Everest.Framework.Core.Inject.Instance;
 
 import java.util.HashMap;
 import java.util.NoSuchElementException;

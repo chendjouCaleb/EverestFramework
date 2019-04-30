@@ -1,7 +1,6 @@
 package Everest.Framework.Mvc.Routing;
 
-import Everest.Framework.Core.Assert;
-import Everest.Framework.Core.Decorator.Instance;
+import Everest.Framework.Core.Inject.Instance;
 
 import java.util.ArrayList;
 import java.util.HashMap;

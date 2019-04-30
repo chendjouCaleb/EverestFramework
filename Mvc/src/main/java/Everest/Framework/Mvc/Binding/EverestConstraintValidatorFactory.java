@@ -1,7 +1,7 @@
 package Everest.Framework.Mvc.Binding;
 
 
-import Everest.Framework.Core.Decorator.Instance;
+import Everest.Framework.Core.Inject.Instance;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorFactory;

@@ -2,8 +2,7 @@ package Everest.Framework.Mvc.ValueResolver;
 
 
 import Everest.Framework.Core.Annotations;
-import Everest.Framework.Core.Decorator.Instance;
-import Everest.Framework.Http.HttpContext;
+import Everest.Framework.Core.Inject.Instance;
 
 import Everest.Framework.Mvc.Action.ActionContext;
 import org.slf4j.Logger;
@@ -17,7 +16,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
- * Component to handle an provide value of action method parameter.
+ * ComponentBuilder to handle an provide value of action method parameter.
  *
  * @author Chendjou
  * @version 1

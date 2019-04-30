@@ -22,7 +22,7 @@ public class ComponentDescriptorBuilder {
 
     private IComponentRegister componentRegister;
 
-    private ComponentLifetime lifetime;
+    private ComponentLifetime lifetime = ComponentLifetime.SINGLETON;
 
     private Class<?> instanceType;
 
@@ -33,6 +33,8 @@ public class ComponentDescriptorBuilder {
     private ComponentFactory implementationFactory;
 
     private String name;
+
+    private boolean isPrincipal;
 
     /**
      * Sets the lifetime of the component.
@@ -188,13 +190,42 @@ public class ComponentDescriptorBuilder {
     }
 
     /**
+     * Indicates if this component is the principal component of all component which have also the same instanceType.
+     *
+     * @return The self builder instance.
+     */
+    public ComponentDescriptorBuilder asPrincipal(){
+        this.isPrincipal = true;
+        return this;
+    }
+
+    /**
+     * Sets the component lifetime as transient.
+     * @return The self builder instance.
+     */
+    public ComponentDescriptorBuilder asTransient() {
+        setLifetime(ComponentLifetime.TRANSIENT);
+        return this;
+    }
+
+
+    /**
+     * Sets the component lifetime as scoped.
+     * @return The self builder instance.
+     */
+    public ComponentDescriptorBuilder asScoped() {
+        setLifetime(ComponentLifetime.SCOPED);
+        return this;
+    }
+
+    /**
      * Build the {@link ComponentDescriptor}.
      *
      * @exception InvalidOperationException If implementationType, implementationInstance and implementationFactory is null.
      * @exception InvalidOperationException If there are implementationType without instance type.
      * @return The {@link IComponentRegister} to the builder.
      */
-    public IComponentRegister build() {
+    public IComponentRegister regist() {
         if(implementationType == null && implementationInstance == null && implementationFactory == null){
             throw new InvalidOperationException("You cannot create component instance without implementationType, " +
                     "or implementationInstance, or implementationFactory");
@@ -211,6 +242,7 @@ public class ComponentDescriptorBuilder {
         descriptor.setImplementationFactory(implementationFactory);
         descriptor.setName(name);
         descriptor.setLifetime(lifetime);
+        descriptor.setPrincipal(isPrincipal);
 
         componentRegister.add(descriptor);
 

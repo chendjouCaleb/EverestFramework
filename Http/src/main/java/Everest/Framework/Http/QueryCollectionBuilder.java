@@ -8,7 +8,7 @@ import java.net.URLDecoder;
 import java.util.ArrayList;
 
 /**
- * Component to parse QueryString and build a {@link Everest.Framework.Http.QueryCollection}
+ * ComponentBuilder to parse QueryString and build a {@link Everest.Framework.Http.QueryCollection}
  */
 public class QueryCollectionBuilder {
     private static final String UTF_8_ENCODING = "UTF-8";

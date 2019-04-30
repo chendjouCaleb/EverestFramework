@@ -1,6 +1,6 @@
 package Everest.Framework.Mvc.ValueResolver;
 
-import Everest.Framework.Core.Decorator.Instance;
+import Everest.Framework.Core.Inject.Instance;
 import Everest.Framework.Core.Exception.InvalidOperationException;
 
 import org.slf4j.Logger;

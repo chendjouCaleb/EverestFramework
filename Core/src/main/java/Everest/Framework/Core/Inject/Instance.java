@@ -1,4 +1,4 @@
-package Everest.Framework.Core.Decorator;
+package Everest.Framework.Core.Inject;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

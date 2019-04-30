@@ -1,6 +1,6 @@
 package Everest.Framework.Mvc.Mapping.MappingFor;
 
-import Everest.Framework.Core.Decorator.Instance;
+import Everest.Framework.Core.Inject.Instance;
 import Everest.Framework.Mvc.Mapping.MappingDescriptor;
 import Everest.Framework.Mvc.Mapping.MappingException;
 

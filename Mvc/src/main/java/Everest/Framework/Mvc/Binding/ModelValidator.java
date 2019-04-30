@@ -1,6 +1,6 @@
 package Everest.Framework.Mvc.Binding;
 
-import Everest.Framework.Core.Decorator.Instance;
+import Everest.Framework.Core.Inject.Instance;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

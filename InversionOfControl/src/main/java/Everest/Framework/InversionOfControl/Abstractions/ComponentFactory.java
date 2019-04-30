@@ -13,6 +13,6 @@ import Everest.Framework.InversionOfControl.ComponentProvider;
  * @since 28-04-2019
  */
 public interface ComponentFactory<T> {
-    T providerInstance(ComponentProvider provider);
+    T provider(ComponentProvider provider);
 
 }

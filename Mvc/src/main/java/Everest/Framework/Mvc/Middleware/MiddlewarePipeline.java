@@ -1,6 +1,6 @@
 package Everest.Framework.Mvc.Middleware;
 
-import Everest.Framework.Core.Decorator.Instance;
+import Everest.Framework.Core.Inject.Instance;
 import Everest.Framework.Http.HttpContext;
 
 import javax.annotation.Nonnull;
