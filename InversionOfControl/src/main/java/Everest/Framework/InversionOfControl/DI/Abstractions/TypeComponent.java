@@ -21,7 +21,7 @@ public class TypeComponent extends Component{
     public TypeComponent(){}
     public TypeComponent(@Nonnull ComponentDescriptor descriptor){
         super(descriptor);
-        this.implementationType = descriptor.getComponentType();
+        this.setImplementationType( descriptor.getImplementationType());
     }
 
     @Override

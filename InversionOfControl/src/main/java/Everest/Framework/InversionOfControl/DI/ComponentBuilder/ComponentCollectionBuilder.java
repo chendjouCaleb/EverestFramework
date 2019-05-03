@@ -3,10 +3,9 @@ package Everest.Framework.InversionOfControl.DI.ComponentBuilder;
 import Everest.Framework.InversionOfControl.Abstractions.ComponentDescriptor;
 import Everest.Framework.InversionOfControl.DI.Abstractions.FactoryMethodComponent;
 import Everest.Framework.InversionOfControl.DI.Abstractions.TypeComponent;
-import Everest.Framework.InversionOfControl.DI.ComponentBuilder.ComponentBuilder;
 import Everest.Framework.InversionOfControl.DI.ComponentCollection;
 
-import javax.annotation.Nonnull;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -18,11 +17,14 @@ import java.util.List;
  * @since 28-04-2019
  */
 public class ComponentCollectionBuilder {
-    private Collection<ComponentBuilder> componentBuilders;
+    private Collection<ComponentBuilder> componentBuilders = new ArrayList<>();
     private FactoryMethodComponentBuilder factoryMethodComponentBuilder;
 
-    public ComponentCollectionBuilder(@Nonnull Collection<ComponentBuilder> componentBuilders) {
-        this.componentBuilders = componentBuilders;
+    public ComponentCollectionBuilder() {
+        factoryMethodComponentBuilder = new FactoryMethodComponentBuilder();
+        componentBuilders.add(new TypeComponentBuilder());
+        componentBuilders.add(new FactoryProviderComponentBuilder());
+        componentBuilders.add(new InstanceComponentBuilder());
     }
 
     /**

@@ -1,10 +1,12 @@
 package Everest.Framework.InversionOfControl.Abstractions;
 
+import Everest.Framework.InversionOfControl.IComponentProvider;
+
 import java.util.Collection;
 
 /**
  * Specifies the contract for a collection of instance descriptors
- * The contains of this collection will the be used to build a {@link Everest.Framework.InversionOfControl.ComponentProvider}.
+ * The contains of this collection will the be used to build a {@link IComponentProvider}.
  *
  * @author Chendjou
  * @version 1

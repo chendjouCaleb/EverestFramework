@@ -4,7 +4,7 @@ import Everest.Framework.InversionOfControl.DI.Abstractions.TypeComponent;
 import Everest.Framework.InversionOfControl.DI.ComponentCollection;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class PrincipalDuplicateGetterTest {
     private PrincipalDuplicateGetter getter = new PrincipalDuplicateGetter();
@@ -26,4 +26,12 @@ class PrincipalDuplicateGetterTest {
 
         getter.checkDuplicatePrincipal(components);
     }
+
+//    @Test
+//    public void Reflexions() {
+//        List<Integer> integers = new ArrayList<Integer>();
+//        System.out.println(integers.getClass().getTypeParameters()[0].getGenericDeclaration().);
+//    }
+
+
 }

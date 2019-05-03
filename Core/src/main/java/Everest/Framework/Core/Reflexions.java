@@ -67,10 +67,15 @@ public class Reflexions {
         return object;
     }
 
-    public static Object callRemote(Object instance, Method method, Object... arguments) throws Exception {
+    public static Object callRemote(Object instance, Method method, Object... arguments){
         method.setAccessible(true);
         Object[] argumentsWithSession = createArguments(arguments);
-        return method.invoke(instance, argumentsWithSession);
+        try{
+            return method.invoke(instance, argumentsWithSession);
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+
     }
 
     public static Object[] createArguments(Object[] arguments) {

@@ -55,4 +55,8 @@ public class ComponentCollection extends ArrayList<Component> {
     public Component findByName(String name){
         return stream().filter(c -> c.isNamed() && c.getName().equals(name)).findFirst().orElse(null);
     }
+
+    public Component findByComponentType(Class type) {
+        return stream().filter(c -> c.getComponentType().equals(type)).findFirst().orElse(null);
+    }
 }

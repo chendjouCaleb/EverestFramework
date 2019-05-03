@@ -28,4 +28,13 @@ public class FactoryProviderComponent extends Component{
      * The factory of this component.
      */
     private ComponentFactory<?> factory;
+
+    public ComponentFactory<?> getFactory() {
+        return factory;
+    }
+
+    public FactoryProviderComponent setFactory(ComponentFactory<?> factory) {
+        this.factory = factory;
+        return this;
+    }
 }

@@ -1,15 +1,7 @@
 package Everest.Framework.InversionOfControl.DI.ComponentBuilder;
 
-import Everest.Framework.Core.Inject.Resolve;
 import Everest.Framework.InversionOfControl.Abstractions.ComponentDescriptor;
 import Everest.Framework.InversionOfControl.DI.Abstractions.TypeComponent;
-
-import javax.annotation.Nonnull;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
 
 /**
  * The implementation of {@link ComponentBuilder} which build a {@link TypeComponent}.
@@ -41,8 +33,10 @@ public class TypeComponentBuilder implements ComponentBuilder<TypeComponent> {
     @Override
     public TypeComponent build(ComponentDescriptor descriptor) {
         TypeComponent component = new TypeComponent(descriptor);
+        System.out.println(descriptor.getImplementationType());
         component.setInjectionFields(injectionFieldGetter.getInjectionField(component.getImplementationType()));
-        component.setInjectionMethods(injectionMethodGetter.getInjectionMethods(component.getImplementationType()));
+        component.setInjectionMethods(injectionMethodGetter.getInjectionMethods(component
+                .getImplementationType()));
         component.setInjectionConstructor(injectionConstructorGetter.getConstructor(component.getImplementationType()));
         component.setPostInitMethods(postInitMethodGetter.getPostInitMethods(component.getImplementationType()));
         return component;

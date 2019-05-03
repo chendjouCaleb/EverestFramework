@@ -46,4 +46,22 @@ public class FactoryMethodComponent extends Component {
     public String instanceProviderToString() {
         return factoryMethod.getName();
     }
+
+    public Method getFactoryMethod() {
+        return factoryMethod;
+    }
+
+    public FactoryMethodComponent setFactoryMethod(Method factoryMethod) {
+        this.factoryMethod = factoryMethod;
+        return this;
+    }
+
+    public TypeComponent getTypeComponent() {
+        return typeComponent;
+    }
+
+    public FactoryMethodComponent setTypeComponent(TypeComponent typeComponent) {
+        this.typeComponent = typeComponent;
+        return this;
+    }
 }

@@ -3,14 +3,13 @@ package Everest.Framework.InversionOfControl.DI.ComponentBuilder;
 import Everest.Framework.Core.Annotations;
 import Everest.Framework.Core.Inject.Principal;
 import Everest.Framework.Core.Inject.Scope;
-import Everest.Framework.Core.Inject.UseName;
+import Everest.Framework.Core.Inject.UseNamed;
 import Everest.Framework.InversionOfControl.Abstractions.ComponentLifetime;
 import Everest.Framework.InversionOfControl.DI.Abstractions.Component;
 import Everest.Framework.InversionOfControl.DI.Abstractions.FactoryMethodComponent;
 import Everest.Framework.InversionOfControl.DI.Abstractions.TypeComponent;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -29,8 +28,8 @@ import java.util.List;
  * @since 30-04-2019
  */
 public class FactoryMethodComponentBuilder {
-    private AnnotationLifeTimeGetter annotationLifeTimeGetter;
-    private FactoryMethodScanner factoryMethodScanner;
+    private AnnotationLifeTimeGetter annotationLifeTimeGetter = new AnnotationLifeTimeGetter();
+    private FactoryMethodScanner factoryMethodScanner = new FactoryMethodScanner();
 
     /**
      * Builds {@link FactoryMethodComponent} based on implementation type of the specified {@link TypeComponent}.
@@ -55,7 +54,7 @@ public class FactoryMethodComponentBuilder {
      * @param method The method of the created component.
      * @param typeComponent The parent component of the created component.
      * @return The created component.
-     * @throws IllegalStateException If the method is decorated by {@link UseName} annotation with empty value.
+     * @throws IllegalStateException If the method is decorated by {@link UseNamed} annotation with empty value.
      */
     public FactoryMethodComponent buildComponent(@Nonnull Method method, @Nonnull TypeComponent typeComponent) {
         FactoryMethodComponent component = new FactoryMethodComponent(method, typeComponent);
@@ -69,12 +68,12 @@ public class FactoryMethodComponentBuilder {
             component.setPrincipal(true);
         }
 
-        UseName useName = method.getAnnotation(UseName.class);
-        if(useName!= null){
-            if("".equals(useName.value())){
+        UseNamed useNamed = method.getAnnotation(UseNamed.class);
+        if(useNamed != null){
+            if("".equals(useNamed.value())){
                 throw new IllegalStateException("You cannot use a empty string as name of component. Method: " + method);
             }
-            component.setName(useName.value());
+            component.setName(useNamed.value());
         }
 
         return component;

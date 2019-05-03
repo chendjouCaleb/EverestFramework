@@ -26,7 +26,7 @@ public class InjectionMethodGetter {
     public List<Method> getInjectionMethods(Class type) {
         List<Method> methods = new ArrayList<>();
         Class current = type;
-        while (current != Object.class){
+        while (current != Object.class && !current.isInterface()){
             for(Method method: current.getDeclaredMethods()){
                 if(method.isAnnotationPresent(Resolve.class)){
                     methods.add(method);
