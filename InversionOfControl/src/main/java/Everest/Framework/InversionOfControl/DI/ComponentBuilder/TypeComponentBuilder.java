@@ -33,7 +33,6 @@ public class TypeComponentBuilder implements ComponentBuilder<TypeComponent> {
     @Override
     public TypeComponent build(ComponentDescriptor descriptor) {
         TypeComponent component = new TypeComponent(descriptor);
-        System.out.println(descriptor.getImplementationType());
         component.setInjectionFields(injectionFieldGetter.getInjectionField(component.getImplementationType()));
         component.setInjectionMethods(injectionMethodGetter.getInjectionMethods(component
                 .getImplementationType()));

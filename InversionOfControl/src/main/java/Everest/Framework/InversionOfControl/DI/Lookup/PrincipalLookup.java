@@ -30,7 +30,7 @@ public class PrincipalLookup {
                 return principals.get(0);
             }
         } else {
-            throw new NoSuchElementException(String.format("There are component with type '%s'", componentType.getName()));
+            throw new NoSuchElementException(String.format("There are no component with type '%s'", componentType.getName()));
         }
     }
 }

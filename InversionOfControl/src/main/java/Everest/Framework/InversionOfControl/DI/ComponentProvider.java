@@ -21,14 +21,13 @@ import java.util.List;
 public class ComponentProvider implements IComponentProvider {
     private LookupEngine lookupEngine;
     private RootComponentCache rootComponentCache;
-    private ScopeComponentCache scopeComponentCache;
     private ComponentCollection components;
 
     public ComponentProvider(ComponentCollection components) {
         this.components = components;
         rootComponentCache = new RootComponentCache();
-        scopeComponentCache = new ScopeComponentCache();
-        this.lookupEngine = new LookupEngine(components, rootComponentCache, scopeComponentCache);
+        this.lookupEngine = new LookupEngine(components, this, rootComponentCache, new ScopeComponentCache());
+        this.lookupEngine.addSingleton();
     }
 
     @Override
@@ -52,6 +51,10 @@ public class ComponentProvider implements IComponentProvider {
     }
 
     IComponentScope createScope() {
-        return new ComponentScope(this, new LookupEngine(components, rootComponentCache, scopeComponentCache));
+        return new ComponentScope(this, components, rootComponentCache);
+    }
+
+    public LookupEngine getLookupEngine() {
+        return lookupEngine;
     }
 }

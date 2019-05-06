@@ -1,9 +1,12 @@
 package Everest.Framework.InversionOfControl.DI.ComponentBuilder;
 
 import Everest.Framework.InversionOfControl.Abstractions.ComponentDescriptor;
+import Everest.Framework.InversionOfControl.DI.Abstractions.Component;
 import Everest.Framework.InversionOfControl.DI.Abstractions.FactoryMethodComponent;
 import Everest.Framework.InversionOfControl.DI.Abstractions.TypeComponent;
 import Everest.Framework.InversionOfControl.DI.ComponentCollection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,6 +22,7 @@ import java.util.List;
 public class ComponentCollectionBuilder {
     private Collection<ComponentBuilder> componentBuilders = new ArrayList<>();
     private FactoryMethodComponentBuilder factoryMethodComponentBuilder;
+    private Logger logger = LoggerFactory.getLogger(ComponentCollectionBuilder.class);
 
     public ComponentCollectionBuilder() {
         factoryMethodComponentBuilder = new FactoryMethodComponentBuilder();
@@ -38,7 +42,9 @@ public class ComponentCollectionBuilder {
         for(ComponentDescriptor descriptor: descriptors){
             for(ComponentBuilder builder: componentBuilders){
                 if(builder.canBuild(descriptor)){
-                    components.add(builder.build(descriptor));
+                    Component component = builder.build(descriptor);
+                    components.add(component);
+                    logger.info("Component: {}", component.toString());
                 }
             }
         }

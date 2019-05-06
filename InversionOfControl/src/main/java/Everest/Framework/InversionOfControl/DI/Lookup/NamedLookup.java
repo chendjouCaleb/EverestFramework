@@ -1,7 +1,6 @@
 package Everest.Framework.InversionOfControl.DI.Lookup;
 
 import Everest.Framework.Core.StringUtils;
-import Everest.Framework.InversionOfControl.DI.Abstractions.Component;
 import Everest.Framework.InversionOfControl.DI.ComponentCollection;
 
 import java.util.NoSuchElementException;

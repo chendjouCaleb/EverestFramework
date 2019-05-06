@@ -3,10 +3,10 @@ package Everest.Framework.InversionOfControl.DI.Lookup;
 import Everest.Framework.InversionOfControl.Abstractions.ComponentLifetime;
 import Everest.Framework.InversionOfControl.DI.Abstractions.Component;
 import Everest.Framework.InversionOfControl.DI.ComponentCollection;
+import Everest.Framework.InversionOfControl.DI.ComponentProvider;
 import Everest.Framework.InversionOfControl.DI.Lookup.Resolver.IComponentResolver;
 import Everest.Framework.InversionOfControl.DI.Lookup.Resolver.ResolverFactory;
 import Everest.Framework.InversionOfControl.IComponentProvider;
-import Everest.Framework.InversionOfControl.ManySelectableException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ public class LookupEngine {
     private ResolverFactory resolverFactory;
     private NamedLookup namedLookup;
 
-    public LookupEngine(ComponentCollection components,
+    public LookupEngine(ComponentCollection components, ComponentProvider componentProvider,
                         RootComponentCache rootComponentCache, ScopeComponentCache scopeComponentCache) {
         this.components = components;
         this.scopeComponentCache = scopeComponentCache;
@@ -31,9 +31,6 @@ public class LookupEngine {
 
         namedLookup = new NamedLookup(this, components);
         resolverFactory = new ResolverFactory(componentProvider, this,namedLookup);
-
-        addSingleton();
-        addScoped();
     }
 
     public void addSingleton() {

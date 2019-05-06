@@ -18,6 +18,7 @@ public class ComponentDescriptorBuilder {
             throw new NullPointerException("Cannot build a ComponentDescriptor with null ComponentRegister");
         }
 
+        this.componentRegister = componentRegister;
     }
 
     private IComponentRegister componentRegister;
@@ -60,12 +61,12 @@ public class ComponentDescriptorBuilder {
         if(instanceType == null){
             throw new NullArgumentException("instanceType");
         }
-        if(implementationType != null && instanceType.isAssignableFrom(implementationType)){
+        if(implementationType != null && !instanceType.isAssignableFrom(implementationType)){
             throw new IllegalStateException(String.format("The implementation type '%s' is not assignable to instance type '%s'",
                     implementationType.getName(), instanceType.getName()));
         }
 
-        if(implementationInstance != null && implementationInstance.getClass().isAssignableFrom(instanceType)){
+        if(implementationInstance != null && !implementationInstance.getClass().isAssignableFrom(instanceType)){
             throw new IllegalStateException(String.format("The implementation instance type '%s' is not assignable to instance type '%s'",
                     implementationType.getName(), instanceType.getName()));
         }
@@ -126,9 +127,9 @@ public class ComponentDescriptorBuilder {
             throw new NullArgumentException("implementationInstance");
         }
 
-        if(instanceType != null && implementationInstance.getClass().isAssignableFrom(implementationType)){
+        if(instanceType != null && !implementationInstance.getClass().isAssignableFrom(instanceType)){
             throw new IllegalStateException(String.format("The implementation instance type '%s' is not assignable to instance type '%s'",
-                    implementationType.getName(), instanceType.getName()));
+                    implementationInstance.getClass().getName(), instanceType.getName()));
         }
 
         if(implementationType != null){
@@ -238,11 +239,13 @@ public class ComponentDescriptorBuilder {
         }
 
 
-        ComponentDescriptor descriptor = new ComponentDescriptor(instanceType, implementationType);
+        ComponentDescriptor descriptor = new ComponentDescriptor();
         descriptor.setImplementationFactory(implementationFactory);
         descriptor.setName(name);
         descriptor.setLifetime(lifetime);
         descriptor.setPrincipal(isPrincipal);
+        descriptor.setImplementationInstance(implementationInstance);
+        descriptor.setComponentType(instanceType);
 
         componentRegister.add(descriptor);
 

@@ -1,6 +1,5 @@
 package Everest.Framework.InversionOfControl.DI.Lookup;
 
-import Everest.Framework.InversionOfControl.DI.Abstractions.TypeComponent;
 import Everest.Framework.InversionOfControl.DI.ComponentBuilder.ComponentCollectionBuilder;
 import Everest.Framework.InversionOfControl.DI.ComponentBuilder.InjectionConstructorGetter;
 import Everest.Framework.InversionOfControl.DI.ComponentCollection;
@@ -19,6 +18,7 @@ class TypeComponentLookupTest {
         register.addTransient(StarController.class);
         register.addTransient(IStarRepository.class, StarRepository.class);
         register.addTransient(StarBuilder.class);
+
         components = builder.build(register);
     }
 

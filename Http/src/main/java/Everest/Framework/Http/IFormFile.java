@@ -42,4 +42,6 @@ public interface IFormFile {
      * Copies the contents of the uploaded file to the {@param targetStream}.
      */
     void copyTo(OutputStream targetStream);
+
+    String getExtension();
 }

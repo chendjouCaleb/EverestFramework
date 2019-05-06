@@ -2,10 +2,7 @@ package Everest.Framework.InversionOfControl.DI;
 
 import Everest.Framework.Core.Exception.NotImplementedException;
 import Everest.Framework.Core.Exception.NullArgumentException;
-import Everest.Framework.InversionOfControl.Abstractions.ComponentDescriptor;
-import Everest.Framework.InversionOfControl.Abstractions.ComponentFactory;
-import Everest.Framework.InversionOfControl.Abstractions.ComponentLifetime;
-import Everest.Framework.InversionOfControl.Abstractions.IComponentRegister;
+import Everest.Framework.InversionOfControl.Abstractions.*;
 
 /**
  * The default implementation of {@link ComponentRegister}.
@@ -187,5 +184,9 @@ public class ComponentRegister extends ComponentRegisterCollectionDelegate imple
         }
 
         return add(componentType, implementationType, ComponentLifetime.TRANSIENT);
+    }
+
+    public ComponentDescriptorBuilder add(){
+        return new ComponentDescriptorBuilder(this);
     }
 }

@@ -86,4 +86,15 @@ public class TypeComponent extends Component{
         this.injectionFields = injectionFields;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "TypeComponent{" +
+                "componentType=" + componentType +
+                ", implementationType=" + implementationType +
+                ", lifetime=" + lifetime +
+                ", isPrincipal=" + isPrincipal +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

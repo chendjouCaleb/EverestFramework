@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
  */
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.FIELD, ElementType.PARAMETER})
+@Target({ElementType.TYPE, ElementType.METHOD})
 public @interface Named {
     String value();
 }

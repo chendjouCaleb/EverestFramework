@@ -14,6 +14,10 @@ public class ComponentDescriptor {
     private static final String NULL_INSTANCE_TYPE_MESSAGE = "componentType cannot be null";
     private static final String NULL_IMPLEMENTATION_TYPE_MESSAGE = "implementation cannot be null";
     private static final String NULL_FACTORY_MESSAGE = "Factory cannot be null";
+
+    public ComponentDescriptor() {
+    }
+
     /**
      * Initializes a new instance of {@link ComponentDescriptor "} with the specified implementationType
      * @param componentType" The type of the instance.

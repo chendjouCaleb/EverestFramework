@@ -1,9 +1,6 @@
 package Everest.Framework.InversionOfControl.DI.Lookup.Resolver;
 
-import Everest.Framework.InversionOfControl.DI.Abstractions.Component;
-import Everest.Framework.InversionOfControl.DI.Abstractions.FactoryMethodComponent;
-import Everest.Framework.InversionOfControl.DI.Abstractions.FactoryProviderComponent;
-import Everest.Framework.InversionOfControl.DI.Abstractions.TypeComponent;
+import Everest.Framework.InversionOfControl.DI.Abstractions.*;
 import Everest.Framework.InversionOfControl.DI.Lookup.LookupEngine;
 import Everest.Framework.InversionOfControl.DI.Lookup.NamedLookup;
 import Everest.Framework.InversionOfControl.IComponentProvider;
@@ -20,7 +17,7 @@ public class ResolverFactory {
     }
 
     public IComponentResolver getResolver(Class<? extends Component> componentType){
-        if(componentType.equals(InstanceResolver.class)){
+        if(componentType.equals(InstanceComponent.class)){
             return new InstanceResolver();
         }else if(componentType.equals(FactoryProviderComponent.class)){
             return new FactoryProviderResolver(componentProvider);

@@ -39,4 +39,16 @@ public class InstanceComponent extends Component{
         this.instance = instance;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "InstanceComponent{" +
+                "instance=" + instance +
+                ", componentType=" + componentType +
+                ", implementationType=" + implementationType +
+                ", lifetime=" + lifetime +
+                ", isPrincipal=" + isPrincipal +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

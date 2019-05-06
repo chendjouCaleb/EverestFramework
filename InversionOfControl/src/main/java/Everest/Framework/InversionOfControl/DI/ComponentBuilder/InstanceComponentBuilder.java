@@ -4,7 +4,7 @@ import Everest.Framework.InversionOfControl.Abstractions.ComponentDescriptor;
 import Everest.Framework.InversionOfControl.DI.Abstractions.InstanceComponent;
 
 /**
- * The implementation of {@link ComponentBuilder} which build a {@link InstanceComponent}.
+ * The implementation of {@link ComponentBuilder} which build an {@link InstanceComponent}.
  *
  * @see Everest.Framework.InversionOfControl.DI.ComponentBuilder.ComponentBuilder
  * @see InstanceComponent

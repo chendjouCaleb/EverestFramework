@@ -1,6 +1,9 @@
 package Everest.Framework.InversionOfControl.DI.Lookup;
 
-class StarController {
+import Everest.Framework.Core.Inject.Resolve;
+import Everest.Framework.Core.Inject.UseNamed;
+
+public class StarController {
     private IStarRepository starRepository;
     private StarBuilder starBuilder;
 
@@ -15,5 +18,10 @@ class StarController {
 
     public StarBuilder getStarBuilder() {
         return starBuilder;
+    }
+
+    @Resolve
+    private void count(@UseNamed("count") Integer count){
+        System.out.println("setter invocation: " + count);
     }
 }
