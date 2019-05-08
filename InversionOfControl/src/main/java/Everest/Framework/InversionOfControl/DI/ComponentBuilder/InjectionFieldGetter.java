@@ -1,6 +1,7 @@
 package Everest.Framework.InversionOfControl.DI.ComponentBuilder;
 
 import Everest.Framework.Core.Inject.Resolve;
+import Everest.Framework.Core.Inject.UseNamed;
 import org.apache.commons.lang3.reflect.FieldUtils;
 
 import javax.annotation.Nonnull;
@@ -18,7 +19,7 @@ public class InjectionFieldGetter {
     /**
      * Get all injection fields of a component implementation type.
      *
-     * An injection field is decorated by {@link Resolve}.
+     * An injection field is decorated by {@link Resolve} or {@link Resolve}.
      *
      * @param type The implementation type of an component.
      * @return An {@code ArrayList} containing all injection fields of the type.
@@ -27,6 +28,12 @@ public class InjectionFieldGetter {
         List<Field> fields = new ArrayList<>();
         for(Field field: FieldUtils.getAllFields(type)){
             if(field.isAnnotationPresent(Resolve.class)){
+                fields.add(field);
+            }else if(field.isAnnotationPresent(UseNamed.class)){
+                UseNamed useNamed = field.getAnnotation(UseNamed.class);
+                if("".equals(useNamed.value())){
+                    throw new IllegalArgumentException("Cannot use @UseNamed annotation with empty value");
+                }
                 fields.add(field);
             }
         }

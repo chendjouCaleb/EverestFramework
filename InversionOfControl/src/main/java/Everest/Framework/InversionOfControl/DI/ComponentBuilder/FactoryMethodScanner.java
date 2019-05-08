@@ -2,7 +2,6 @@ package Everest.Framework.InversionOfControl.DI.ComponentBuilder;
 
 import Everest.Framework.Core.Annotations;
 import Everest.Framework.Core.Inject.Scope;
-import Everest.Framework.Core.Inject.Scoped;
 
 import javax.annotation.Nonnull;
 import java.lang.annotation.Annotation;
@@ -48,7 +47,6 @@ public class FactoryMethodScanner {
      */
     public boolean isFactoryMethod(@Nonnull Method method) {
         Annotation annotation = Annotations.annotatedAnnotation(method, Scope.class);
-
         return annotation != null;
     }
 }

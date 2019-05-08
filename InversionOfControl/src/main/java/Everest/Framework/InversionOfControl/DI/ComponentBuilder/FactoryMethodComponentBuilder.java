@@ -60,7 +60,7 @@ public class FactoryMethodComponentBuilder {
         FactoryMethodComponent component = new FactoryMethodComponent(method, typeComponent);
 
         Annotation scopeAnnotation = Annotations.annotatedAnnotation(method, Scope.class);
-        ComponentLifetime lifetime = annotationLifeTimeGetter.getLifeTime(scopeAnnotation);
+        ComponentLifetime lifetime = annotationLifeTimeGetter.getLifeTime(scopeAnnotation.annotationType());
         component.setLifetime(lifetime);
 
         component.setComponentType(method.getReturnType());

@@ -24,7 +24,7 @@ public class NamedLookup {
 
     public Object look(String name){
         if(StringUtils.isEmpty(name)){
-            throw new IllegalArgumentException("Cannot resolve component with null or empty name");
+            throw new IllegalArgumentException("Cannot resolveField component with null or empty name");
         }
 
         if(componentCollection.findByName(name) == null){

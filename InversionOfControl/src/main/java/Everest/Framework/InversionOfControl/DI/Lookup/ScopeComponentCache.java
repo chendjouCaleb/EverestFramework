@@ -6,6 +6,13 @@ import Everest.Framework.InversionOfControl.DI.Abstractions.Component;
 import java.util.HashMap;
 import java.util.Objects;
 
+/**
+ * Contains all stored instance of a scoped lifetime component.
+ *
+ * @author Chendjou
+ * @version 1
+ * @since 02-05-2019
+ */
 public class ScopeComponentCache extends HashMap<Component, Object> {
     @Override
     public Object put(Component key, Object value) {

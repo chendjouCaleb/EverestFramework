@@ -16,14 +16,12 @@ public class ComponentProviderBuilder {
     private ComponentCollectionBuilder componentCollectionBuilder;
     private DuplicateNameScanner duplicateNameScanner;
     private CircularDependencyDetector circularDependencyDetector;
-    private DependencyDetector dependencyDetector;
     private PrincipalDuplicateGetter principalDuplicateGetter;
 
     public IComponentProvider buildProvider(IComponentRegister componentRegister){
         ComponentCollection componentCollection = componentCollectionBuilder.build(componentRegister);
         duplicateNameScanner.checkDuplicateName(componentCollection);
         principalDuplicateGetter.checkDuplicatePrincipal(componentCollection);
-        dependencyDetector.detectDependencies(componentCollection);
         circularDependencyDetector.DetectConstructorCircularDependencies(componentCollection);
 
         ComponentProvider componentProvider = new ComponentProvider(componentCollection);

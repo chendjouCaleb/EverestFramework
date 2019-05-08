@@ -2,8 +2,10 @@ package Everest.Framework.InversionOfControl.DI.Abstractions;
 
 import Everest.Framework.InversionOfControl.Abstractions.ComponentDescriptor;
 import Everest.Framework.InversionOfControl.Abstractions.ComponentFactory;
+import Everest.Framework.InversionOfControl.IComponentProvider;
 
 import javax.annotation.Nonnull;
+import java.lang.reflect.Method;
 
 /**
  * The component based on a factory provider.
@@ -17,6 +19,13 @@ public class FactoryProviderComponent extends Component{
     public FactoryProviderComponent(@Nonnull ComponentDescriptor descriptor) {
         super(descriptor);
         this.factory = descriptor.getImplementationFactory();
+        try {
+            Method providerMethod = this.factory.getClass().getMethod("provider", IComponentProvider.class);
+            this.componentType = providerMethod.getReturnType();
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Override
@@ -36,5 +45,17 @@ public class FactoryProviderComponent extends Component{
     public FactoryProviderComponent setFactory(ComponentFactory<?> factory) {
         this.factory = factory;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "FactoryProviderComponent{" +
+                "factory=" + factory +
+                ", componentType=" + componentType +
+                ", implementationType=" + implementationType +
+                ", lifetime=" + lifetime +
+                ", isPrincipal=" + isPrincipal +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

@@ -8,8 +8,6 @@ import Everest.Framework.InversionOfControl.DI.ComponentRegister;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class LookupEngineTest {
 
     private InjectionConstructorGetter constructorGetter;
@@ -25,12 +23,11 @@ class LookupEngineTest {
         register.addTransient(StarController.class);
         register.addTransient(IStarRepository.class, StarRepository.class);
         register.addSingleton(StarBuilder.class);
-        register.add().setInstanceType(Integer.class).setName("count").setImplementationInstance(10).regist();
+        register.add().setInstanceType(Integer.class).setName("count").setValue(10).regist();
         components = builder.build(register);
 
         componentProvider = new ComponentProvider(new ComponentCollectionBuilder().build(register));
         lookupEngine = componentProvider.getLookupEngine();
-
     }
 
     @Test

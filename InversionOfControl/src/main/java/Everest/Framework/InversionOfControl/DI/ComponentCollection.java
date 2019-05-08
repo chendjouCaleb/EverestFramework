@@ -4,11 +4,10 @@ import Everest.Framework.InversionOfControl.DI.Abstractions.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * Contains all component of the container context.
+ * Contains all components of the container context.
  *
  * @author Chendjou
  * @version 1

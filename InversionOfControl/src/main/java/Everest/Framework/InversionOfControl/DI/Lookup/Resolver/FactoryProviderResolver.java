@@ -12,6 +12,8 @@ public class FactoryProviderResolver implements IComponentResolver<FactoryProvid
 
     @Override
     public Object resolve(FactoryProviderComponent component) {
-        return component.getFactory().provider(componentProvider);
+        return component
+                .getFactory()
+                .provider(componentProvider);
     }
 }

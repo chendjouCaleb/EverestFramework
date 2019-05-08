@@ -28,18 +28,18 @@ public class AnnotationLifeTimeGetter {
      * @return a {@link ComponentLifetime} corresponding to the specified annotation.
      * @throws IllegalStateException if the specified annotation is not a scope annotation.
      */
-    public ComponentLifetime getLifeTime(Annotation annotation){
-        if(annotation.getClass().equals(Singleton.class)){
+    public ComponentLifetime getLifeTime(Class<? extends Annotation> annotation){
+        if(annotation.equals(Singleton.class)){
             return ComponentLifetime.SINGLETON;
         }
-        if(annotation.getClass().equals(Transient.class)){
+        if(annotation.equals(Transient.class)){
             return ComponentLifetime.TRANSIENT;
         }
 
-        if(annotation.getClass().equals(Scoped.class)){
+        if(annotation.equals(Scoped.class)){
             return ComponentLifetime.SCOPED;
         }
 
-        throw new IllegalStateException(String.format("The annotation %s is not a scope annotation", annotation.getClass().getName()));
+        throw new IllegalStateException(String.format("The annotation %s is not a scope annotation", annotation.getName()));
     }
 }

@@ -115,21 +115,24 @@ public class ComponentDescriptorBuilder {
 
     /**
      * Sets the implementation instance of the component.
-     * @param implementationInstance the implementation instance of the component.
+     * @param value the implementation instance of the component.
      *
      * The implementation instance must be assignable to instanceType.
      * Dont set implementation instance and implementation type on same component.
      * Dont set implementation instance and implementation factory on same component.
      * @return The self builder instance.
      */
-    public ComponentDescriptorBuilder setImplementationInstance(Object implementationInstance) {
-        if(implementationInstance == null){
-            throw new NullArgumentException("implementationInstance");
+    public ComponentDescriptorBuilder setValue(Object value) {
+        if(value == null){
+            throw new NullArgumentException("value");
         }
 
-        if(instanceType != null && !implementationInstance.getClass().isAssignableFrom(instanceType)){
+        if(instanceType != null && !value.getClass().isAssignableFrom(instanceType)){
             throw new IllegalStateException(String.format("The implementation instance type '%s' is not assignable to instance type '%s'",
-                    implementationInstance.getClass().getName(), instanceType.getName()));
+                    value.getClass().getName(), instanceType.getName()));
+        }
+        if(instanceType == null){
+            instanceType = value.getClass();
         }
 
         if(implementationType != null){
@@ -141,7 +144,7 @@ public class ComponentDescriptorBuilder {
         }
 
 
-        this.implementationInstance = implementationInstance;
+        this.implementationInstance = value;
         return this;
     }
 

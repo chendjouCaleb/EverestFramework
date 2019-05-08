@@ -19,6 +19,9 @@ public class InstanceComponent extends Component{
      */
     private Object instance;
 
+    public InstanceComponent() {
+    }
+
     public InstanceComponent(@Nonnull ComponentDescriptor descriptor){
         super(descriptor);
         this.instance = descriptor.getImplementationInstance();
