@@ -48,4 +48,6 @@ public interface IComponentProvider {
      */
     <T> List<T> GetComponents(Class<? extends T> type);
 
+    IComponentScope createScope();
+
 }

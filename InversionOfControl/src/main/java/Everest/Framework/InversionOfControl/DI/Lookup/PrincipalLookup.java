@@ -1,36 +1,52 @@
 package Everest.Framework.InversionOfControl.DI.Lookup;
 
 import Everest.Framework.InversionOfControl.DI.Abstractions.Component;
-import Everest.Framework.InversionOfControl.DI.ComponentCollection;
-import Everest.Framework.InversionOfControl.ManySelectableException;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
+/**
+ * A lookup to find the principal component of multiple component with same component type.
+ * A principal component have the field isPrincipal as {@code true}.
+ * @see Component
+ *
+ * @author Chendjou
+ * @version 1
+ * @since 09-05-2019
+ */
 public class PrincipalLookup {
-    public Component findPrincipal(Class componentType, ComponentCollection components){
-        List<Component> collection = components.listByComponentTypes(componentType);
+    private LookupEngine lookupEngine;
 
+    public PrincipalLookup(LookupEngine lookupEngine) {
+        this.lookupEngine = lookupEngine;
+    }
 
-        if (collection.size() == 1) {
-            return collection.get(0);
-        } else if (collection.size() > 1) {
-            List<Component> principals = collection.stream().filter(Component::isPrincipal).collect(Collectors.toList());
+    /**
+     * Finds the principal component of multiple component with same component type.
+     * @param componentType he type of the component to find.
+     * @return The instance of the principal component of the specified component type.
+     *
+     * @throws NoPrincipalComponentException If the groups of component dont have a principal component.
+     * @throws ManyPrincipalComponentException If the component have multiple principal component.
+     */
+    public Object look(Class componentType) {
+        List<Component> principals = lookupEngine.getComponents().listByComponentTypes(componentType)
+                .stream().filter(Component::isPrincipal).collect(Collectors.toList());
 
-            if (principals.size() == 0) {
-                throw new NoSuchElementException(
-                        String.format("There are to many component with type '%s' but nothing of them is marked as principal",
-                                componentType.getName()));
-            }
-            if (principals.size() > 1) {
-                throw new ManySelectableException(
-                        String.format("There are to many component with type '%s' marked as principal", componentType.getName()));
-            } else {
-                return principals.get(0);
-            }
-        } else {
-            throw new NoSuchElementException(String.format("There are no component with type '%s'", componentType.getName()));
+        //No principal component
+        if (principals.size() == 0) {
+            throw new NoPrincipalComponentException(
+                    String.format("There are to many component with type '%s' but nothing of them is marked as principal",
+                            componentType.getName()));
         }
+
+        //Many principal components
+        if (principals.size() > 1) {
+            throw new ManyPrincipalComponentException(
+                    String.format("There are to many component with type '%s' marked as principal", componentType.getName()));
+        } else {
+            return lookupEngine.look(principals.get(0));
+        }
+
     }
 }

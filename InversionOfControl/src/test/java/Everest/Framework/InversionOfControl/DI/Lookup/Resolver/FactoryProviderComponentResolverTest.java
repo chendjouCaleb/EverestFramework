@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-class FactoryProviderResolverTest {
+class FactoryProviderComponentResolverTest {
 
     private ComponentCollection components = new ComponentCollection();
     private ComponentCollectionBuilder builder = new ComponentCollectionBuilder();
@@ -41,7 +41,7 @@ class FactoryProviderResolverTest {
     @Test
     void resolve() {
         FactoryProviderComponent component = (FactoryProviderComponent) components.findByComponentType(FactoryProviderExample.class);
-        FactoryProviderResolver resolver = new FactoryProviderResolver(componentProvider);
+        FactoryProviderComponentResolver resolver = new FactoryProviderComponentResolver(componentProvider);
 
         FactoryProviderExample instance = (FactoryProviderExample) resolver.resolve(component);
 

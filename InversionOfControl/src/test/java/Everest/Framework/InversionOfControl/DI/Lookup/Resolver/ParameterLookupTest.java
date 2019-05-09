@@ -6,7 +6,7 @@ import Everest.Framework.InversionOfControl.DI.ComponentCollection;
 import Everest.Framework.InversionOfControl.DI.ComponentProvider;
 import Everest.Framework.InversionOfControl.DI.ComponentRegister;
 import Everest.Framework.InversionOfControl.DI.Lookup.LookupEngine;
-import Everest.Framework.InversionOfControl.DI.Lookup.NamedLookup;
+import Everest.Framework.InversionOfControl.DI.Lookup.ParameterLookup;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,14 +14,14 @@ import java.lang.reflect.Parameter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class ParameterResolverTest {
+class ParameterLookupTest {
     private ComponentCollectionBuilder builder = new ComponentCollectionBuilder();
     private LookupEngine lookupEngine;
     private ComponentProvider componentProvider;
 
     private Class<TypeForMethodInjection> type = TypeForMethodInjection.class;
     private Parameter[] parameters;
-    private ParameterResolver parameterResolver;
+    private ParameterLookup parameterLookup;
 
     @BeforeEach
     void setUp() throws NoSuchMethodException {
@@ -34,11 +34,10 @@ class ParameterResolverTest {
 
         ComponentCollection components = builder.build(register);
 
-        componentProvider = new ComponentProvider(new ComponentCollectionBuilder().build(register));
+        componentProvider = new ComponentProvider(components);
 
         lookupEngine = componentProvider.getLookupEngine();
-        NamedLookup namedLookup = new NamedLookup(lookupEngine, components);
-        parameterResolver = new ParameterResolver(lookupEngine, namedLookup);
+        parameterLookup = new ParameterLookup(lookupEngine);
 
         parameters = type.getMethod("setDependencies", String.class, Integer.class, Double.class)
                 .getParameters();
@@ -46,21 +45,21 @@ class ParameterResolverTest {
 
     @Test
     void resolveSimpleTypedParameter(){
-        String value = parameterResolver.resolve(parameters[0]).toString();
+        String value = parameterLookup.resolve(parameters[0]).toString();
 
         assertEquals("string parameter value", value);
     }
 
     @Test
     void resolveNamedParameter() {
-        Integer value = (Integer) parameterResolver.resolve(parameters[1]);
+        Integer value = (Integer) parameterLookup.resolve(parameters[1]);
 
         assertEquals(10, value.intValue());
     }
 
     @Test
     void resolveWithPrincipal() {
-        Double value = (Double) parameterResolver.resolve(parameters[2]);
+        Double value = (Double) parameterLookup.resolve(parameters[2]);
 
         assertEquals(30.5, value.doubleValue());
     }

@@ -1,6 +1,7 @@
 package Everest.Framework.InversionOfControl.DI.Lookup;
 
 import Everest.Framework.Core.StringUtils;
+import Everest.Framework.InversionOfControl.DI.Abstractions.Component;
 import Everest.Framework.InversionOfControl.DI.ComponentCollection;
 
 import java.util.NoSuchElementException;
@@ -17,19 +18,20 @@ public class NamedLookup {
     private LookupEngine lookupEngine;
     private ComponentCollection componentCollection;
 
-    public NamedLookup(LookupEngine lookupEngine, ComponentCollection componentCollection) {
+    public NamedLookup(LookupEngine lookupEngine) {
         this.lookupEngine = lookupEngine;
-        this.componentCollection = componentCollection;
+        this.componentCollection = lookupEngine.getComponents();
     }
 
     public Object look(String name){
         if(StringUtils.isEmpty(name)){
-            throw new IllegalArgumentException("Cannot resolveField component with null or empty name");
+            throw new IllegalArgumentException("Cannot component with null or empty name");
         }
 
         if(componentCollection.findByName(name) == null){
             throw new NoSuchElementException(String.format("There are no component with name '%s'", name));
         }
-        return lookupEngine.look(name);
+        Component component = componentCollection.findByName(name);
+        return lookupEngine.look(component);
     }
 }

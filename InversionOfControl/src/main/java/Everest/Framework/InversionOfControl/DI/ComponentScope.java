@@ -6,7 +6,6 @@ import Everest.Framework.InversionOfControl.DI.Lookup.ScopeComponentCache;
 import Everest.Framework.InversionOfControl.IComponentProvider;
 import Everest.Framework.InversionOfControl.IComponentScope;
 
-import javax.annotation.Nonnull;
 import java.util.List;
 
 public class ComponentScope implements IComponentScope {
@@ -18,7 +17,7 @@ public class ComponentScope implements IComponentScope {
     public ComponentScope(ComponentProvider componentProvider, ComponentCollection componentCollection, RootComponentCache rootComponentCache) {
         this.componentProvider = componentProvider;
         this.lookupEngine = new LookupEngine(componentCollection, componentProvider, rootComponentCache, new ScopeComponentCache());
-        this.lookupEngine.addScoped();
+        this.lookupEngine.addScopedComponents();
     }
 
     @Override
@@ -49,5 +48,10 @@ isDisposed = true;
     @Override
     public <T> List<T> GetComponents(Class<? extends T> type) {
         return (List<T>) lookupEngine.lookComponents(type);
+    }
+
+    @Override
+    public IComponentScope createScope() {
+        return componentProvider.createScope();
     }
 }

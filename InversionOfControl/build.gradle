@@ -5,6 +5,8 @@ plugins {
 group 'Everest'
 version '1.0-SNAPSHOT'
 
+apply plugin: 'maven'
+
 sourceCompatibility = 1.8
 
 repositories {

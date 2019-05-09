@@ -6,7 +6,6 @@ import Everest.Framework.InversionOfControl.DI.ComponentCollection;
 import Everest.Framework.InversionOfControl.DI.ComponentProvider;
 import Everest.Framework.InversionOfControl.DI.ComponentRegister;
 import Everest.Framework.InversionOfControl.DI.Lookup.LookupEngine;
-import Everest.Framework.InversionOfControl.DI.Lookup.NamedLookup;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -47,8 +46,7 @@ class TypeComponentResolverTest {
 
     @Test
     void resolve() {
-        NamedLookup namedLookup = new NamedLookup(lookupEngine, components);
-        TypeComponentResolver resolver = new TypeComponentResolver(lookupEngine, namedLookup);
+        TypeComponentResolver resolver = new TypeComponentResolver(lookupEngine);
 
         TypeComponent component = (TypeComponent) components.findByComponentType(TypedComponentExample.class);
 

@@ -5,9 +5,7 @@ import Everest.Framework.InversionOfControl.DI.Lookup.RootComponentCache;
 import Everest.Framework.InversionOfControl.DI.Lookup.ScopeComponentCache;
 import Everest.Framework.InversionOfControl.IComponentProvider;
 import Everest.Framework.InversionOfControl.IComponentScope;
-import org.omg.CORBA.ObjectHelper;
 
-import javax.annotation.Nonnull;
 import java.util.List;
 
 /**
@@ -27,7 +25,7 @@ public class ComponentProvider implements IComponentProvider {
         this.components = components;
         rootComponentCache = new RootComponentCache();
         this.lookupEngine = new LookupEngine(components, this, rootComponentCache, new ScopeComponentCache());
-        this.lookupEngine.addSingleton();
+        this.lookupEngine.addSingletonComponents();
     }
 
     @Override
@@ -50,7 +48,7 @@ public class ComponentProvider implements IComponentProvider {
         return (List<T>) lookupEngine.lookComponents(type);
     }
 
-    IComponentScope createScope() {
+    public IComponentScope createScope() {
         return new ComponentScope(this, components, rootComponentCache);
     }
 

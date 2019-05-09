@@ -18,14 +18,19 @@ public class ComponentProviderBuilder {
     private CircularDependencyDetector circularDependencyDetector;
     private PrincipalDuplicateGetter principalDuplicateGetter;
 
+    public ComponentProviderBuilder() {
+        componentCollectionBuilder = new ComponentCollectionBuilder();
+        duplicateNameScanner = new DuplicateNameScanner();
+        circularDependencyDetector = new CircularDependencyDetector();
+        principalDuplicateGetter = new PrincipalDuplicateGetter();
+    }
+
     public IComponentProvider buildProvider(IComponentRegister componentRegister){
         ComponentCollection componentCollection = componentCollectionBuilder.build(componentRegister);
         duplicateNameScanner.checkDuplicateName(componentCollection);
         principalDuplicateGetter.checkDuplicatePrincipal(componentCollection);
         circularDependencyDetector.DetectConstructorCircularDependencies(componentCollection);
 
-        ComponentProvider componentProvider = new ComponentProvider(componentCollection);
-
-        return componentProvider;
+        return new ComponentProvider(componentCollection);
     }
 }

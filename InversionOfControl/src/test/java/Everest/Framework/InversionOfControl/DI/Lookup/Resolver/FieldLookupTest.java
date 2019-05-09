@@ -5,8 +5,8 @@ import Everest.Framework.InversionOfControl.DI.ComponentBuilder.ComponentCollect
 import Everest.Framework.InversionOfControl.DI.ComponentCollection;
 import Everest.Framework.InversionOfControl.DI.ComponentProvider;
 import Everest.Framework.InversionOfControl.DI.ComponentRegister;
+import Everest.Framework.InversionOfControl.DI.Lookup.FieldLookup;
 import Everest.Framework.InversionOfControl.DI.Lookup.LookupEngine;
-import Everest.Framework.InversionOfControl.DI.Lookup.NamedLookup;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,14 +14,14 @@ import java.lang.reflect.Field;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class FieldResolverTest {
+class FieldLookupTest {
     private ComponentCollectionBuilder builder = new ComponentCollectionBuilder();
     private LookupEngine lookupEngine;
     private ComponentProvider componentProvider;
 
     private Class<TypeForFieldInjection> type = TypeForFieldInjection.class;
     private Field[] fields = type.getDeclaredFields();
-    private FieldResolver fieldResolver;
+    private FieldLookup fieldLookup;
 
     @BeforeEach
     void setUp() throws NoSuchMethodException {
@@ -37,30 +37,29 @@ class FieldResolverTest {
 
         ComponentCollection components = builder.build(register);
 
-        componentProvider = new ComponentProvider(new ComponentCollectionBuilder().build(register));
+        componentProvider = new ComponentProvider(components);
 
         lookupEngine = componentProvider.getLookupEngine();
-        NamedLookup namedLookup = new NamedLookup(lookupEngine, components);
-        fieldResolver = new FieldResolver(lookupEngine, namedLookup);
+        fieldLookup = new FieldLookup(lookupEngine);
     }
 
     @Test
     void resolveSimpleTypedField(){
-        String value = fieldResolver.resolve(fields[0]).toString();
+        String value = fieldLookup.resolve(fields[0]).toString();
 
         assertEquals("string parameter value", value);
     }
 
     @Test
     void resolveNamedField() {
-        Integer value = (Integer) fieldResolver.resolve(fields[1]);
+        Integer value = (Integer) fieldLookup.resolve(fields[1]);
 
         assertEquals(10, value.intValue());
     }
 
     @Test
     void resolveFieldWithPrincipal() {
-        Double value = (Double) fieldResolver.resolve(fields[2]);
+        Double value = (Double) fieldLookup.resolve(fields[2]);
 
         assertEquals(30.5, value.doubleValue());
     }

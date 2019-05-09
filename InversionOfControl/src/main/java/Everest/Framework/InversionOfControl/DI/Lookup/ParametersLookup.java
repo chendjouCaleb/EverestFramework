@@ -1,4 +1,4 @@
-package Everest.Framework.InversionOfControl.DI.Lookup.Resolver;
+package Everest.Framework.InversionOfControl.DI.Lookup;
 
 import java.lang.reflect.Parameter;
 import java.util.ArrayList;
@@ -11,18 +11,18 @@ import java.util.List;
  * @version 1
  * @since 08-05-2019
  */
-public class ParametersResolver {
-    private ParameterResolver parameterResolver;
+public class ParametersLookup {
+    private ParameterLookup parameterLookup;
 
-    public ParametersResolver(ParameterResolver parameterResolver) {
-        this.parameterResolver = parameterResolver;
+    public ParametersLookup(ParameterLookup parameterLookup) {
+        this.parameterLookup = parameterLookup;
     }
 
     public Object[] resolve(Parameter[] parameters){
         List<Object> values = new ArrayList<>(parameters.length);
 
         for (Parameter parameter : parameters) {
-            values.add(parameterResolver.resolve(parameter));
+            values.add(parameterLookup.resolve(parameter));
         }
 
         return values.toArray();

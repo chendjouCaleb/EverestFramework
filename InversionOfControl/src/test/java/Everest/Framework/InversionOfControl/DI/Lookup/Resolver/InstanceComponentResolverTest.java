@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class InstanceResolverTest {
+class InstanceComponentResolverTest {
 
     @Test
     void resolve() {
@@ -14,7 +14,7 @@ class InstanceResolverTest {
         component.setInstance(value);
         component.setComponentType(Integer.class);
 
-        InstanceResolver resolver = new InstanceResolver();
+        InstanceComponentResolver resolver = new InstanceComponentResolver();
         assertSame(value, resolver.resolve(component));
     }
 }

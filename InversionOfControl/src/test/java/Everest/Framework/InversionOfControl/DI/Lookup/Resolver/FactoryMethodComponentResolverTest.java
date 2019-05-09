@@ -6,13 +6,12 @@ import Everest.Framework.InversionOfControl.DI.ComponentCollection;
 import Everest.Framework.InversionOfControl.DI.ComponentProvider;
 import Everest.Framework.InversionOfControl.DI.ComponentRegister;
 import Everest.Framework.InversionOfControl.DI.Lookup.LookupEngine;
-import Everest.Framework.InversionOfControl.DI.Lookup.NamedLookup;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
-class FactoryMethodResolverTest {
+class FactoryMethodComponentResolverTest {
     private ComponentCollection components = new ComponentCollection();
     private ComponentCollectionBuilder builder = new ComponentCollectionBuilder();
     private LookupEngine lookupEngine;
@@ -40,7 +39,7 @@ class FactoryMethodResolverTest {
     @Test
     void resolve() {
         FactoryMethodComponent component = (FactoryMethodComponent) components.findByComponentType(FactoryMethodType.class);
-        FactoryMethodResolver resolver = new FactoryMethodResolver(lookupEngine, new NamedLookup(lookupEngine, components));
+        FactoryMethodComponentResolver resolver = new FactoryMethodComponentResolver(lookupEngine);
 
         FactoryMethodType instance = (FactoryMethodType) resolver.resolve(component);
 

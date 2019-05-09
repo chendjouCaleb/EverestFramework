@@ -3,20 +3,21 @@ package Everest.Framework.InversionOfControl.DI.Lookup.Resolver;
 import Everest.Framework.Core.Reflexions;
 import Everest.Framework.InversionOfControl.DI.Abstractions.FactoryMethodComponent;
 import Everest.Framework.InversionOfControl.DI.Lookup.LookupEngine;
-import Everest.Framework.InversionOfControl.DI.Lookup.NamedLookup;
+import Everest.Framework.InversionOfControl.DI.Lookup.ParameterLookup;
+import Everest.Framework.InversionOfControl.DI.Lookup.ParametersLookup;
 import Everest.Framework.InversionOfControl.DI.Lookup.ResolutionException;
 
 import javax.annotation.Nonnull;
 import java.lang.reflect.Method;
 
-public class FactoryMethodResolver implements IComponentResolver<FactoryMethodComponent> {
+public class FactoryMethodComponentResolver implements IComponentResolver<FactoryMethodComponent> {
     private LookupEngine lookupEngine;
-    private ParametersResolver parametersResolver;
+    private ParametersLookup parametersLookup;
 
 
-    public FactoryMethodResolver(LookupEngine lookupEngine, NamedLookup namedLookup) {
+    public FactoryMethodComponentResolver(LookupEngine lookupEngine) {
         this.lookupEngine = lookupEngine;
-        parametersResolver = new ParametersResolver(new ParameterResolver(lookupEngine, namedLookup));
+        parametersLookup = new ParametersLookup(new ParameterLookup(lookupEngine));
     }
 
     @Override
@@ -25,7 +26,7 @@ public class FactoryMethodResolver implements IComponentResolver<FactoryMethodCo
         try {
             Object parentInstance = lookupEngine.look(component.getTypeComponent());
 
-            Object[] values = parametersResolver.resolve(method.getParameters());
+            Object[] values = parametersLookup.resolve(method.getParameters());
 
             return Reflexions.callRemote(parentInstance, method, values);
         } catch (Exception e) {

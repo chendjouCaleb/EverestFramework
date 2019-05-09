@@ -1,8 +1,6 @@
-package Everest.Framework.InversionOfControl.DI.Lookup.Resolver;
+package Everest.Framework.InversionOfControl.DI.Lookup;
 
 import Everest.Framework.Core.Inject.UseNamed;
-import Everest.Framework.InversionOfControl.DI.Lookup.LookupEngine;
-import Everest.Framework.InversionOfControl.DI.Lookup.NamedLookup;
 
 import java.lang.reflect.Parameter;
 
@@ -13,19 +11,17 @@ import java.lang.reflect.Parameter;
  * @version 1
  * @since 08-05-2019
  */
-public class ParameterResolver {
+public class ParameterLookup {
     private LookupEngine lookupEngine;
-    private NamedLookup namedLookup;
 
-    public ParameterResolver(LookupEngine lookupEngine, NamedLookup namedLookup) {
+    public ParameterLookup(LookupEngine lookupEngine) {
         this.lookupEngine = lookupEngine;
-        this.namedLookup = namedLookup;
     }
 
     public Object resolve(Parameter parameter){
         UseNamed named = parameter.getAnnotation(UseNamed.class);
         if (named != null) {
-            return namedLookup.look(named.value());
+            return lookupEngine.look(named.value());
         } else {
             return lookupEngine.look(parameter.getType());
         }

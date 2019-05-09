@@ -18,4 +18,5 @@ dependencies {
     compile project(':Core')
     compile project(':Http')
     compile project(':Mvc')
+    compile project(':InversionOfControl')
 }

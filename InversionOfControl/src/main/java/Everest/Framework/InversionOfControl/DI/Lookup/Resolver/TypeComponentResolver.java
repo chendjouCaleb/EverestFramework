@@ -2,10 +2,13 @@ package Everest.Framework.InversionOfControl.DI.Lookup.Resolver;
 
 import Everest.Framework.Core.Reflexions;
 import Everest.Framework.InversionOfControl.DI.Abstractions.TypeComponent;
+import Everest.Framework.InversionOfControl.DI.Lookup.FieldLookup;
 import Everest.Framework.InversionOfControl.DI.Lookup.LookupEngine;
-import Everest.Framework.InversionOfControl.DI.Lookup.NamedLookup;
+import Everest.Framework.InversionOfControl.DI.Lookup.ParameterLookup;
+import Everest.Framework.InversionOfControl.DI.Lookup.ParametersLookup;
 import Everest.Framework.InversionOfControl.Utils.InvokerUtils;
 
+import javax.annotation.Nonnull;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -20,18 +23,16 @@ import java.lang.reflect.Parameter;
  * @since 01-05-2019
  */
 public class TypeComponentResolver implements IComponentResolver<TypeComponent> {
-    private NamedLookup namedLookup;
-    private LookupEngine lookupEngine;
-    private ParametersResolver parametersResolver;
+    private FieldLookup fieldLookup;
+    private ParametersLookup parametersLookup;
 
-    public TypeComponentResolver(LookupEngine lookupEngine, NamedLookup namedLookup) {
-        this.namedLookup = namedLookup;
-        this.lookupEngine = lookupEngine;
-        parametersResolver = new ParametersResolver(new ParameterResolver(lookupEngine, namedLookup));
+    public TypeComponentResolver(LookupEngine lookupEngine) {
+        this.fieldLookup = new FieldLookup(lookupEngine);
+        parametersLookup = new ParametersLookup(new ParameterLookup(lookupEngine));
     }
 
     @Override
-    public Object resolve(TypeComponent component) {
+    public Object resolve(@Nonnull TypeComponent component) {
         Constructor constructor = component.getInjectionConstructor();
         Object instance = resolveConstructor(constructor);
 
@@ -40,8 +41,7 @@ public class TypeComponentResolver implements IComponentResolver<TypeComponent> 
         }
 
         for (Field field : component.getInjectionFields()) {
-            FieldResolver fieldResolver = new FieldResolver(lookupEngine, namedLookup);
-            fieldResolver.resolveField(instance, field);
+            fieldLookup.resolveField(instance, field);
         }
         return instance;
     }
@@ -49,13 +49,13 @@ public class TypeComponentResolver implements IComponentResolver<TypeComponent> 
     private void invokeMethod(Object instance, Method method) {
         Parameter[] parameters = method.getParameters();
 
-        Object[] values = parametersResolver.resolve(parameters);
+        Object[] values = parametersLookup.resolve(parameters);
         Reflexions.callRemote(instance, method, values);
     }
 
     private Object resolveConstructor(Constructor constructor) {
         Parameter[] parameters = constructor.getParameters();
-        return InvokerUtils.invokeConstructor(constructor, parametersResolver.resolve(parameters));
+        return InvokerUtils.invokeConstructor(constructor, parametersLookup.resolve(parameters));
     }
 
 }

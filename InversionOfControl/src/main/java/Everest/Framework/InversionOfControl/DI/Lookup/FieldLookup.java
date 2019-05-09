@@ -1,9 +1,6 @@
-package Everest.Framework.InversionOfControl.DI.Lookup.Resolver;
+package Everest.Framework.InversionOfControl.DI.Lookup;
 
 import Everest.Framework.Core.Inject.UseNamed;
-import Everest.Framework.InversionOfControl.DI.Lookup.LookupEngine;
-import Everest.Framework.InversionOfControl.DI.Lookup.NamedLookup;
-import Everest.Framework.InversionOfControl.DI.Lookup.ResolutionException;
 
 import java.lang.reflect.Field;
 
@@ -14,13 +11,11 @@ import java.lang.reflect.Field;
  * @version 1
  * @since 08-05-2019
  */
-public class FieldResolver {
+public class FieldLookup {
     private LookupEngine lookupEngine;
-    private NamedLookup namedLookup;
 
-    public FieldResolver(LookupEngine lookupEngine, NamedLookup namedLookup) {
+    public FieldLookup(LookupEngine lookupEngine) {
         this.lookupEngine = lookupEngine;
-        this.namedLookup = namedLookup;
     }
 
     public void resolveField(Object object, Field field){
@@ -35,7 +30,7 @@ public class FieldResolver {
     public Object resolve(Field field){
         UseNamed named = field.getAnnotation(UseNamed.class);
         if (named != null) {
-            return namedLookup.look(named.value());
+            return lookupEngine.look(named.value());
         } else {
             return lookupEngine.look(field.getType());
         }
