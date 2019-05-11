@@ -4,6 +4,8 @@ import Everest.Framework.InversionOfControl.Abstractions.IComponentRegister;
 import Everest.Framework.InversionOfControl.IComponentProvider;
 import Everest.Framework.InversionOfControl.DI.ComponentBuilder.ComponentCollectionBuilder;
 import Everest.Framework.InversionOfControl.DI.ComponentBuilder.PrincipalDuplicateGetter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Use to build an {@link IComponentProvider}.
@@ -13,6 +15,7 @@ import Everest.Framework.InversionOfControl.DI.ComponentBuilder.PrincipalDuplica
  * @since 30-04-2019
  */
 public class ComponentProviderBuilder {
+    private Logger logger = LoggerFactory.getLogger(ComponentProviderBuilder.class);
     private ComponentCollectionBuilder componentCollectionBuilder;
     private DuplicateNameScanner duplicateNameScanner;
     private CircularDependencyDetector circularDependencyDetector;
@@ -26,6 +29,7 @@ public class ComponentProviderBuilder {
     }
 
     public IComponentProvider buildProvider(IComponentRegister componentRegister){
+        logger.info("There are {} component registered", componentRegister.size());
         ComponentCollection componentCollection = componentCollectionBuilder.build(componentRegister);
         duplicateNameScanner.checkDuplicateName(componentCollection);
         principalDuplicateGetter.checkDuplicatePrincipal(componentCollection);

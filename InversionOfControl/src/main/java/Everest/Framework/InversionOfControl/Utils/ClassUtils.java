@@ -1,5 +1,16 @@
 package Everest.Framework.InversionOfControl.Utils;
 
+import org.reflections.Reflections;
+import org.reflections.scanners.ResourcesScanner;
+import org.reflections.scanners.SubTypesScanner;
+import org.reflections.util.ClasspathHelper;
+import org.reflections.util.ConfigurationBuilder;
+import org.reflections.util.FilterBuilder;
+
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * The utility class which contains methods to manipulate {@link Class} type.
  *
@@ -17,5 +28,21 @@ public class ClassUtils {
     public static boolean isConcrete(Class<?> type){
         int mod = type.getModifiers();
         return (mod & 1536) == 0;
+    }
+
+    public static Collection<Class<?>> getClassOfPackage(String packageName) {
+        List<ClassLoader> classLoadersList = new LinkedList<ClassLoader>();
+        classLoadersList.add(ClasspathHelper.contextClassLoader());
+        classLoadersList.add(ClasspathHelper.staticClassLoader());
+        FilterBuilder filterBuilder = new FilterBuilder();
+        filterBuilder.include(FilterBuilder.prefix(packageName));
+
+        //filterBuilder.include(FilterBuilder.prefix("org"));
+        Reflections reflections = new Reflections(new ConfigurationBuilder()
+                .setScanners(new SubTypesScanner(false /* don't exclude Object.class */), new ResourcesScanner())
+                .setUrls(ClasspathHelper.forClassLoader(classLoadersList.toArray(new ClassLoader[0])))
+                .filterInputsBy(filterBuilder));
+
+        return reflections.getSubTypesOf(Object.class);
     }
 }

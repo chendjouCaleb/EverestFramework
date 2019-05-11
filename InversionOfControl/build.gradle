@@ -24,6 +24,8 @@ dependencies {
     compile 'commons-collections:commons-collections:3.2.2'
     compile 'commons-beanutils:commons-beanutils:1.9.3'
 
+    compile 'org.reflections:reflections:0.9.10'
+
 
     testCompile 'org.junit.jupiter:junit-jupiter-engine:5.1.0'
     testCompile 'org.junit.jupiter:junit-jupiter-params:5.1.0'

@@ -45,7 +45,7 @@ public class InjectionConstructorGetter {
             return selectedConstructor;
         }
 
-        throw new NoSuchElementException( String.format("The component '%s' have many constructor. use '%s' " +
+        throw new NoSuchElementException( String.format("The component '%s' have many constructor or is not concrete type. use '%s' " +
                 "annotation to select to default constructor", type.getName(), Resolve.class.getName()));
     }
 }
