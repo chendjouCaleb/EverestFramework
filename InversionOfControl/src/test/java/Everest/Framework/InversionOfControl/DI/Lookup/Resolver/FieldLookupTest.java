@@ -5,12 +5,14 @@ import Everest.Framework.InversionOfControl.DI.ComponentBuilder.ComponentCollect
 import Everest.Framework.InversionOfControl.DI.ComponentCollection;
 import Everest.Framework.InversionOfControl.DI.ComponentProvider;
 import Everest.Framework.InversionOfControl.DI.ComponentRegister;
+import Everest.Framework.InversionOfControl.DI.Lookup.CollectionLookup;
 import Everest.Framework.InversionOfControl.DI.Lookup.FieldLookup;
 import Everest.Framework.InversionOfControl.DI.Lookup.LookupEngine;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -40,7 +42,7 @@ class FieldLookupTest {
         componentProvider = new ComponentProvider(components);
 
         lookupEngine = componentProvider.getLookupEngine();
-        fieldLookup = new FieldLookup(lookupEngine);
+        fieldLookup = new FieldLookup(lookupEngine, new CollectionLookup(lookupEngine));
     }
 
     @Test
@@ -58,6 +60,14 @@ class FieldLookupTest {
     }
 
     @Test
+    void resolveCollectionField() {
+        List collection = (List) fieldLookup.resolve(fields[3]);
+
+        assertEquals(1, collection.size());
+        assertEquals(10, collection.get(0));
+    }
+
+    @Test
     void resolveFieldWithPrincipal() {
         Double value = (Double) fieldLookup.resolve(fields[2]);
 
@@ -72,6 +82,8 @@ class FieldLookupTest {
         private Integer namedField;
 
         private Double withPrincipal;
+
+        public List<Integer> collectionField;
 
         public String getTypedField() {
             return typedField;

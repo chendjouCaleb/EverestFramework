@@ -22,7 +22,7 @@ public class ParametersLookup {
         List<Object> values = new ArrayList<>(parameters.length);
 
         for (Parameter parameter : parameters) {
-            values.add(parameterLookup.resolve(parameter));
+            values.add(parameterLookup.look(parameter));
         }
 
         return values.toArray();

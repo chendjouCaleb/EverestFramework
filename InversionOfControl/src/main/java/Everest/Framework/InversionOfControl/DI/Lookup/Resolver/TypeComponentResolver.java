@@ -2,10 +2,7 @@ package Everest.Framework.InversionOfControl.DI.Lookup.Resolver;
 
 import Everest.Framework.Core.Reflexions;
 import Everest.Framework.InversionOfControl.DI.Abstractions.TypeComponent;
-import Everest.Framework.InversionOfControl.DI.Lookup.FieldLookup;
-import Everest.Framework.InversionOfControl.DI.Lookup.LookupEngine;
-import Everest.Framework.InversionOfControl.DI.Lookup.ParameterLookup;
-import Everest.Framework.InversionOfControl.DI.Lookup.ParametersLookup;
+import Everest.Framework.InversionOfControl.DI.Lookup.*;
 import Everest.Framework.InversionOfControl.Utils.InvokerUtils;
 
 import javax.annotation.Nonnull;
@@ -27,7 +24,7 @@ public class TypeComponentResolver implements IComponentResolver<TypeComponent> 
     private ParametersLookup parametersLookup;
 
     public TypeComponentResolver(LookupEngine lookupEngine) {
-        this.fieldLookup = new FieldLookup(lookupEngine);
+        this.fieldLookup = new FieldLookup(lookupEngine, new CollectionLookup(lookupEngine));
         parametersLookup = new ParametersLookup(new ParameterLookup(lookupEngine));
     }
 

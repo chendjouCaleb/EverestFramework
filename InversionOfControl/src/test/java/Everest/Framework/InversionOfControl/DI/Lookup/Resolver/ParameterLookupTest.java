@@ -45,21 +45,21 @@ class ParameterLookupTest {
 
     @Test
     void resolveSimpleTypedParameter(){
-        String value = parameterLookup.resolve(parameters[0]).toString();
+        String value = parameterLookup.look(parameters[0]).toString();
 
         assertEquals("string parameter value", value);
     }
 
     @Test
     void resolveNamedParameter() {
-        Integer value = (Integer) parameterLookup.resolve(parameters[1]);
+        Integer value = (Integer) parameterLookup.look(parameters[1]);
 
         assertEquals(10, value.intValue());
     }
 
     @Test
     void resolveWithPrincipal() {
-        Double value = (Double) parameterLookup.resolve(parameters[2]);
+        Double value = (Double) parameterLookup.look(parameters[2]);
 
         assertEquals(30.5, value.doubleValue());
     }
