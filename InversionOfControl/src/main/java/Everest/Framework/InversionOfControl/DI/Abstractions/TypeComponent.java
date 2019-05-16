@@ -90,8 +90,8 @@ public class TypeComponent extends Component{
     @Override
     public String toString() {
         return "TypeComponent{" +
-                "componentType=" + componentType +
-                ", implementationType=" + implementationType +
+                "componentType=" + componentType.getName() +
+                ", implementationType=" + implementationType.getName() +
                 ", lifetime=" + lifetime +
                 ", isPrincipal=" + isPrincipal +
                 ", name='" + name + '\'' +

@@ -9,5 +9,5 @@ import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 @Target(ANNOTATION_TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface FilterBy {
-    Class<?> filter();
+    Class<? extends IActionFilter> filter();
 }

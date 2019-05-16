@@ -18,7 +18,7 @@ class RouteUrlMappingMatcherTest {
         String mappingPattern = mappingPatternBuilder.getPattern(mapping);
         descriptor.setMappingPattern(mappingPattern);
 
-        assertTrue(routeUrlMappingMatcher.match(descriptor, url));
+        assertTrue(routeUrlMappingMatcher.matches(descriptor, url));
     }
 
     @ParameterizedTest
@@ -29,7 +29,7 @@ class RouteUrlMappingMatcherTest {
         String mappingPattern = mappingPatternBuilder.getPattern(mapping);
         descriptor.setMappingPattern(mappingPattern);
 
-        assertFalse(routeUrlMappingMatcher.match(descriptor, url));
+        assertFalse(routeUrlMappingMatcher.matches(descriptor, url));
     }
 
     static String[][] simpleUrlAndMapping_Success() {
@@ -37,8 +37,8 @@ class RouteUrlMappingMatcherTest {
                 new String[] {"", ""},
                 new String[] {"posts", "posts"},
                 new String[] {"posts/{postId}", "posts/15"},
-                new String[] {"posts/{postId}/comments/{commentId}", "posts/15/comments/2"},
-                new String[] {"responses/{responseID}.{length}-{id}", "response/10.15-12"}
+                new String[] {"posts/{postId}/comments/{commentId}", "/posts/15/comments/2"},
+                new String[] {"responses/{responseID}.{length}-{id}", "/responses/10.15-12"}
         };
     }
 

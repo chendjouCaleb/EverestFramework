@@ -1,5 +1,6 @@
 package Everest.Framework.InversionOfControl.DI.Lookup;
 
+import Everest.Framework.Core.IComponentProvider;
 import Everest.Framework.InversionOfControl.Abstractions.ComponentLifetime;
 import Everest.Framework.InversionOfControl.DI.Abstractions.Component;
 import Everest.Framework.InversionOfControl.DI.ComponentCollection;
@@ -19,12 +20,14 @@ public class LookupEngine {
     private ResolverFactory resolverFactory;
     private NamedLookup namedLookup;
     private TypeLookup typeLookup;
+    private ComponentProvider componentProvider;
 
     public LookupEngine(ComponentCollection components, ComponentProvider componentProvider,
                         RootComponentCache rootComponentCache, ScopeComponentCache scopeComponentCache) {
         this.components = components;
         this.scopeComponentCache = scopeComponentCache;
         this.rootComponentCache = rootComponentCache;
+        this.componentProvider = componentProvider;
 
         namedLookup = new NamedLookup(this);
         typeLookup = new TypeLookup(this);
@@ -67,6 +70,9 @@ public class LookupEngine {
      * @return The instance of the specified type.
      */
     public Object look(@Nonnull Class<?> componentType) {
+        if(componentType.equals(IComponentProvider.class)){
+            return componentProvider;
+        }
         try {
             return typeLookup.look(componentType);
         }catch (Exception e){
@@ -119,7 +125,9 @@ public class LookupEngine {
             IComponentResolver resolver = resolverFactory.getResolver(component.getClass());
             return resolver.resolve(component);
         }catch (Exception e){
-            throw new ResolutionException("Exception was throw during the resolution of component of type " + component.getComponentType().getName(), e);
+            throw new ResolutionException(String.format(
+                    "Exception was throw during the resolution of component of type '%s'"
+                            ,component.instanceProviderToString()), e);
         }
     }
 

@@ -6,6 +6,7 @@ import Everest.Framework.Core.StringUtils;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class UrlGenerator {
     private String urlModel;
     private String url;

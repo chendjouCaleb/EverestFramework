@@ -1,6 +1,7 @@
 package Everest.Framework.InversionOfControl.Abstractions;
 
-import Everest.Framework.InversionOfControl.IComponentProvider;
+
+import Everest.Framework.Core.IComponentProvider;
 
 import java.util.Collection;
 

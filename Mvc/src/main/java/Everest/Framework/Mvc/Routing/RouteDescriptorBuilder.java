@@ -1,8 +1,8 @@
 package Everest.Framework.Mvc.Routing;
 
 import Everest.Framework.Core.Exception.InvalidOperationException;
+import Everest.Framework.Core.Inject.Singleton;
 import Everest.Framework.Mvc.Action.ActionDescriptor;
-import org.apache.commons.lang3.StringUtils;
 
 /**
  * This class builds the {@link RouteDescriptor} of an {@link Everest.Framework.Mvc.Action.ActionDescriptor}.
@@ -11,40 +11,45 @@ import org.apache.commons.lang3.StringUtils;
  * @version 1
  * @since 27-04-2019
  */
-public class RouteDescriptorLoader {
+@Singleton
+public class RouteDescriptorBuilder {
 
     private MappingPatternBuilder mappingPatternBuilder;
     private RouteParameterExtractor routeParameterExtractor;
 
-    public RouteDescriptorLoader(MappingPatternBuilder mappingPatternBuilder, RouteParameterExtractor routeParameterExtractor) {
+    public RouteDescriptorBuilder(MappingPatternBuilder mappingPatternBuilder, RouteParameterExtractor routeParameterExtractor) {
         this.mappingPatternBuilder = mappingPatternBuilder;
         this.routeParameterExtractor = routeParameterExtractor;
     }
 
-    public RouteDescriptor loadRouteDescriptor(ActionDescriptor descriptor) {
-        if (descriptor == null) {
+    public RouteDescriptor loadRouteDescriptor(ActionDescriptor actionDescriptor) {
+        if (actionDescriptor == null) {
             throw new InvalidOperationException("Cannot load route from null action description");
         }
 
-        if (descriptor.getControllerDescriptor() == null) {
+        if (actionDescriptor.getControllerDescriptor() == null) {
             throw new InvalidOperationException("Cannot load route from action: " +
-                    descriptor.getMethod().getName() + " has null controller descriptor")
+                    actionDescriptor.getMethod().getName() + " has null controller descriptor")
                     ;
         }
 
         RouteDescriptor routeDescriptor = new RouteDescriptor();
-        routeDescriptor.setActionDescriptor(descriptor);
-        String mapping = descriptor.getControllerDescriptor().getMapping().trim();
-        if (StringUtils.isEmpty(mapping)) {
-            mapping = descriptor.getMapping();
-        } else {
-            mapping += "/" + descriptor.getMapping().trim();
+        routeDescriptor.setActionDescriptor(actionDescriptor);
+        String controllerMapping = actionDescriptor.getControllerDescriptor().getMapping().trim();
+        String actionMapping = actionDescriptor.getMapping();
+        String mapping;
+
+        if(!"".equals(controllerMapping) && ! "".equals(actionMapping)){
+            mapping = controllerMapping + "/" + actionMapping;
+        }else{
+            mapping = controllerMapping + actionMapping;
         }
+
         routeDescriptor.setMapping(mapping);
 
         routeDescriptor.setMappingPattern(mappingPatternBuilder.getPattern(mapping));
 
-        routeDescriptor.setParameters(routeParameterExtractor.getNames(mapping));
+        routeDescriptor.setParameters(routeParameterExtractor.extractParameter(mapping));
 
         return routeDescriptor;
     }

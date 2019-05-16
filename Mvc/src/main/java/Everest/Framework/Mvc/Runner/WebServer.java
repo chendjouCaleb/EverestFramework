@@ -1,7 +1,5 @@
-package Everest.Framework.Mvc.Server;
+package Everest.Framework.Mvc.Runner;
 
-
-import Everest.Framework.Mvc.MvcStartup;
 
 public abstract class WebServer {
     /**
@@ -10,13 +8,13 @@ public abstract class WebServer {
     protected String[] programArgs;
 
     /**
-     * The Everest.Framework.Mvc.Server port
+     * The Server port
      * The default port is 8080
      */
     protected int port = 8080;
 
     /**
-     * Everest.Framework.Mvc.Server context directory
+     * Server context directory
      * The default directory is /web
      */
     protected String contextDirectory = "web";
@@ -33,15 +31,11 @@ public abstract class WebServer {
      */
     protected String targetClassDirectory = "target/classes";
 
-    /**
-     * The application configuration classes
-     */
-    protected Class<? extends MvcStartup> mvcStartup;
 
     /**
      * To create the web server
      */
-    public abstract void build();
+    public abstract void build(WebApplicationContext applicationContext);
 
     /**
      * Do that the server can receive a http request
@@ -99,17 +93,6 @@ public abstract class WebServer {
         this.contextDirectory = contextDirectory;
     }
 
-
-    public Class<? extends MvcStartup> getMvcStartup() {
-        return mvcStartup;
-    }
-
-    /**
-     * Set the applicationConfiguration class
-     */
-    public void setMvcStartup(Class<? extends MvcStartup> mvcStartup) {
-        this.mvcStartup = mvcStartup;
-    }
 
     public String getHostPath() {
         return hostPath;

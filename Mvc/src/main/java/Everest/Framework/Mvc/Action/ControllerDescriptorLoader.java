@@ -18,6 +18,7 @@ import java.util.ArrayList;
  * @version 1
  * @since 25-04-2019
  */
+
 public class ControllerDescriptorLoader {
 
     /**
@@ -61,7 +62,7 @@ public class ControllerDescriptorLoader {
      * After the collection operation, the collected {@link ActionDescriptor} is added to
      * {@param descriptor} {@link ActionDescriptor} list.
      *
-     * @param descriptor The {@link ControllerDescriptor} to parse classType.
+     * @param descriptor The {@link ControllerDescriptor} of a parsed classType.
      */
     public void collectActionDescriptor(ControllerDescriptor descriptor) {
         MappingGetter mappingGetter = new MappingGetter();

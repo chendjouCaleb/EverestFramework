@@ -1,6 +1,6 @@
 package Everest.Framework.Mvc.Mapping.MappingFor;
 
-import Everest.Framework.Core.Inject.Instance;
+import Everest.Framework.Core.Inject.Singleton;
 import Everest.Framework.Mvc.Mapping.MappingDescriptor;
 import Everest.Framework.Mvc.Mapping.MappingException;
 
@@ -19,7 +19,7 @@ import java.util.List;
  * @since 15-04-2019
  */
 
-@Instance
+@Singleton
 public class MappingGetter {
     private List<MappingFor> mappingHandlers = new ArrayList<>();
 

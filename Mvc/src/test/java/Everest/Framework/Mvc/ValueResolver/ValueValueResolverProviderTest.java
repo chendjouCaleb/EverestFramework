@@ -1,11 +1,9 @@
 package Everest.Framework.Mvc.ValueResolver;
 
 import Everest.Framework.Core.Exception.InvalidOperationException;
-import Everest.Framework.Http.HttpContext;
 import Everest.Framework.Mvc.Action.ActionContext;
 import org.junit.jupiter.api.Test;
 
-import javax.swing.*;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Parameter;
 
@@ -47,12 +45,12 @@ class ValueValueResolverProviderTest {
 
     private class SimpleClass1{}
     private @interface SimpleAnnotation{}
-    private class SimpleTypeResolver1 implements ITypedValueResolver<SimpleClass1>{
+    private class SimpleTypeResolver1 implements ITypeValueResolver<SimpleClass1, ActionContext> {
         public SimpleClass1 getValue(ActionContext httpContext, Parameter parameter) {
             return null;
         }
     }
-    private class TypeResolverWithoutArgument implements ITypedValueResolver{
+    private class TypeResolverWithoutArgument implements ITypeValueResolver {
         public Object getValue(ActionContext httpContext, Parameter parameter) {
             return null;
         }

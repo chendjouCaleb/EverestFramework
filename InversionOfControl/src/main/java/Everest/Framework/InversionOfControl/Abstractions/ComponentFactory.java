@@ -1,6 +1,6 @@
 package Everest.Framework.InversionOfControl.Abstractions;
 
-import Everest.Framework.InversionOfControl.IComponentProvider;
+import Everest.Framework.Core.IComponentProvider;
 
 /**
  * A component factory is useful when the component cannot be build using its constructor.

@@ -1,7 +1,7 @@
 package Everest.Framework.Mvc.ExceptionHandler;
 
 
-import Everest.Framework.Core.Inject.Instance;
+import Everest.Framework.Core.Inject.Singleton;
 import Everest.Framework.Mvc.Result.EntityResult;
 
 import java.lang.annotation.Annotation;
@@ -10,7 +10,7 @@ import java.util.NoSuchElementException;
 /**
  * Handle exception that dont have an {@link IExceptionHandler}.
  */
-@Instance
+@Singleton
 public class DefaultExceptionHandler{
 
     /**

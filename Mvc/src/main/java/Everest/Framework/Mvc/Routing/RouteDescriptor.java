@@ -1,6 +1,7 @@
 package Everest.Framework.Mvc.Routing;
 
 import Everest.Framework.Mvc.Action.ActionDescriptor;
+import Everest.Framework.Mvc.Filter.FilterDescriptorCollection;
 
 /**
  * The description of an mapped http route.
@@ -23,9 +24,15 @@ public class RouteDescriptor {
     private String mappingPattern;
 
     /**
+     * Collection of filter for the action method.
+     */
+    private FilterDescriptorCollection actionFilters;
+
+
+    /**
      * The  parameters found in the urlMapping;
      */
-    private RouteParameters parameters = new RouteParameters();
+    private RouteParameters parameters;
 
     /**
      * The {@link ActionDescriptor} of the route.
@@ -64,5 +71,13 @@ public class RouteDescriptor {
 
     public void setParameters(RouteParameters parameters) {
         this.parameters = parameters;
+    }
+
+    public FilterDescriptorCollection getActionFilters() {
+        return actionFilters;
+    }
+
+    public void setActionFilters(FilterDescriptorCollection actionFilters) {
+        this.actionFilters = actionFilters;
     }
 }

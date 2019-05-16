@@ -8,13 +8,13 @@ public enum HttpMethod {
     OPTIONS("OPTIONS"),
     PATH("PATH");
 
-    private String description;
+    private String name;
     HttpMethod(String desc){
-        description = desc;
+        name = desc;
     }
 
     @Override
     public String toString() {
-        return description;
+        return name;
     }
 }

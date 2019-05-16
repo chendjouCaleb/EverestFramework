@@ -1,7 +1,7 @@
 package Everest.Framework.InversionOfControl.DI;
 
+import Everest.Framework.Core.IComponentProvider;
 import Everest.Framework.InversionOfControl.Abstractions.IComponentRegister;
-import Everest.Framework.InversionOfControl.IComponentProvider;
 import Everest.Framework.InversionOfControl.DI.ComponentBuilder.ComponentCollectionBuilder;
 import Everest.Framework.InversionOfControl.DI.ComponentBuilder.PrincipalDuplicateGetter;
 import org.slf4j.Logger;

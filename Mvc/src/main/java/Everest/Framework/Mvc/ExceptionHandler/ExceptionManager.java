@@ -1,11 +1,9 @@
 package Everest.Framework.Mvc.ExceptionHandler;
 
-import Everest.Framework.Core.Inject.Instance;
+import Everest.Framework.Core.Inject.Singleton;
 import Everest.Framework.Http.HttpContext;
 import Everest.Framework.Mvc.ActionInvocation.ActionInvocationResult;
 import Everest.Framework.Mvc.ActionResultExecutor.ActionResultExecutor;
-
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,7 +16,7 @@ import java.util.NoSuchElementException;
  * @version 1
  * @since 15-04-2019
  */
-@Instance
+@Singleton
 public class ExceptionManager {
     private Logger logger = LoggerFactory.getLogger(ExceptionManager.class);
     private ActionResultExecutor resultExecutor;

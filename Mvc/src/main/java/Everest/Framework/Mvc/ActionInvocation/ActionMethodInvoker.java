@@ -1,14 +1,15 @@
 package Everest.Framework.Mvc.ActionInvocation;
 
 
-import Everest.Framework.Core.Inject.Instance;
+import Everest.Framework.Core.Inject.Singleton;
 import Everest.Framework.Core.Reflexions;
 
 /**
  * The component that execution action method
  */
-@Instance
+@Singleton
 public class ActionMethodInvoker {
+
     public ActionInvocationResult invoke(ActionInvocationContext context){
         ActionInvocationResult result = new ActionInvocationResult();
 

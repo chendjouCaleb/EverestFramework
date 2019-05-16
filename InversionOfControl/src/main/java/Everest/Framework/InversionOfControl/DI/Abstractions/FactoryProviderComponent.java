@@ -1,8 +1,8 @@
 package Everest.Framework.InversionOfControl.DI.Abstractions;
 
+import Everest.Framework.Core.IComponentProvider;
 import Everest.Framework.InversionOfControl.Abstractions.ComponentDescriptor;
 import Everest.Framework.InversionOfControl.Abstractions.ComponentFactory;
-import Everest.Framework.InversionOfControl.IComponentProvider;
 
 import javax.annotation.Nonnull;
 import java.lang.reflect.Method;

@@ -1,13 +1,13 @@
 package Everest.Framework.Mvc.Routing;
 
-import Everest.Framework.Core.Inject.Instance;
+import Everest.Framework.Core.Inject.Singleton;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Instance
+@Singleton
 public class RouteBuilder {
     private List<RouteDescriptor> routeDescriptors = new ArrayList<>();
 

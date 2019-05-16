@@ -1,6 +1,6 @@
 package Everest.Framework.Mvc.Middleware;
 
-import Everest.Framework.Core.Inject.Instance;
+import Everest.Framework.Core.Inject.Singleton;
 import Everest.Framework.Http.HttpContext;
 
 import javax.annotation.Nonnull;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@Instance
+@Singleton
 public class MiddlewarePipeline {
     private List<IMiddleware> middlewares = new ArrayList<>();
 

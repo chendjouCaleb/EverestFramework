@@ -19,4 +19,5 @@ dependencies {
     compile project(':Http')
     compile project(':Mvc')
     compile project(':InversionOfControl')
+    compile project(':Tomcat')
 }

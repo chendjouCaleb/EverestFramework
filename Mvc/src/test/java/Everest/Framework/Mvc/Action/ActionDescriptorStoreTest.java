@@ -11,15 +11,16 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ActionDescriptorCollectorTest {
+class ActionDescriptorStoreTest {
 
     @Test
     void collect() {
-        ArrayList<Class> classes = new ArrayList<>();
+        ArrayList<Class<?>> classes = new ArrayList<>();
         classes.add(GalaxyController.class);
         classes.add(PlanetController.class);
 
-        ActionDescriptorCollector collector = new ActionDescriptorCollector(classes);
+        ActionDescriptorStore collector = new ActionDescriptorStore();
+        collector.setControllerClasses(classes);
         collector.collect();
 
         assertEquals(2, collector.getControllerDescriptors().size());
@@ -41,11 +42,12 @@ class ActionDescriptorCollectorTest {
 
     @Test
     void checkDuplicateControllerName() {
-        ArrayList<Class> classes = new ArrayList<>();
+        ArrayList<Class<?>> classes = new ArrayList<>();
         classes.add(GalaxyController.class);
         classes.add(GalaxyDuplicatedNameController.class);
 
-        ActionDescriptorCollector collector = new ActionDescriptorCollector(classes);
+        ActionDescriptorStore collector = new ActionDescriptorStore();
+        collector.setControllerClasses(classes);
         collector.collect();
 
         assertThrows(InvalidNameException.class, collector::checkDuplicateControllerName);
@@ -53,22 +55,24 @@ class ActionDescriptorCollectorTest {
 
     @Test
     void checkDuplicateControllerName_WithNoDuplication() {
-        ArrayList<Class> classes = new ArrayList<>();
+        ArrayList<Class<?>> classes = new ArrayList<>();
         classes.add(GalaxyController.class);
         classes.add(PlanetController.class);
 
-        ActionDescriptorCollector collector = new ActionDescriptorCollector(classes);
+        ActionDescriptorStore collector = new ActionDescriptorStore();
+        collector.setControllerClasses(classes);
         collector.collect();
         collector.checkDuplicateControllerName();
     }
 
     @Test
     public void checkDuplicatedActionName() {
-        ArrayList<Class> classes = new ArrayList<>();
+        ArrayList<Class<?>> classes = new ArrayList<>();
         classes.add(GalaxyController.class);
         classes.add(GalaxyDuplicatedNameController.class);
 
-        ActionDescriptorCollector collector = new ActionDescriptorCollector(classes);
+        ActionDescriptorStore collector = new ActionDescriptorStore();
+        collector.setControllerClasses(classes);
         collector.collect();
 
 

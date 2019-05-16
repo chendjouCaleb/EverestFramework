@@ -2,6 +2,7 @@ package Everest.Framework.Mvc.ExceptionHandler;
 
 
 import Everest.Framework.Core.Exception.ObjectValidationException;
+import Everest.Framework.Core.Inject.Singleton;
 import Everest.Framework.Http.StatusCode;
 import Everest.Framework.Mvc.Result.EntityResult;
 
@@ -15,6 +16,7 @@ import java.util.Collection;
  * @version 1
  * @since 15-04-2019
  */
+@Singleton
 public class ObjectValidationExceptionHandler implements IExceptionHandler {
 
     @Override

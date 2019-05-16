@@ -2,7 +2,6 @@ package Everest.Framework.Mvc.ValueResolver;
 
 import Everest.Framework.Core.Reflexions;
 import Everest.Framework.Http.DefaultHttpContext;
-import Everest.Framework.Http.HttpContext;
 import Everest.Framework.Mvc.Action.ActionContext;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -147,7 +146,7 @@ class MethodValueValueResolverTest {
         }
     }
 
-    private class IntegerValueResolver implements ITypedValueResolver<Integer>{
+    private class IntegerValueResolver implements ITypeValueResolver<Integer, ActionContext> {
         public Integer getValue(ActionContext httpContext, Parameter parameter) {
             return 0;
         }

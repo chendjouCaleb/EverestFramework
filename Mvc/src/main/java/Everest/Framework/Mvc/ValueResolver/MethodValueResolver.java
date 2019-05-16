@@ -2,8 +2,7 @@ package Everest.Framework.Mvc.ValueResolver;
 
 
 import Everest.Framework.Core.Annotations;
-import Everest.Framework.Core.Inject.Instance;
-
+import Everest.Framework.Core.Inject.Singleton;
 import Everest.Framework.Mvc.Action.ActionContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +21,7 @@ import java.util.NoSuchElementException;
  * @version 1
  * @since 15-04-2019
  */
-@Instance
+@Singleton
 public class MethodValueResolver {
     private Logger logger = LoggerFactory.getLogger(MethodValueResolver.class);
     private ValueResolverProvider resolverProvider;
@@ -68,7 +67,7 @@ public class MethodValueResolver {
 
     private Object resolveByType(Parameter parameter, ActionContext actionContext){
         try{
-            ITypedValueResolver variableResolverByType = resolverProvider.getTypedResolver(parameter.getType());
+            ITypeValueResolver variableResolverByType = resolverProvider.getTypedResolver(parameter.getType());
             return variableResolverByType.getValue(actionContext, parameter);
         }catch (NoSuchElementException e){
             throw new ValueResolverException("Aucun injecteur de valeur pour le type: " + parameter.getType(), e);

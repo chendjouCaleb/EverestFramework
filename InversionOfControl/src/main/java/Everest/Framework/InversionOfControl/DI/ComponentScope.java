@@ -1,10 +1,10 @@
 package Everest.Framework.InversionOfControl.DI;
 
+import Everest.Framework.Core.IComponentProvider;
+import Everest.Framework.Core.IComponentScope;
 import Everest.Framework.InversionOfControl.DI.Lookup.LookupEngine;
 import Everest.Framework.InversionOfControl.DI.Lookup.RootComponentCache;
 import Everest.Framework.InversionOfControl.DI.Lookup.ScopeComponentCache;
-import Everest.Framework.InversionOfControl.IComponentProvider;
-import Everest.Framework.InversionOfControl.IComponentScope;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class ComponentScope implements IComponentScope {
         this.lookupEngine.addScopedComponents();
     }
 
-    @Override
+
     public void dispose() {
 isDisposed = true;
     }
@@ -31,22 +31,21 @@ isDisposed = true;
     }
 
     @Override
-    public <T> T GetComponent(Class<? extends T> type) {
+    public <T> T getComponent(Class<? extends T> type) {
         return (T) lookupEngine.look(type);
     }
 
-    @Override
-    public <T> T GetComponent(String name, Class<? extends T> type) {
+    public <T> T getComponent(String name, Class<? extends T> type) {
         return (T) lookupEngine.look(name);
     }
 
-    @Override
-    public Object GetComponent(String name) {
+
+    public Object getComponent(String name) {
         return lookupEngine.look(name);
     }
 
     @Override
-    public <T> List<T> GetComponents(Class<? extends T> type) {
+    public <T> List<T> getComponents(Class<? extends T> type) {
         return (List<T>) lookupEngine.lookComponents(type);
     }
 

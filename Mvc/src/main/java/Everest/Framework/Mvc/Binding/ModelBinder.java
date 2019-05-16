@@ -1,7 +1,7 @@
 package Everest.Framework.Mvc.Binding;
 
 
-import Everest.Framework.Core.Inject.Instance;
+import Everest.Framework.Core.Inject.Singleton;
 import Everest.Framework.Mvc.Binding.Converter.DateTimeConverter;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@Instance
+@Singleton
 public class ModelBinder implements IModelBinder {
 
 

@@ -1,11 +1,13 @@
 package Everest.Framework.Mvc.ActionResultExecutor;
 
-import Everest.Framework.Core.Inject.Instance;
 import Everest.Framework.Core.Exception.InvalidOperationException;
+import Everest.Framework.Core.Inject.Resolve;
+import Everest.Framework.Core.Inject.Singleton;
 
 import javax.annotation.Nonnull;
 import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,12 +17,20 @@ import java.util.Map;
  * @version 1
  * @since 15-04-2019
  */
-@Instance
+@Singleton
 public class ActionResultExecutorProvider {
     /**
      * The list of the added {@link IResultExecutor}.
      */
     private Map<Class<?>, IResultExecutor<?>> executors = new HashMap<>();
+
+    @Resolve
+    public ActionResultExecutorProvider(List<IResultExecutor> executors){
+        executors.forEach(this::addExecutor);
+    }
+
+    public ActionResultExecutorProvider() {
+    }
 
     /**
      * Add the {@link IResultExecutor} to the provider

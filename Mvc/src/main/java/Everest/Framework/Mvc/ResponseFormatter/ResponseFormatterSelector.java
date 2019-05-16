@@ -1,20 +1,25 @@
 package Everest.Framework.Mvc.ResponseFormatter;
 
 
-import Everest.Framework.Core.Inject.Instance;
+import Everest.Framework.Core.Inject.Resolve;
+import Everest.Framework.Core.Inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nonnull;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import java.util.*;
 
-@Instance
+@Singleton
 public class ResponseFormatterSelector {
     private Map<String, IResponseFormatter> formatters = new HashMap<>();
     private Logger logger = LoggerFactory.getLogger(ResponseFormatterSelector.class);
+
+    @Resolve
+    public ResponseFormatterSelector(List<IResponseFormatter> formatters){
+        formatters.forEach(this::addFormatter);
+    }
+    public ResponseFormatterSelector() {
+    }
 
     public void addFormatter(IResponseFormatter formatter){
         for(String mediaType: formatter.getMediaTypes()){

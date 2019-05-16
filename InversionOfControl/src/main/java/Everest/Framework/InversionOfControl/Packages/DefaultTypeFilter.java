@@ -8,7 +8,7 @@ import Everest.Framework.Core.Inject.Transient;
 public class DefaultTypeFilter implements ITypeFilter {
 
     @Override
-    public boolean isElligible(Class type) {
+    public boolean isEligible(Class<?> type) {
         return type.isAnnotationPresent(Singleton.class)
                 || type.isAnnotationPresent(Transient.class)
                 || type.isAnnotationPresent(Scope.class);

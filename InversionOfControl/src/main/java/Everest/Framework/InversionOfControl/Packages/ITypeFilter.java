@@ -6,7 +6,7 @@ import Everest.Framework.InversionOfControl.Abstractions.ComponentLifetime;
 import javax.annotation.Nonnull;
 
 public interface ITypeFilter {
-    boolean isElligible(Class type);
+    boolean isEligible(Class<?> type);
 
     default boolean isPrincipal(Class<?> type) {
         return type.isAnnotationPresent(Principal.class);
@@ -36,7 +36,13 @@ public interface ITypeFilter {
         return null;
     }
 
+    default Object getInstance(@Nonnull Class<?> type) {
+        return null;
+    }
 
+    default  Class<?> getImplementationType(@Nonnull Class<?> type) {
+        return type;
+    }
     default Class<?> getComponentType(@Nonnull Class<?> type) {
         UseType useType = type.getAnnotation(UseType.class);
 
@@ -44,6 +50,7 @@ public interface ITypeFilter {
             if (!useType.value().isAssignableFrom(type)) {
                 throw new IllegalArgumentException(String.format("The type '%s' is not assignable to'%s'.", type, useType.value()));
             }
+            System.out.println("The use type = " + useType.value().getName());
             return useType.value();
         }
 
@@ -57,7 +64,7 @@ public interface ITypeFilter {
 
         }
 
-        if(type.getSuperclass() != null){
+        if(type.getSuperclass() != Object.class){
             return type.getSuperclass();
         }
 

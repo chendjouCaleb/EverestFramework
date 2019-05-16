@@ -1,17 +1,15 @@
 package Everest.Framework.Mvc.Service;
 
-import Everest.Framework.Core.Inject.Instance;
 import Everest.Framework.Core.Exception.InputOutputException;
+import Everest.Framework.Core.Inject.Singleton;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-
-
 import org.joda.time.DateTime;
 
 import java.io.IOException;
 
-@Instance
+@Singleton
 public class JsonConverter {
     private ObjectMapper mapper;
 

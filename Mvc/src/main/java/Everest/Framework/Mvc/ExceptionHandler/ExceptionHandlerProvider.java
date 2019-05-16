@@ -1,8 +1,7 @@
 package Everest.Framework.Mvc.ExceptionHandler;
 
-import Everest.Framework.Core.Inject.Instance;
 import Everest.Framework.Core.Exception.InvalidOperationException;
-
+import Everest.Framework.Core.Inject.Singleton;
 
 import javax.annotation.Nonnull;
 import java.util.HashMap;
@@ -15,7 +14,7 @@ import java.util.NoSuchElementException;
  * @version 1
  * @since 15-04-2019
  */
-@Instance
+@Singleton
 public class ExceptionHandlerProvider {
     private HashMap<Class<? extends Throwable>, IExceptionHandler> handlers
             = new HashMap<>();

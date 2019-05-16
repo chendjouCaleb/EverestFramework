@@ -17,6 +17,23 @@ public class EntityResult<T> implements IActionResult{
     public EntityResult(T body){
         this.body = body;
     }
+
+    public EntityResult(T body, StatusCode statusCode) {
+        this.body = body;
+        this.statusCode = statusCode.value();
+    }
+
+    public EntityResult(T body, int statusCode) {
+        this.body = body;
+        this.statusCode = statusCode;
+    }
+
+    public EntityResult(T body, String contentType, int statusCode) {
+        this.body = body;
+        this.contentType = contentType;
+        this.statusCode = statusCode;
+    }
+
     /**
      * The content representing the setBody of the response.
      */

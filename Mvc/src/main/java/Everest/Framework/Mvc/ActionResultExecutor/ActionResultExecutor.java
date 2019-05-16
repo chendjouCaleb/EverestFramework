@@ -1,12 +1,13 @@
 package Everest.Framework.Mvc.ActionResultExecutor;
 
-import Everest.Framework.Core.Inject.Instance;
 import Everest.Framework.Core.Exception.InputOutputException;
+import Everest.Framework.Core.Inject.Singleton;
 import Everest.Framework.Http.HttpContext;
 import Everest.Framework.Http.HttpResponse;
 import Everest.Framework.Http.StatusCode;
 import Everest.Framework.Mvc.ActionInvocation.ActionInvocationResult;
 import Everest.Framework.Mvc.Result.EntityResult;
+import Everest.Framework.Mvc.Result.IActionResult;
 
 import java.io.IOException;
 
@@ -18,7 +19,7 @@ import java.io.IOException;
  * @version 1
  * @since 15-04-2019
  */
-@Instance
+@Singleton
 public class ActionResultExecutor {
 
     /**
@@ -28,6 +29,11 @@ public class ActionResultExecutor {
 
     public ActionResultExecutor(ActionResultExecutorProvider executorProvider) {
         this.executorProvider = executorProvider;
+    }
+    public void execute(HttpContext httpContext, IActionResult result){
+        ActionInvocationResult invocationResult = new ActionInvocationResult();
+        invocationResult.setObjectResult(result);
+        execute(httpContext, invocationResult);
     }
 
     /**

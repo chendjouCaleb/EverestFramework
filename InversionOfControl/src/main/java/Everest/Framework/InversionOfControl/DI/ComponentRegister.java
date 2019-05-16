@@ -4,6 +4,8 @@ import Everest.Framework.Core.Exception.NotImplementedException;
 import Everest.Framework.Core.Exception.NullArgumentException;
 import Everest.Framework.InversionOfControl.Abstractions.*;
 
+import javax.annotation.Nonnull;
+
 /**
  * The default implementation of {@link ComponentRegister}.
  *
@@ -109,6 +111,7 @@ public class ComponentRegister extends ComponentRegisterCollectionDelegate imple
         return add(componentType, implementationFactory, ComponentLifetime.SINGLETON);
     }
 
+
     @Override
     public <T, I extends T> IComponentRegister addSingleton(Class<T>  componentType, Class<I> implementationType) {
         if (componentType == null)
@@ -122,6 +125,16 @@ public class ComponentRegister extends ComponentRegisterCollectionDelegate imple
         }
 
         return add(componentType, implementationType, ComponentLifetime.SINGLETON);
+    }
+
+    public <I> IComponentRegister addSingleton(@Nonnull I instance){
+        if (instance == null)
+        {
+            throw new NullArgumentException(IMPL_TYPE_PARAM_NAME);
+        }
+        ComponentDescriptor descriptor = new ComponentDescriptor(instance.getClass(), instance);
+        add(descriptor);
+        return this;
     }
 
     @Override

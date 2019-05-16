@@ -11,7 +11,7 @@ public interface IComponentProvider {
      * @return A component of type T or throw NoSuchElementException
      * @throws NoSuchElementException Exception to throw if there is no such component
      */
-    <T> T GetComponent(Class<? extends T> type);
+    <T> T getComponent(Class<? extends T> type);
 
     /**
      * Get an java.util.List of services of type T
@@ -19,5 +19,7 @@ public interface IComponentProvider {
      * @param <T> The type of service object to get
      * @return An java.util.List of services of type T
      */
-    <T> List<T> GetComponents(Class<? extends T> type);
+    <T> List<T> getComponents(Class<? extends T> type);
+
+    IComponentScope createScope();
 }

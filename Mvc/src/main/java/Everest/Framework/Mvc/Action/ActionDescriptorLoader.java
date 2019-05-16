@@ -1,6 +1,7 @@
 package Everest.Framework.Mvc.Action;
 
 import Everest.Framework.Core.Annotations;
+import Everest.Framework.Core.Inject.Singleton;
 import Everest.Framework.Mvc.Mapping.HttpMapping;
 import Everest.Framework.Mvc.Mapping.MappingDescriptor;
 import Everest.Framework.Mvc.Mapping.MappingFor.MappingGetter;
@@ -18,6 +19,7 @@ import java.lang.reflect.Method;
  * @version 1
  * @since 25-04-2019
  */
+@Singleton
 public class ActionDescriptorLoader {
     private MappingGetter mappingGetter;
 
@@ -56,7 +58,5 @@ public class ActionDescriptorLoader {
         }
 
         return descriptor;
-
-
     }
 }

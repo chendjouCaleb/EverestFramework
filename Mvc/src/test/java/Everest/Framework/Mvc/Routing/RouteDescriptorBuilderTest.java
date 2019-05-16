@@ -16,14 +16,14 @@ import java.lang.reflect.Method;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RouteDescriptorLoaderTest {
+class RouteDescriptorBuilderTest {
 
     private ControllerDescriptorLoader controllerDescriptorLoader = new ControllerDescriptorLoader();
     private ActionDescriptorLoader actionDescriptorLoader = new ActionDescriptorLoader(new MappingGetter());
     private MappingPatternBuilder mappingPatternBuilder = new MappingPatternBuilder();
     private RouteParameterExtractor routeParameterExtractor = new RouteParameterExtractor();
-    private RouteDescriptorLoader loader =
-            new RouteDescriptorLoader(mappingPatternBuilder, routeParameterExtractor);
+    private RouteDescriptorBuilder loader =
+            new RouteDescriptorBuilder(mappingPatternBuilder, routeParameterExtractor);
     @Test
     void collect() {
     }

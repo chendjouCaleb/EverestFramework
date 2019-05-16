@@ -1,12 +1,12 @@
 package Everest.Framework.InversionOfControl.DI.Lookup.Resolver;
 
 import Everest.Framework.InversionOfControl.DI.Abstractions.FactoryProviderComponent;
-import Everest.Framework.InversionOfControl.IComponentProvider;
+import Everest.Framework.InversionOfControl.DI.ComponentProvider;
 
 public class FactoryProviderComponentResolver implements IComponentResolver<FactoryProviderComponent> {
-    private IComponentProvider componentProvider;
+    private ComponentProvider componentProvider;
 
-    public FactoryProviderComponentResolver(IComponentProvider componentProvider) {
+    public FactoryProviderComponentResolver(ComponentProvider componentProvider) {
         this.componentProvider = componentProvider;
     }
 

@@ -1,11 +1,11 @@
 package Everest.Framework.InversionOfControl.Packages;
 
 import Everest.Framework.Core.Exception.NullArgumentException;
+import Everest.Framework.Core.IComponentProvider;
 import Everest.Framework.Core.StringUtils;
 import Everest.Framework.InversionOfControl.Abstractions.ComponentDescriptor;
 import Everest.Framework.InversionOfControl.DI.ComponentProviderBuilder;
 import Everest.Framework.InversionOfControl.DI.ComponentRegister;
-import Everest.Framework.InversionOfControl.IComponentProvider;
 import Everest.Framework.InversionOfControl.Utils.ClassUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +15,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * The builder to build a {@link Everest.Framework.InversionOfControl.IComponentProvider}
+ * The builder to build a {@link Everest.Framework.Core.IComponentProvider}
  * by scanning a java package and retains all component type.
  *
  * @author Chendjou
@@ -55,13 +55,14 @@ public class PackageComponentProviderBuilder extends ComponentRegister {
 
         for(Class<?> type: types) {
             for(ITypeFilter filter: typeFilters){
-                if(filter.isElligible(type)){
+                if(filter.isEligible(type)){
                     ComponentDescriptor descriptor = new ComponentDescriptor();
                     descriptor.setPrincipal(filter.isPrincipal(type));
                     descriptor.setLifetime(filter.getLifeTime(type));
                     descriptor.setComponentType(filter.getComponentType(type));
+                    descriptor.setImplementationInstance(filter.getInstance(type));
                     descriptor.setName(filter.getName(type));
-                    descriptor.setImplementationType(type);
+                    descriptor.setImplementationType(filter.getImplementationType(type));
                      add(descriptor);
                 }
             }

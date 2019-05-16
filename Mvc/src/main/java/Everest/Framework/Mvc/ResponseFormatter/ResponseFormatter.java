@@ -1,12 +1,12 @@
 package Everest.Framework.Mvc.ResponseFormatter;
 
-import Everest.Framework.Core.Inject.Instance;
+import Everest.Framework.Core.Inject.Singleton;
 import Everest.Framework.Http.HttpContext;
 import Everest.Framework.Http.HttpResponse;
 import org.apache.commons.lang3.StringUtils;
 
 
-@Instance
+@Singleton
 public class ResponseFormatter {
     private ResponseFormatterSelector formatterSelector;
 

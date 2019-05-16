@@ -1,6 +1,7 @@
 package Everest.Framework.InversionOfControl.Abstractions;
 
-import Everest.Framework.InversionOfControl.IComponentProvider;
+
+import Everest.Framework.Core.IComponentProvider;
 
 /**
  * The method of this interface will be invoked after to construct of the targeted component.

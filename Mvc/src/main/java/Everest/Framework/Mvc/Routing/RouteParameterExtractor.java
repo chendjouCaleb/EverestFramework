@@ -1,5 +1,7 @@
 package Everest.Framework.Mvc.Routing;
 
+import Everest.Framework.Core.Inject.Singleton;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,14 +14,15 @@ import java.util.regex.Pattern;
  * @version 1
  * @since 27-04-2019
  */
+@Singleton
 public class RouteParameterExtractor {
 
     /**
      * Parses and gets parameters.
-     * @param mapping The url mapping.
+     * @param mapping The url mapping in the form 'posts/{id}'.
      * @return A list containing the parameters.
      */
-    RouteParameters getNames(String mapping) {
+    RouteParameters extractParameter(String mapping) {
         RouteParameters parameters = new RouteParameters();
 
         String regex = "\\{([\\w]+)}";

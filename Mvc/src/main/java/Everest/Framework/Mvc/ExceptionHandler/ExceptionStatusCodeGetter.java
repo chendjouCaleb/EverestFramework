@@ -2,7 +2,7 @@ package Everest.Framework.Mvc.ExceptionHandler;
 
 
 
-import Everest.Framework.Core.Inject.Instance;
+import Everest.Framework.Core.Inject.Singleton;
 
 import java.util.HashMap;
 import java.util.NoSuchElementException;
@@ -15,7 +15,7 @@ import java.util.NoSuchElementException;
  * @version 1
  * @since 15-04-2019
  */
-@Instance
+@Singleton
 public class ExceptionStatusCodeGetter {
 
     private HashMap<Class<? extends Throwable>, Integer> store = new HashMap<>();

@@ -1,28 +1,39 @@
 package Everest.Framework.Mvc.ValueResolver;
 
-import Everest.Framework.Core.Inject.Instance;
 import Everest.Framework.Core.Exception.InvalidOperationException;
-
+import Everest.Framework.Core.Inject.Resolve;
+import Everest.Framework.Core.Inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
 /**
- * Store and provide a {@link IAnnotationValueResolver} and {@link ITypedValueResolver}.
+ * Store and provide a {@link IAnnotationValueResolver} and {@link ITypeValueResolver}.
  *
  * @author Chendjou
  * @version 1
  * @since 15-04-2019
  */
-@Instance
+@Singleton
 public class ValueResolverProvider {
     private Logger logger = LoggerFactory.getLogger(ValueResolverProvider.class);
     private Map<Class<?>, IAnnotationValueResolver> annotationResolvers = new HashMap<>();
-    private Map<Class<?>, ITypedValueResolver> typedResolvers = new HashMap<>();
+    private Map<Class<?>, ITypeValueResolver> typedResolvers = new HashMap<>();
+
+
+    public ValueResolverProvider() {
+    }
+
+    @Resolve
+    public ValueResolverProvider(List<IAnnotationValueResolver> annotationResolvers, List<ITypeValueResolver> typeResolvers){
+        annotationResolvers.forEach(this::addResolver);
+        typeResolvers.forEach(this::addResolver);
+    }
 
     /**
      * Add an {@link IAnnotationValueResolver}.
@@ -46,10 +57,10 @@ public class ValueResolverProvider {
     }
 
     /**
-     * Add an {@link ITypedValueResolver}.
+     * Add an {@link ITypeValueResolver}.
      * @param variableResolver The resolver to add.
      */
-    public void addResolver(ITypedValueResolver variableResolver){
+    public void addResolver(ITypeValueResolver variableResolver){
         try{
             Class type = (Class) ((ParameterizedType) variableResolver.getClass().getGenericInterfaces()[0])
                     .getActualTypeArguments()[0];
@@ -80,11 +91,11 @@ public class ValueResolverProvider {
 
 
     /**
-     * Provider a {@link ITypedValueResolver} corresponding to the provided class.
+     * Provider a {@link ITypeValueResolver} corresponding to the provided class.
      * @param type The class to get a value provider.
-     * @return  The {@link ITypedValueResolver} corresponding to the provided class.
+     * @return  The {@link ITypeValueResolver} corresponding to the provided class.
      */
-    public ITypedValueResolver getTypedResolver(Class type){
+    public ITypeValueResolver getTypedResolver(Class type){
         if(typedResolvers.containsKey(type)){
             return typedResolvers.get(type);
         }
@@ -95,7 +106,7 @@ public class ValueResolverProvider {
         return annotationResolvers;
     }
 
-    public Map<Class<?>, ITypedValueResolver> getTypedResolvers() {
+    public Map<Class<?>, ITypeValueResolver> getTypedResolvers() {
         return typedResolvers;
     }
 }

@@ -10,7 +10,7 @@ class RouteParameterExtractorTest {
     void getNames() {
         RouteParameterExtractor extractor = new RouteParameterExtractor();
         String mapping = "posts/{postId}/comments-{commentId}";
-        RouteParameters parameters = extractor.getNames(mapping);
+        RouteParameters parameters = extractor.extractParameter(mapping);
 
         assertEquals(2, parameters.size());
         assertEquals(0, parameters.findByName("postId").getPosition());

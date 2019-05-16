@@ -13,7 +13,7 @@ import java.lang.reflect.Parameter;
  * @version 1
  * @since 15-04-2019
  */
-public interface ITypedValueResolver<T> {
+public interface ITypeValueResolver<T, I extends ActionContext> {
 
     /**
      * Resolve the parameter value.
@@ -21,5 +21,5 @@ public interface ITypedValueResolver<T> {
      * @param parameter The parameter to resolve her value.
      * @return The resolved value.
      */
-    T getValue(ActionContext actionContext, Parameter parameter);
+    T getValue(I actionContext, Parameter parameter);
 }

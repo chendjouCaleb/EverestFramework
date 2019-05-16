@@ -2,9 +2,11 @@ package Everest.Framework.Mvc.Action;
 
 import Everest.Framework.Core.Exception.InvalidNameException;
 import Everest.Framework.Core.Exception.InvalidOperationException;
+import Everest.Framework.Core.Inject.Singleton;
 import Everest.Framework.Mvc.Mapping.MappingFor.MappingGetter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,12 +20,14 @@ import java.util.List;
  * @since 25-04-2019
  */
 
-public class ActionDescriptorCollector {
+@Singleton
+public class ActionDescriptorStore {
+    private Logger logger = LoggerFactory.getLogger(ActionDescriptorStore.class);
 
     /**
      * Classes to parse an extract descriptors.
      */
-    private List<Class> classList;
+    private List<Class<?>> controllerClasses;
 
     /**
      * The collected action descriptor.
@@ -37,14 +41,6 @@ public class ActionDescriptorCollector {
 
     private MappingGetter mappingGetter = new MappingGetter();
 
-    /**
-     * Creates an ActionDescriptorCollector with a list of controller class.
-     * @param classList A list containing all controller class.
-     */
-    public ActionDescriptorCollector(@Nonnull List<Class> classList) {
-        this.classList = classList;
-    }
-
 
     /**
      * Parses and collect action and controller descriptor in provided classes.
@@ -52,7 +48,7 @@ public class ActionDescriptorCollector {
     public void collect() {
         List<ControllerDescriptor> controllerDescriptors = new ArrayList<>();
         List<ActionDescriptor> actionDescriptors = new ArrayList<>();
-        for (Class classType: classList){
+        for (Class classType: controllerClasses){
             ControllerDescriptorLoader descriptorLoader = new ControllerDescriptorLoader();
             ControllerDescriptor descriptor = descriptorLoader.LoadControllerDescriptor(classType);
             //checkDuplicateControllerName();
@@ -61,6 +57,7 @@ public class ActionDescriptorCollector {
             //checkDuplicateUrlMapping();
             controllerDescriptors.add(descriptor);
             actionDescriptors.addAll(descriptor.getActionDescriptors());
+
         }
 
         this.controllerDescriptors = controllerDescriptors;
@@ -124,5 +121,10 @@ public class ActionDescriptorCollector {
 
     public List<ControllerDescriptor> getControllerDescriptors() {
         return controllerDescriptors;
+    }
+
+    public ActionDescriptorStore setControllerClasses(List<Class<?>> controllerClasses) {
+        this.controllerClasses = controllerClasses;
+        return this;
     }
 }
