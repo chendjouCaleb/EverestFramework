@@ -57,6 +57,12 @@ public interface IComponentRegister extends Collection<ComponentDescriptor> {
     <T> IComponentRegister addSingleton(Class<T>  componentType);
 
     /**
+     * Adds a singleton instance with a specified value as instance.
+     * @param  instance The instance value of the component
+     */
+    <T> IComponentRegister addSingleton(T instance);
+
+    /**
      * Adds a singleton instance of the type specified in  componentType with a factory
      * specified in implementationFactory
      * @param  componentType The type of the instance to register.

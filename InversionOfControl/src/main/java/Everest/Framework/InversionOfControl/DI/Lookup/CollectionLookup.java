@@ -1,9 +1,14 @@
 package Everest.Framework.InversionOfControl.DI.Lookup;
 
+import Everest.Framework.Core.Exception.NullArgumentException;
+
+import javax.annotation.Nonnull;
 import java.util.*;
 
+import static Everest.Framework.InversionOfControl.Message.COLLECTION_WITH_NON_NATIVE_COLLECTION_TYPE;
+
 /**
- * This class look all component with same type an return the result in collection form.
+ * Lookup to find all component with same type an return the result in the collection form.
  * This form of lookup is usable if the user want to inject all component of same type.
  * Only the Java native collection is supported because other
  * type can extends or implements a native collection type.
@@ -13,17 +18,34 @@ import java.util.*;
  * @since 11-05-2019
  */
 public class CollectionLookup {
+    /**
+     * A static field which map a collection type with a corresponding concrete collection type.
+     */
     public static Map<Class<? extends Iterable>, Class<? extends Iterable>> collectionsType = new HashMap<>();
 
 
     private LookupEngine lookupEngine;
 
-    public CollectionLookup(LookupEngine lookupEngine) {
+    public CollectionLookup(@Nonnull LookupEngine lookupEngine) {
         this.lookupEngine = lookupEngine;
         initCollectionTypes();
     }
 
-    public Object look(Class collectionType, Class componentType) {
+    /**
+     * Find all component of the specified component type and return it in the
+     * form of collection.
+     * @param collectionType The desired type of the returned collection.
+     * @param componentType The type desired components.
+     * @return A collection containing all component of component specified component type.
+     */
+    public Collection look(Class<?> collectionType, Class<?> componentType) {
+        if(collectionType == null){
+            throw new NullArgumentException("collectionType");
+        }
+
+        if(componentType == null){
+            throw new NullArgumentException("componentType");
+        }
 
         Collection collection = getCollection(collectionType);
         collection.addAll(lookupEngine.lookComponents(componentType));
@@ -55,12 +77,11 @@ public class CollectionLookup {
 
         collectionsType.put(SortedSet.class, TreeSet.class);
         collectionsType.put(TreeSet.class, TreeSet.class);
-
     }
 
     private Collection getCollection(Class type) {
         if (!collectionsType.containsKey(type)) {
-            throw new IllegalArgumentException("Only a java native collection is usable for collection injection");
+            throw new IllegalArgumentException(COLLECTION_WITH_NON_NATIVE_COLLECTION_TYPE);
         }
         try {
             return (Collection) collectionsType.get(type).newInstance();
@@ -69,7 +90,7 @@ public class CollectionLookup {
         }
     }
 
-    public static boolean isCollectionType(Class type) {
+    static boolean isCollectionType(Class type) {
         return collectionsType.containsKey(type);
     }
 }

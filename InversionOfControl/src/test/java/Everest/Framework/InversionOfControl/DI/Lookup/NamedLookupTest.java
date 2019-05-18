@@ -23,7 +23,6 @@ class NamedLookupTest {
     void setUp()  {
         ComponentRegister register = new ComponentRegister();
 
-        register.addSingleton(String.class, "string parameter value");
         register.add().setValue(value).setName("namedValue").regist();
 
         ComponentCollection components = builder.build(register);
