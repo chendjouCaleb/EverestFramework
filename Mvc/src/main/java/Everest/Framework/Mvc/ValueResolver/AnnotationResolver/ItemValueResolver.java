@@ -27,7 +27,6 @@ public class ItemValueResolver implements IAnnotationValueResolver<ItemValue> {
             name = parameter.getName();
         }
 
-        Object obj = actionContext.getHttpContext().getItems().get(name);
-        return obj;
+        return actionContext.getHttpContext().getItems().get(name);
     }
 }

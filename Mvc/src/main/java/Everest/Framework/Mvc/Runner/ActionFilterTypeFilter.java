@@ -10,9 +10,8 @@ public class ActionFilterTypeFilter implements ITypeFilter {
     public boolean isEligible(Class<?> type) {
         if(type.getName().endsWith("Filter")){
             System.out.println(type.getName() + ": " +type.getSuperclass().equals(ActionFilter.class) );
-
         }
-        return type.getName().endsWith("Filter");
+        return type.getSuperclass().equals(ActionFilter.class);
     }
 
     @Override

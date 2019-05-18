@@ -1,7 +1,7 @@
 package Everest.Framework.InversionOfControl.DI.Lookup.Resolver;
 
+import Everest.Framework.Core.IComponentProvider;
 import Everest.Framework.InversionOfControl.Abstractions.ComponentFactory;
-import Everest.Framework.InversionOfControl.IComponentProvider;
 
 public class FactoryProviderExample implements ComponentFactory<FactoryProviderExample> {
     private Integer field1;
@@ -31,9 +31,9 @@ public class FactoryProviderExample implements ComponentFactory<FactoryProviderE
 
     @Override
     public FactoryProviderExample provider(IComponentProvider provider) {
-        Integer field1 = provider.GetComponent(Integer.class);
-        String field2 = provider.GetComponent(String.class);
-        Double field3 = provider.GetComponent(Double.class);
+        Integer field1 = provider.getComponent(Integer.class);
+        String field2 = provider.getComponent(String.class);
+        Double field3 = provider.getComponent(Double.class);
         return new FactoryProviderExample(field1, field2, field3);
     }
 }

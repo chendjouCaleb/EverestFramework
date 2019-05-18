@@ -10,6 +10,9 @@ import Everest.Framework.Http.StatusCode;
 public class StatusCodeResult implements IActionResult {
     private Integer statusCode;
 
+    public static StatusCodeResult OK = new StatusCodeResult(StatusCode.OK);
+    public static StatusCodeResult NO_CONTENT = new StatusCodeResult(StatusCode.NO_CONTENT);
+
     public StatusCodeResult(Integer statusCode) {
         if(statusCode == null){
             throw new NullArgumentException();

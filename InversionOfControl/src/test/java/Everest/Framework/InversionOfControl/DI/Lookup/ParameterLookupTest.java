@@ -1,12 +1,10 @@
-package Everest.Framework.InversionOfControl.DI.Lookup.Resolver;
+package Everest.Framework.InversionOfControl.DI.Lookup;
 
 import Everest.Framework.Core.Inject.UseNamed;
 import Everest.Framework.InversionOfControl.DI.ComponentBuilder.ComponentCollectionBuilder;
 import Everest.Framework.InversionOfControl.DI.ComponentCollection;
 import Everest.Framework.InversionOfControl.DI.ComponentProvider;
 import Everest.Framework.InversionOfControl.DI.ComponentRegister;
-import Everest.Framework.InversionOfControl.DI.Lookup.LookupEngine;
-import Everest.Framework.InversionOfControl.DI.Lookup.ParameterLookup;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

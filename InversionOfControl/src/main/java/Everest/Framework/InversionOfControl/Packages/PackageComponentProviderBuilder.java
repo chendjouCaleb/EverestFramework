@@ -79,7 +79,7 @@ public class PackageComponentProviderBuilder extends ComponentRegister {
         packageNames.add(name);
     }
 
-    public void addTypeFilter(@Nonnull ITypeFilter typeFilter){
+    public void addTypeFilter(ITypeFilter typeFilter){
         if(typeFilter == null){
             throw new NullArgumentException("typeFilter");
         }

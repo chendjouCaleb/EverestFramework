@@ -43,6 +43,7 @@ public interface ITypeFilter {
     default  Class<?> getImplementationType(@Nonnull Class<?> type) {
         return type;
     }
+
     default Class<?> getComponentType(@Nonnull Class<?> type) {
         UseType useType = type.getAnnotation(UseType.class);
 

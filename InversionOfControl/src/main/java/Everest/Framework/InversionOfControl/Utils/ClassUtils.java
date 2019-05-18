@@ -6,10 +6,13 @@ import org.reflections.scanners.SubTypesScanner;
 import org.reflections.util.ClasspathHelper;
 import org.reflections.util.ConfigurationBuilder;
 import org.reflections.util.FilterBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * The utility class which contains methods to manipulate {@link Class} type.
@@ -19,7 +22,7 @@ import java.util.List;
  * @since 28-04-2019
  */
 public class ClassUtils {
-
+    private static Logger logger = LoggerFactory.getLogger(ClassUtils.class);
     /**
      * Checks if a type is concrete, in other words, if we can invoke the constructor of object of this type.
      * @param type The type to check.
@@ -42,7 +45,8 @@ public class ClassUtils {
                 .setScanners(new SubTypesScanner(false /* don't exclude Object.class */), new ResourcesScanner())
                 .setUrls(ClasspathHelper.forClassLoader(classLoadersList.toArray(new ClassLoader[0])))
                 .filterInputsBy(filterBuilder));
-
+        Set<String> types = reflections.getAllTypes();
+        logger.info("The package {} have {} classes",packageName, types.size());
         return reflections.getSubTypesOf(Object.class);
     }
 }
