@@ -1,10 +1,12 @@
 package Everest.Framework.InversionOfControl.DI.Lookup;
 
 import Everest.Framework.InversionOfControl.DI.Abstractions.Component;
+import Everest.Framework.InversionOfControl.ManySelectableException;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static Everest.Framework.InversionOfControl.Message.MANY_PRINCIPAL_COMPONENT;
 import static Everest.Framework.InversionOfControl.Message.NO_PRINCIPAL_COMPONENT;
 
 /**
@@ -31,7 +33,7 @@ public class PrincipalLookup {
      * @throws NoPrincipalComponentException If the groups of component dont have a principal component.
      * @throws ManyPrincipalComponentException If the component have multiple principal component.
      */
-    public Object look(Class componentType) {
+    public Object look(Class<?> componentType) {
         List<Component> principals = lookupEngine.getComponents().listByComponentTypes(componentType)
                 .stream().filter(Component::isPrincipal).collect(Collectors.toList());
 
@@ -42,8 +44,8 @@ public class PrincipalLookup {
 
         //Many principal components
         if (principals.size() > 1) {
-            throw new ManyPrincipalComponentException(
-                    String.format("There are to many component with type '%s' marked as principal", componentType.getName()));
+            throw new ManySelectableException(
+                    String.format(MANY_PRINCIPAL_COMPONENT, componentType.getName()));
         } else {
             return lookupEngine.look(principals.get(0));
         }
