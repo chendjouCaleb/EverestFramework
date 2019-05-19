@@ -6,6 +6,8 @@ import Everest.Framework.InversionOfControl.DI.ComponentCollection;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import static Everest.Framework.InversionOfControl.Message.TYPED_COMPONENT_NOT_FOUND;
+
 /**
  * A lookup to find a instance of a component by his type
  *
@@ -30,14 +32,12 @@ public class TypeLookup {
      * @return The instance of the specified type.
      *
      * @throws NoSuchElementException If there are no registered component with specified type.
-     * @throws NoPrincipalComponentException If the groups of component dont have a principal component.
-     * @throws ManyPrincipalComponentException If the component have multiple principal component.
      */
-    public Object look(Class componentType) {
+    public Object look(Class<?> componentType) {
         List<Component> components = componentCollection.listByComponentTypes(componentType);
 
         if(components.size() == 0){
-            throw new NoSuchElementException(String.format("There are no component with type '%s'", componentType.getName()));
+            throw new NoSuchElementException(String.format(TYPED_COMPONENT_NOT_FOUND, componentType.getName()));
         }
         else if(components.size() == 1){
             return lookupEngine.look(components.get(0));

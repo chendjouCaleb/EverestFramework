@@ -5,6 +5,8 @@ import Everest.Framework.InversionOfControl.DI.Abstractions.Component;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static Everest.Framework.InversionOfControl.Message.NO_PRINCIPAL_COMPONENT;
+
 /**
  * A lookup to find the principal component of multiple component with same component type.
  * A principal component have the field isPrincipal as {@code true}.
@@ -35,9 +37,7 @@ public class PrincipalLookup {
 
         //No principal component
         if (principals.size() == 0) {
-            throw new NoPrincipalComponentException(
-                    String.format("There are to many component with type '%s' but nothing of them is marked as principal",
-                            componentType.getName()));
+            throw new NoPrincipalComponentException(String.format(NO_PRINCIPAL_COMPONENT, componentType.getName()));
         }
 
         //Many principal components

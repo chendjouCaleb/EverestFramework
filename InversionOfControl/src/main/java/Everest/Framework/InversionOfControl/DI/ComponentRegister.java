@@ -2,7 +2,9 @@ package Everest.Framework.InversionOfControl.DI;
 
 import Everest.Framework.Core.Exception.NotImplementedException;
 import Everest.Framework.Core.Exception.NullArgumentException;
+import Everest.Framework.Core.IComponentProvider;
 import Everest.Framework.InversionOfControl.Abstractions.*;
+import Everest.Framework.InversionOfControl.DI.ComponentBuilder.ComponentCollectionBuilder;
 
 import javax.annotation.Nonnull;
 
@@ -201,5 +203,11 @@ public class ComponentRegister extends ComponentRegisterCollectionDelegate imple
 
     public ComponentDescriptorBuilder add(){
         return new ComponentDescriptorBuilder(this);
+    }
+
+    public IComponentProvider buildComponentProvider() {
+        ComponentCollectionBuilder builder = new ComponentCollectionBuilder();
+        ComponentCollection components = builder.build(this);
+        return new ComponentProvider(components);
     }
 }

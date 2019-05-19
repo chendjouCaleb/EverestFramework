@@ -18,7 +18,7 @@ public class ParametersLookup {
         this.parameterLookup = parameterLookup;
     }
 
-    public Object[] resolve(Parameter[] parameters){
+    public Object[] look(Parameter[] parameters){
         List<Object> values = new ArrayList<>(parameters.length);
 
         for (Parameter parameter : parameters) {

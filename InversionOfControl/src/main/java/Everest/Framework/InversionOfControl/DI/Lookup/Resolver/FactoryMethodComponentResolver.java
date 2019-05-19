@@ -26,7 +26,7 @@ public class FactoryMethodComponentResolver implements IComponentResolver<Factor
         try {
             Object parentInstance = lookupEngine.look(component.getTypeComponent());
 
-            Object[] values = parametersLookup.resolve(method.getParameters());
+            Object[] values = parametersLookup.look(method.getParameters());
 
             return Reflexions.callRemote(parentInstance, method, values);
         } catch (Exception e) {
@@ -35,4 +35,5 @@ public class FactoryMethodComponentResolver implements IComponentResolver<Factor
         }
 
     }
+
 }

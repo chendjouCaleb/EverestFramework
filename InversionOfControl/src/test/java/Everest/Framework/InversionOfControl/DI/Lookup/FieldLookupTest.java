@@ -18,11 +18,10 @@ class FieldLookupTest {
     private ComponentCollectionBuilder builder = new ComponentCollectionBuilder();
 
     private Class<TypeForFieldInjection> type = TypeForFieldInjection.class;
-    private Field[] fields = type.getDeclaredFields();
     private FieldLookup fieldLookup;
 
     @BeforeEach
-    void setUp() throws NoSuchMethodException {
+    void setUp()  {
         ComponentRegister register = new ComponentRegister();
 
         register.addSingleton(String.class, "string parameter value");
@@ -76,10 +75,17 @@ class FieldLookupTest {
     }
 
     @Test
-    void resolveFieldWithPrincipal() {
-        Double value = (Double) fieldLookup.look(fields[2]);
+    void resolveFieldWithPrincipal() throws NoSuchFieldException {
+        Field field = type.getDeclaredField("withPrincipal");
+        Double value = (Double) fieldLookup.look(field);
 
         assertEquals(30.5, value.doubleValue());
+    }
+
+    @Test
+    void try_resolveField_WithMultipleValue_WithoutPrincipal() throws NoSuchFieldException {
+        Field field = type.getDeclaredField("withoutPrincipal");
+        fieldLookup.look(field);
     }
 
 
@@ -90,6 +96,8 @@ class FieldLookupTest {
         private Integer namedField;
 
         private Double withPrincipal;
+
+        private Long withoutPrincipal;
 
         public List<Long> collectionField;
 

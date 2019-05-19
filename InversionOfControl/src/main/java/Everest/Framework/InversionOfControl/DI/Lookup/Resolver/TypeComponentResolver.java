@@ -46,13 +46,13 @@ public class TypeComponentResolver implements IComponentResolver<TypeComponent> 
     private void invokeMethod(Object instance, Method method) {
         Parameter[] parameters = method.getParameters();
 
-        Object[] values = parametersLookup.resolve(parameters);
+        Object[] values = parametersLookup.look(parameters);
         Reflexions.callRemote(instance, method, values);
     }
 
     private Object resolveConstructor(Constructor constructor) {
         Parameter[] parameters = constructor.getParameters();
-        return InvokerUtils.invokeConstructor(constructor, parametersLookup.resolve(parameters));
+        return InvokerUtils.invokeConstructor(constructor, parametersLookup.look(parameters));
     }
 
     /**
@@ -74,5 +74,4 @@ public class TypeComponentResolver implements IComponentResolver<TypeComponent> 
             throw new ResolutionException(e);
         }
     }
-
 }
