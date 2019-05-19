@@ -21,7 +21,7 @@ public class CollectionLookup {
     /**
      * A static field which map a collection type with a corresponding concrete collection type.
      */
-    public static Map<Class<? extends Iterable>, Class<? extends Iterable>> collectionsType = new HashMap<>();
+    private static Map<Class<? extends Iterable>, Class<? extends Iterable>> collectionsType = new HashMap<>();
 
 
     private LookupEngine lookupEngine;

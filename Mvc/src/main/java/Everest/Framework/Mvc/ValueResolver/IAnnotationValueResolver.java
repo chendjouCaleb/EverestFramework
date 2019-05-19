@@ -6,7 +6,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Parameter;
 
 /**
- * Base interface for class which an resolve action method parameter based on the parameter annotation.
+ * Base interface for class which an look action method parameter based on the parameter annotation.
  * @param <T> The annotation type of the target parameter.
  * T must be annotated by {@link ValueResolver}.
  *
@@ -19,7 +19,7 @@ public interface IAnnotationValueResolver<T extends Annotation> {
     /**
      * Resolves the parameter value.
      * @param actionContext The action context of the request.
-     * @param parameter The method parameter to resolve.
+     * @param parameter The method parameter to look.
      * @param annotation The annotation of the method parameter.
      * @return The resolved value.
      */

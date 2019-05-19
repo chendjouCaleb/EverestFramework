@@ -11,12 +11,11 @@ import org.junit.jupiter.api.Test;
 import java.lang.reflect.Field;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static Everest.Framework.InversionOfControl.Message.GET_COLLECTION_OF_NON_TYPED_COLLECTION;
+import static org.junit.jupiter.api.Assertions.*;
 
 class FieldLookupTest {
     private ComponentCollectionBuilder builder = new ComponentCollectionBuilder();
-    private LookupEngine lookupEngine;
-    private ComponentProvider componentProvider;
 
     private Class<TypeForFieldInjection> type = TypeForFieldInjection.class;
     private Field[] fields = type.getDeclaredFields();
@@ -36,51 +35,65 @@ class FieldLookupTest {
 
         ComponentCollection components = builder.build(register);
 
-        componentProvider = new ComponentProvider(components);
+        ComponentProvider componentProvider = new ComponentProvider(components);
 
-        lookupEngine = componentProvider.getLookupEngine();
+        LookupEngine lookupEngine = componentProvider.getLookupEngine();
         fieldLookup = new FieldLookup(lookupEngine, new CollectionLookup(lookupEngine));
     }
 
     @Test
-    void resolveSimpleTypedField(){
-        String value = fieldLookup.resolve(fields[0]).toString();
+    void resolveSimpleTypedField() throws NoSuchFieldException {
+        Field typedField = type.getDeclaredField("typedField");
+        String value = fieldLookup.look(typedField).toString();
 
         assertEquals("string parameter value", value);
     }
 
     @Test
-    void resolveNamedField() {
-        Integer value = (Integer) fieldLookup.resolve(fields[1]);
+    void resolveNamedField() throws NoSuchFieldException {
+        Field namedField = type.getDeclaredField("namedField");
+        Integer value = (Integer) fieldLookup.look(namedField);
 
         assertEquals(10, value.intValue());
     }
 
     @Test
-    void resolveCollectionField() {
-        List collection = (List) fieldLookup.resolve(fields[3]);
+    void resolveCollectionField() throws NoSuchFieldException {
+        Field collectionField = type.getDeclaredField("collectionField");
+        List collection = (List) fieldLookup.look(collectionField);
 
-        assertEquals(1, collection.size());
-        assertEquals(10, collection.get(0));
+        assertTrue(collection.contains(20L));
+        assertTrue(collection.contains(30L));
+    }
+
+    @Test
+    void try_resolve_nonTypedCollectionField() throws NoSuchFieldException {
+        Field nonTypedCollectionField = type.getDeclaredField("nonTypedCollectionField");
+        Throwable th = assertThrows(IllegalStateException.class, () ->
+                fieldLookup.look(nonTypedCollectionField));
+
+        assertEquals(GET_COLLECTION_OF_NON_TYPED_COLLECTION, th.getMessage());
     }
 
     @Test
     void resolveFieldWithPrincipal() {
-        Double value = (Double) fieldLookup.resolve(fields[2]);
+        Double value = (Double) fieldLookup.look(fields[2]);
 
         assertEquals(30.5, value.doubleValue());
     }
 
 
     public static class TypeForFieldInjection {
-        private String typedField;
+        public String typedField;
 
         @UseNamed("namedField")
         private Integer namedField;
 
         private Double withPrincipal;
 
-        public List<Integer> collectionField;
+        public List<Long> collectionField;
+
+        private List nonTypedCollectionField;
 
         public String getTypedField() {
             return typedField;

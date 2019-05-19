@@ -1,5 +1,6 @@
 package Everest.Framework.InversionOfControl.DI.Lookup.Resolver;
 
+import Everest.Framework.Core.Exception.NullArgumentException;
 import Everest.Framework.Core.Reflexions;
 import Everest.Framework.InversionOfControl.DI.Abstractions.TypeComponent;
 import Everest.Framework.InversionOfControl.DI.Lookup.*;
@@ -22,7 +23,6 @@ import java.lang.reflect.Parameter;
 public class TypeComponentResolver implements IComponentResolver<TypeComponent> {
     private FieldLookup fieldLookup;
     private ParametersLookup parametersLookup;
-
     public TypeComponentResolver(LookupEngine lookupEngine) {
         this.fieldLookup = new FieldLookup(lookupEngine, new CollectionLookup(lookupEngine));
         parametersLookup = new ParametersLookup(new ParameterLookup(lookupEngine));
@@ -38,7 +38,7 @@ public class TypeComponentResolver implements IComponentResolver<TypeComponent> 
         }
 
         for (Field field : component.getInjectionFields()) {
-            fieldLookup.resolveField(instance, field);
+            resolveField(instance, field);
         }
         return instance;
     }
@@ -53,6 +53,26 @@ public class TypeComponentResolver implements IComponentResolver<TypeComponent> 
     private Object resolveConstructor(Constructor constructor) {
         Parameter[] parameters = constructor.getParameters();
         return InvokerUtils.invokeConstructor(constructor, parametersLookup.resolve(parameters));
+    }
+
+    /**
+     * Resolve the dependencies of specified object on the specified field.
+     * @param value The object to look his dependencies.
+     * @param field The field to look on the object.
+     */
+    public void resolveField(Object value, Field field){
+        if(value == null){
+            throw new NullArgumentException("object");
+        }
+        if(field == null) {
+            throw new NullArgumentException("field");
+        }
+        field.setAccessible(true);
+        try {
+            field.set(value, fieldLookup.look(field));
+        } catch (IllegalAccessException e) {
+            throw new ResolutionException(e);
+        }
     }
 
 }
