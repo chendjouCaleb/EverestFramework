@@ -3,7 +3,7 @@ package Everest.Framework.Tomcat;
 import Everest.Framework.Http.DefaultHttpContext;
 import Everest.Framework.Http.HttpContext;
 import Everest.Framework.Mvc.Middleware.MiddlewarePipeline;
-import Everest.Framework.Mvc.Runner.WebApplicationContext;
+import Everest.Framework.Mvc.Runner.WebApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,8 +21,8 @@ public class AppServlet extends HttpServlet {
         httpContext.setRequest(new ServletRequestImpl(request));
         httpContext.setResponse(new ServletResponseImpl(response));
 
-        WebApplicationContext application =
-                (WebApplicationContext) getServletContext().getAttribute("applicationContext");
+        WebApplication application =
+                (WebApplication) getServletContext().getAttribute("applicationContext");
 
         logger.debug("New request: [ url = {}, method = {}]", httpContext.getRequest().path(), httpContext.getRequest().method());
         MiddlewarePipeline pipeline = application.getComponentProvider().getComponent(MiddlewarePipeline.class);

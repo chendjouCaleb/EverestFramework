@@ -10,7 +10,6 @@ import java.util.NoSuchElementException;
 
 public abstract class MvcStartup {
 
-    public abstract String[] getBasePackages();
 
     public abstract String getAppBaseUrl();
 

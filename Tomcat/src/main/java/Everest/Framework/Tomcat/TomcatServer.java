@@ -1,7 +1,8 @@
 package Everest.Framework.Tomcat;
 
 import Everest.Framework.Mvc.MvcStartup;
-import Everest.Framework.Mvc.Runner.WebApplicationContext;
+import Everest.Framework.Mvc.Runner.HostConfig;
+import Everest.Framework.Mvc.Runner.WebApplication;
 import Everest.Framework.Mvc.Runner.WebServer;
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
@@ -26,33 +27,29 @@ public class TomcatServer extends WebServer {
         this.mvcStartup = mvcStartup;
     }
 
-    public void build(WebApplicationContext applicationContext) {
+    public void build(WebApplication application, HostConfig config) {
         long begin = System.currentTimeMillis();
 
         System.setProperty("tomcat.util.scan.StandardJarScanFilter.jarsToSkip", "*.jar");
-        String appBase = ".";
+
         tomcat = new Tomcat();
         tomcat.setBaseDir(createTempDir());
-        tomcat.setPort(port);
-        tomcat.getHost().setAppBase(appBase);
+        tomcat.setPort(config.getPort());
+        tomcat.getHost().setAppBase(config.getAppBasePath());
 
 
-        Context context = tomcat.addContext(hostPath, new File(contextDirectory).getAbsolutePath());
-        File classDir = new File(targetClassDirectory);
+        Context context = tomcat.addContext(config.getHostPath(), new File(config.getContextDirectory()).getAbsolutePath());
+        File classDir = new File(config.getTargetClassDirectory());
         WebResourceRoot resourceRoot = new StandardRoot(context);
-        resourceRoot.addPreResources(new DirResourceSet(resourceRoot, "/WEB-INF/classes", classDir.getAbsolutePath(), "/" ));
+        resourceRoot.addPreResources(new DirResourceSet(resourceRoot, config.getWebAppMount(),
+                classDir.getAbsolutePath(), config.getInternalPath() ));
 
         context.addApplicationListener("Everest.Framework.Tomcat.ApplicationStartupListener");
-        context.getServletContext().setAttribute("mvcStartup", applicationContext.getMvcStartup());
-        context.getServletContext().setAttribute("applicationContext", applicationContext);
+        context.getServletContext().setAttribute("mvcStartup", application.getMvcStartup());
+        context.getServletContext().setAttribute("applicationContext", application);
 
 
-        try {
-            tomcat.start();
-            this.hasStarted = true;
-        } catch (LifecycleException e) {
-            throw new RuntimeException(e);
-        }
+
 
         long duration = System.currentTimeMillis()-begin;
         logger.info("Server: [Duration={} s, PORT = {}]", (double)duration/1000, tomcat.getServer().getPort());
@@ -60,6 +57,12 @@ public class TomcatServer extends WebServer {
 
     @Override
     public void listen() {
+        try {
+            tomcat.start();
+            this.hasStarted = true;
+        } catch (LifecycleException e) {
+            throw new RuntimeException(e);
+        }
         tomcat.getServer().await();
     }
 
@@ -79,7 +82,7 @@ public class TomcatServer extends WebServer {
 
     private String createTempDir() {
         try {
-            File tempDir = File.createTempFile("tomcat.", "." + getPort());
+            File tempDir = File.createTempFile("tomcat.", "." );
             tempDir.delete();
             tempDir.mkdir();
             tempDir.deleteOnExit();

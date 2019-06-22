@@ -48,6 +48,7 @@ public class PackageComponentProviderBuilder extends ComponentRegister {
              types.addAll(ClassUtils.getClassOfPackage(packageName));
         }
 
+        logger.debug("There {} types in packages", types.size());
 
         types = types.stream().filter(ClassUtils::isConcrete).collect(Collectors.toSet());
         logger.debug("Context packages: {}", packageNames);

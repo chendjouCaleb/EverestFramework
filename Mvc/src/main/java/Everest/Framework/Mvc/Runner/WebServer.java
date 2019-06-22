@@ -2,40 +2,13 @@ package Everest.Framework.Mvc.Runner;
 
 
 public abstract class WebServer {
-    /**
-     * Java program arguments
-     */
-    protected String[] programArgs;
 
-    /**
-     * The Server port
-     * The default port is 8080
-     */
-    protected int port = 8080;
-
-    /**
-     * Server context directory
-     * The default directory is /web
-     */
-    protected String contextDirectory = "web";
-
-    /**
-     * The server http url hostPath
-     * default is '/'
-     */
-    protected String hostPath = "/";
-
-    /**
-     * The directory of compiled class
-     * The default is "target/classes" for maven
-     */
-    protected String targetClassDirectory = "target/classes";
 
 
     /**
      * To create the web server
      */
-    public abstract void build(WebApplicationContext applicationContext);
+    public abstract void build(WebApplication application, HostConfig config);
 
     /**
      * Do that the server can receive a http request
@@ -53,60 +26,4 @@ public abstract class WebServer {
      * @return True if server has started
      */
     public abstract boolean hasStarted();
-
-    /**
-     * Get the program launch arguments
-     * @return The program launch arguments
-     */
-    public String[] getProgramArgs() {
-        return programArgs;
-    }
-
-    /**
-     * Set the program launch arguments
-     */
-    public void setProgramArgs(String[] programArgs) {
-        this.programArgs = programArgs;
-    }
-
-    public int getPort() {
-        return port;
-    }
-
-    /**
-     * Set the application http port
-     * @param port The application Http port
-     */
-    public void setPort(int port) {
-        this.port = port;
-    }
-
-    public String getContextDirectory() {
-        return contextDirectory;
-    }
-
-    /**
-     * Set the application context path directory
-     * @param contextDirectory The application context path directory
-     */
-    public void setContextDirectory(String contextDirectory) {
-        this.contextDirectory = contextDirectory;
-    }
-
-
-    public String getHostPath() {
-        return hostPath;
-    }
-
-    public void setHostPath(String hostPath) {
-        this.hostPath = hostPath;
-    }
-
-    public String getTargetClassDirectory() {
-        return targetClassDirectory;
-    }
-
-    public void setTargetClassDirectory(String targetClassDirectory) {
-        this.targetClassDirectory = targetClassDirectory;
-    }
 }

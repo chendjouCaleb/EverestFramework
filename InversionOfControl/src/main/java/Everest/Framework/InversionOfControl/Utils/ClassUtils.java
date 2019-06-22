@@ -1,5 +1,7 @@
 package Everest.Framework.InversionOfControl.Utils;
 
+import Everest.Framework.Core.Exception.InputOutputException;
+import com.google.common.reflect.ClassPath;
 import org.reflections.Reflections;
 import org.reflections.scanners.ResourcesScanner;
 import org.reflections.scanners.SubTypesScanner;
@@ -9,10 +11,8 @@ import org.reflections.util.FilterBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.io.IOException;
+import java.util.*;
 
 /**
  * The utility class which contains methods to manipulate {@link Class} type.
@@ -34,6 +34,19 @@ public class ClassUtils {
     }
 
     public static Collection<Class<?>> getClassOfPackage(String packageName) {
+        List<Class<?>> classes = new ArrayList<>();
+        try {
+            ClassPath cp = ClassPath.from(Thread.currentThread().getContextClassLoader());
+            for(ClassPath.ClassInfo info : cp.getTopLevelClassesRecursive(packageName)) {
+                classes.add(info.load());
+            }
+        } catch (IOException e) {
+            throw new InputOutputException(e);
+        }
+        logger.debug("There are {} classes in '{}'", classes.size(), packageName);
+        return classes;
+    }
+    public static Collection<Class<?>> getClassOfPackages(String packageName) {
         List<ClassLoader> classLoadersList = new LinkedList<ClassLoader>();
         classLoadersList.add(ClasspathHelper.contextClassLoader());
         classLoadersList.add(ClasspathHelper.staticClassLoader());

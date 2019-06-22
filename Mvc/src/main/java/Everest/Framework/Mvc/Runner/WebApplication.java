@@ -1,6 +1,9 @@
 package Everest.Framework.Mvc.Runner;
 
+import Everest.Framework.Core.Exception.InvalidOperationException;
+import Everest.Framework.Core.Exception.NullArgumentException;
 import Everest.Framework.Core.IComponentProvider;
+import Everest.Framework.Core.StringUtils;
 import Everest.Framework.InversionOfControl.Abstractions.ComponentDescriptor;
 import Everest.Framework.InversionOfControl.Packages.PackageComponentProviderBuilder;
 import Everest.Framework.Mvc.ActionResultExecutor.ActionResultExecutorTypeFilter;
@@ -19,18 +22,45 @@ import org.slf4j.LoggerFactory;
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class WebApplicationContext{
-    private Logger logger = LoggerFactory.getLogger(WebApplicationContext.class);
+public class WebApplication {
+    private Logger logger = LoggerFactory.getLogger(WebApplication.class);
     private PackageComponentProviderBuilder componentRegister;
     private IComponentProvider componentProvider;
     private MvcStartup mvcStartup;
     private Class<? extends WebServer> webServerClass;
+    private WebServer webServer;
+    private HostConfig hostConfig;
+    private List<String> basePackages = new ArrayList<>();
 
 
-    public WebApplicationContext(){
+    public WebApplication(){
         componentRegister = new PackageComponentProviderBuilder();
-        componentRegister.addPackageName("Everest.Framework");
+    }
+
+    public void build() {
+        if(mvcStartup == null){
+            throw new NullArgumentException("Cannot start without a MvcStartup class");
+        }
+
+        if(webServerClass == null) {
+            throw new NullArgumentException("Cannot start with a null server class");
+        }
+
+        buildComponentProvider();
+
+        configureControllers();
+
+        configureMiddlewares();
+
+
+        WebServer webServer = componentProvider.getComponent(WebServer.class);
+        webServer.build(this, hostConfig);
+        webServer.listen();
+    }
+
+    private void buildComponentProvider() {
         componentRegister.addTypeFilter(new ControllerTypeFilter());
 
         componentRegister.addTypeFilter(new MiddlewareTypeFilter());
@@ -39,19 +69,18 @@ public class WebApplicationContext{
         componentRegister.addTypeFilter(new AnnotationValueResolverTypeFilter());
         componentRegister.addTypeFilter(new TypedValueResolverTypeFilter());
         componentRegister.addTypeFilter(new ActionFilterTypeFilter());
-    }
 
-    public void build() {
-        if(mvcStartup == null){
-            throw new IllegalStateException("Cannot start without a MvcStartup class");
-        }
         componentRegister.addSingleton(MvcStartup.class, mvcStartup);
         componentRegister.addSingleton(WebServer.class, webServerClass);
-        for (String name: mvcStartup.getBasePackages()){
+
+        this.addPackageName("Everest.Framework");
+        for (String name: basePackages){
             componentRegister.addPackageName(name);
         }
         componentProvider = this.componentRegister.buildComponentProvider();
+    }
 
+    private void configureControllers() {
         List<Class<?>> controllers = new ArrayList<>();
 
         for(ComponentDescriptor descriptor: componentRegister){
@@ -62,19 +91,60 @@ public class WebApplicationContext{
         }
         ActionConfigurer actionConfigurer = componentProvider.getComponent(ActionConfigurer.class);
         actionConfigurer.collectAction(controllers);
+    }
 
-
+    private void configureMiddlewares() {
         MiddlewarePipelineConfigurer middlewarePipelineConfigurer =
                 componentProvider.getComponent(MiddlewarePipelineConfigurer.class);
 
         List<IMiddleware> middlewares = componentProvider.getComponents(IMiddleware.class);
         MiddlewareRegister middlewareRegister = new MiddlewareRegister();
-         mvcStartup.setMiddlewareChain(middlewareRegister);
+        mvcStartup.setMiddlewareChain(middlewareRegister);
         middlewarePipelineConfigurer.configure(middlewareRegister, middlewares);
+    }
 
-        WebServer webServer = componentProvider.getComponent(WebServer.class);
-        webServer.build(this);
-        webServer.listen();
+    public WebApplication setMvcStartup(@Nonnull Class<? extends MvcStartup> mvcStartupClass) {
+        try {
+            mvcStartup = mvcStartupClass.newInstance();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return this;
+    }
+
+
+
+    public WebApplication useWebServer(Class<? extends WebServer> webServerClass, Consumer<HostConfig> hostConfigConsumer) {
+        this.webServerClass = webServerClass;
+        this.hostConfig = new HostConfig();
+        hostConfigConsumer.accept(hostConfig);
+        return this;
+    }
+
+    public WebApplication useWebServer(Class<? extends WebServer> webServerClass) {
+        this.webServerClass = webServerClass;
+        this.hostConfig = new HostConfig();
+        return this;
+    }
+
+    public WebApplication addPackageName(String packageName) {
+        if(StringUtils.isEmpty(packageName)) {
+            throw new NullArgumentException("You cannot use null or empty package name");
+        }
+
+        if(basePackages.contains(packageName)){
+            throw new InvalidOperationException("You can not add the same package name two time");
+        }
+
+        basePackages.add(packageName);
+        return this;
+    }
+
+
+    public WebServer getWebServer() { return webServer; }
+
+    public IComponentProvider getComponentProvider() {
+        return componentProvider;
     }
 
     public PackageComponentProviderBuilder getComponentRegister() {
@@ -85,21 +155,4 @@ public class WebApplicationContext{
         return mvcStartup;
     }
 
-    public WebApplicationContext setMvcStartup(@Nonnull Class<? extends MvcStartup> mvcStartupClass) {
-        try {
-            mvcStartup = mvcStartupClass.newInstance();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        return this;
-    }
-
-    public IComponentProvider getComponentProvider() {
-        return componentProvider;
-    }
-
-    public WebApplicationContext setWebServerClass(Class<? extends WebServer> webServerClass) {
-        this.webServerClass = webServerClass;
-        return this;
-    }
 }

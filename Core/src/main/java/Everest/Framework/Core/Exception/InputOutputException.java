@@ -6,26 +6,17 @@ public class InputOutputException extends RuntimeException{
     private IOException ioException;
 
     public InputOutputException(IOException ioException) {
+        super(ioException);
         this.ioException = ioException;
     }
 
     public InputOutputException(IOException ioException, String message) {
-        super(message);
+        super(message, ioException);
         this.ioException = ioException;
     }
 
-    public InputOutputException(String message, Throwable cause, IOException ioException) {
-        super(message, cause);
-        this.ioException = ioException;
-    }
-
-    public InputOutputException(Throwable cause, IOException ioException) {
-        super(cause);
-        this.ioException = ioException;
-    }
-
-    public InputOutputException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace, IOException ioException) {
-        super(message, cause, enableSuppression, writableStackTrace);
+    public InputOutputException(String message, boolean enableSuppression, boolean writableStackTrace, IOException ioException) {
+        super(message, ioException, enableSuppression, writableStackTrace);
         this.ioException = ioException;
     }
 

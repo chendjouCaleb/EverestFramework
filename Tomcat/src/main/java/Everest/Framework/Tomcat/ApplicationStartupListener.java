@@ -1,7 +1,7 @@
 package Everest.Framework.Tomcat;
 
 import Everest.Framework.Mvc.MvcStartup;
-import Everest.Framework.Mvc.Runner.WebApplicationContext;
+import Everest.Framework.Mvc.Runner.WebApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,7 +20,7 @@ public class ApplicationStartupListener implements ServletContextListener {
 
         logger.info("Application started. Startup class: " + clazz.getClass().getName());
 
-        WebApplicationContext application = (WebApplicationContext) sce.getServletContext().getAttribute("applicationContext");
+        WebApplication application = (WebApplication) sce.getServletContext().getAttribute("applicationContext");
         addApplicationServlet(sce);
     }
 
