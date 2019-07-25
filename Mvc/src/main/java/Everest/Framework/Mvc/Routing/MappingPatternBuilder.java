@@ -17,8 +17,8 @@ public class MappingPatternBuilder {
      * @return The transformed java RegExp
      */
     public String getPattern(String mapping) {
-        String regex = "\\{[\\w]+}";
-        String replacement = "([\\\\w]+)";
+        String regex = "\\{[\\w-]+}";
+        String replacement = "([\\\\w-]+)";
 
         return mapping.replaceAll(regex, replacement);
     }

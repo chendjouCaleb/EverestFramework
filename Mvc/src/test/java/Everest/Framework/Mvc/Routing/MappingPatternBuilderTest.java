@@ -1,21 +1,29 @@
 package Everest.Framework.Mvc.Routing;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MappingPatternBuilderTest {
 
-    @Test
-    void getSimpleMappingPattern() {
+    @ParameterizedTest
+    @MethodSource("MappingAndPattern")
+    void getSimpleMappingPattern(String mapping, String pattern) {
         MappingPatternBuilder builder = new MappingPatternBuilder();
-        String mapping1 = "/posts/{postId}";
-        String pattern1 = "/posts/([\\w]+)";
-        String mapping2 = "/posts";
-        String pattern2 = "/posts";
 
-        assertEquals(pattern1, builder.getPattern(mapping1));
-        assertEquals(pattern2, builder.getPattern(mapping2));
 
+        assertEquals(pattern, builder.getPattern(mapping));
+    }
+
+    static String[][] MappingAndPattern() {
+        return new String[][]{
+                new String[] {"", ""},
+                new String[] {"posts", "posts"},
+                new String[] {"posts/{postId}", "posts/([\\w-]+)"},
+                new String[] {"posts/{postId}/comments/{commentId}", "posts/([\\w-]+)/comments/([\\w-]+)"},
+
+                new String[] {"responses/{responseID}.{length}-{id}", "responses/([\\w-]+).([\\w-]+)-([\\w-]+)"}
+        };
     }
 }

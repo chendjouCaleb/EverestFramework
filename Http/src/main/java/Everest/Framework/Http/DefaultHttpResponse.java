@@ -35,12 +35,12 @@ public class DefaultHttpResponse extends HttpResponse {
 
     @Override
     public void addHeader(String key, String value) {
-        headers.put(key, value);
+        headers.addHeader(key, value);
     }
 
     @Override
     public String getHeader(String key) {
-        return headers.get(key);
+        return headers.getHeader(key);
     }
 
     @Override

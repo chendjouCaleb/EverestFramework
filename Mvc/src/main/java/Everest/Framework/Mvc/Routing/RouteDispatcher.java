@@ -45,7 +45,7 @@ public class RouteDispatcher {
             }
         }
         if(selectedDescriptor == null) {
-            throw new RouteNotFoundException(String.format("There are no route for url '%s' nd http method '%s'", url, verb));
+            throw new RouteNotFoundException(String.format("There are no route for url '%s' and http method '%s'", url, verb));
         }
         return selectedDescriptor;
     }

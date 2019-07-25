@@ -1,26 +1,21 @@
 package Everest.Framework.Http;
 
 
-import Everest.Framework.Core.Exception.KeyNotFoundException;
-
 import javax.annotation.Nonnull;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Represents HttpRequest and HttpResponse headers
  * @author Chendjou
  */
-public class HeaderCollection implements Map<String, String> {
+public class HeaderCollection{
 
     private final String[] emptyKeys = new String[]{};
     private final String emptyValue = "";
 
     public HeaderCollection(){}
 
-    public HeaderCollection(Map<String, String> store){
+    public HeaderCollection(Map<String, List<String>> store){
         this.store = store;
     }
 
@@ -30,76 +25,132 @@ public class HeaderCollection implements Map<String, String> {
 
 
 
-    private Map<String, String> store = new HashMap<>();
+    private Map<String, List<String>> store = new HashMap<>();
     /**
      * * Strongly typed access to the Content-Length header.
      *  * DI must keep this in sync with the string representation.
      * @return The size of a content-Length
      */
     public long contentLength(){
-        return Long.valueOf(get("content-length"));
+        return Long.valueOf(getHeader("content-length"));
     }
 
 
-
-
-    @Override
     public int size() {
         return store.size();
     }
 
-    @Override
+
     public boolean isEmpty() {
         return store.isEmpty();
     }
 
-    @Override
-    public boolean containsKey(Object key) {
-        return store.containsKey(key);
+
+    public boolean containsHeader(String name) {
+        return store.containsKey(name);
     }
 
-    @Override
+
     public boolean containsValue(Object value) {
         return store.containsValue(value);
     }
 
-    @Override
-    public String get(Object key) {
+    public List<String> getHeaders(String key) {
+        return store.get(key);
+    }
 
-        if(!containsKey(key)){
-            throw new KeyNotFoundException(String.format("Header with key %s not found", key));
+    public String getHeader(String name){
+        if(!store.containsKey(name)){
+            return null;
         }
-        return store.get(key);
+        List<String> values = store.get(name);
+        if(values == null || values.size() == 0){
+            return null;
+        }
+        return values.get(0);
     }
 
-    public String tryGet(Object key) {
-
-        return store.get(key);
-    }
 
     /**
-     * @param key The header name.
+     * Adds th value to the corresponding header field.
+     * @param name The header name.
      * @param value The header value.
-     * @return
      */
-    public String put(String key, String value) {
-        if(key == null){
-            throw new NullPointerException("The key is null");
+    public void addHeader(String name, String value) {
+        if(name == null){
+            throw new NullPointerException("Cannot add header with null or empty name");
         }
-        return store.put(key, value);
+
+        if(!store.containsKey(name) || store.get(name) == null){
+            store.put(name, new ArrayList<>());
+        }
+
+        store.get(name).add(value);
     }
 
-    @Override
-    public String remove(Object key) {
-        return store.remove(key);
+    public void addHeaders(String name, Iterator<String> values){
+        if(name == null){
+            throw new NullPointerException("Cannot add header with null or empty name");
+        }
+
+        if(values == null){
+            throw new NullPointerException("Cannot add header with null or empty values");
+        }
+
+        if(!store.containsKey(name) || store.get(name) == null){
+            store.put(name, new ArrayList<>());
+        }
+
+        while(values.hasNext()){
+            store.get(name).add(values.next());
+        }
     }
 
-    @Override
-    public void putAll(Map<? extends String, ? extends String> m) {
+
+    /**
+     * Sets th value to the corresponding header field.
+     * @param name The header name.
+     * @param value The header value.
+     */
+    public void setHeader(String name, String value) {
+        if(name == null){
+            throw new NullPointerException("Cannot set header with null or empty name");
+        }
+
+        store.put(name, new ArrayList<>());
+        store.get(name).add(value);
+    }
+
+    public void setHeaders(String name, Iterator<String> values){
+        if(name == null){
+            throw new NullPointerException("Cannot set header with null or empty name");
+        }
+
+        if(values == null){
+            throw new NullPointerException("Cannot set header with null or empty values");
+        }
+
+        List<String> headers = new ArrayList<>();
+
+        while(values.hasNext()){
+            headers.add(values.next());
+        }
+
+        store.put(name, headers);
+    }
+
+    
+
+    public void remove(String key) {
+       store.remove(key);
+    }
+
+
+    public void addAll(Map<? extends String, ? extends List<String>> m) {
         store.putAll(m);
     }
 
-    @Override
+
     public void clear() {
         store.clear();
     }
@@ -110,12 +161,12 @@ public class HeaderCollection implements Map<String, String> {
     }
 
     @Nonnull
-    public Collection<String> values() {
+    public Collection<List<String>> values() {
         return store.values();
     }
 
     @Nonnull
-    public Set<Entry<String, String>> entrySet() {
+    public Set<Map.Entry<String, List<String>>> entrySet() {
         return store.entrySet();
     }
 }

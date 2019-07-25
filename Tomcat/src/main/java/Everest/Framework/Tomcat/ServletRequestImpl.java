@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Enumeration;
 
 /**
@@ -22,6 +23,7 @@ public class ServletRequestImpl extends HttpRequest {
     private QueryCollection queryCollection;
     private FormCollection formCollection;
     private HeaderCollection headerCollection;
+    private FormFileCollection formFiles;
     private String path;
 
     public ServletRequestImpl(HttpServletRequest servletRequest) {
@@ -42,6 +44,8 @@ public class ServletRequestImpl extends HttpRequest {
 
         setFormCollection(servletRequest);
         setHeaderCollection(servletRequest);
+
+        formFiles = new FormFileParser().getFile(servletRequest);
 
     }
 
@@ -132,7 +136,7 @@ public class ServletRequestImpl extends HttpRequest {
 
     @Override
     public FormFileCollection getFiles() {
-        return null;
+        return formFiles;
     }
 
     private void setHeaderCollection(HttpServletRequest request){
@@ -141,11 +145,13 @@ public class ServletRequestImpl extends HttpRequest {
         Enumeration<String> headerNames = request.getHeaderNames();
         while (headerNames.hasMoreElements()) {
             String name = headerNames.nextElement();
-            headerCollection.put(name, request.getHeader(name));
+
+            headerCollection.addHeaders(name, Collections.list(request.getHeaders(name)).iterator());
         }
     }
 
     private void setFormCollection(HttpServletRequest request){
+
         formCollection = new FormCollection();
         request.getParameterMap().forEach((key, values) -> {
             formCollection.put(key, Arrays.asList(values));

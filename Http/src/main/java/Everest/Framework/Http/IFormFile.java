@@ -1,5 +1,6 @@
 package Everest.Framework.Http;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
@@ -19,6 +20,11 @@ public interface IFormFile {
     String getFileName();
 
     /**
+     * Gets the form nme of the field which contains the file.
+     */
+    String fieldName();
+
+    /**
      * Gets the raw Content-Disposition header of the uploaded file.
      */
     String getContentDisposition();
@@ -36,7 +42,7 @@ public interface IFormFile {
     /**
      * Gets the request stream for reading the uploaded file.
      */
-    InputStream getStream();
+    InputStream getInputStream() throws IOException;
 
     /**
      * Copies the contents of the uploaded file to the {@param targetStream}.

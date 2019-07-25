@@ -1,11 +1,9 @@
 package Everest.Framework.Mvc.ValueResolver.AnnotationResolver;
 
-import Everest.Framework.Http.HttpContext;
 import Everest.Framework.Mvc.Action.ActionContext;
 import Everest.Framework.Mvc.Binding.IModelBinder;
 import Everest.Framework.Mvc.ValueResolver.Annotations.FormValue;
 import Everest.Framework.Mvc.ValueResolver.IAnnotationValueResolver;
-
 
 import java.lang.reflect.Parameter;
 
@@ -31,7 +29,7 @@ public class FormValueResolver implements IAnnotationValueResolver<FormValue> {
         Object value = actionContext.getHttpContext().getRequest().forms();
 
         if(!annotation.value().equals("")){
-            value = actionContext.getHttpContext().getRequest().forms().get(annotation.value());
+            value = actionContext.getHttpContext().getRequest().forms().getFirst(annotation.value());
         }
 
         return modelBinder.convert(value, parameter.getType());

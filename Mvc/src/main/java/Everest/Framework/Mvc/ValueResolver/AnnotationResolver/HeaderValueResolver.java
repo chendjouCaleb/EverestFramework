@@ -1,6 +1,5 @@
 package Everest.Framework.Mvc.ValueResolver.AnnotationResolver;
 
-import Everest.Framework.Http.HttpContext;
 import Everest.Framework.Mvc.Action.ActionContext;
 import Everest.Framework.Mvc.ValueResolver.Annotations.HeaderValue;
 import Everest.Framework.Mvc.ValueResolver.IAnnotationValueResolver;
@@ -26,7 +25,7 @@ public class HeaderValueResolver implements IAnnotationValueResolver<HeaderValue
             name = parameter.getName();
         }
 
-        String stringVal = actionContext.getHttpContext().getRequest().headers().get(name);
+        String stringVal = actionContext.getHttpContext().getRequest().headers().getHeader(name);
 
         return ConvertUtils.convert(stringVal, parameter.getType());
     }

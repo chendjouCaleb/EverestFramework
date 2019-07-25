@@ -20,6 +20,7 @@ public class FileUtils {
         return mimeTypes.toString();
     }
 
+
     public static String getExtension(@Nonnull File file) {
         return MimeUtil.getExtension(file);
     }

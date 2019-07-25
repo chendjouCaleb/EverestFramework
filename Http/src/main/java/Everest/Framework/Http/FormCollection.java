@@ -33,6 +33,13 @@ public class FormCollection implements Map<String, List<String>>{
         return collections.get(key);
     }
 
+    public String getFirst(String key) {
+        if(collections.containsKey(key) && collections.get(key).size() > 0){
+            return collections.get(key).get(0);
+        }
+        return null;
+    }
+
     @Override
     public List<String> put(String key, List<String> value) {
         return collections.put(key, value);
@@ -79,5 +86,12 @@ public class FormCollection implements Map<String, List<String>>{
     @Nonnull
     public Set<Entry<String, List<String>>> entrySet() {
         return collections.entrySet();
+    }
+
+    @Override
+    public String toString() {
+        return "FormCollection{" +
+                "" + collections +
+                '}';
     }
 }

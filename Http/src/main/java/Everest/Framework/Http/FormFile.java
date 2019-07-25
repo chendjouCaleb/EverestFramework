@@ -39,6 +39,11 @@ public class FormFile implements IFormFile{
     }
 
     @Override
+    public String fieldName() {
+        return null;
+    }
+
+    @Override
     public String getContentDisposition() {
         return "";
     }
@@ -54,7 +59,7 @@ public class FormFile implements IFormFile{
     }
 
     @Override
-    public InputStream getStream() {
+    public InputStream getInputStream() {
         return inputStream;
     }
 
