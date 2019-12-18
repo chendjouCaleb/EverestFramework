@@ -10,7 +10,7 @@ import Everest.Framework.Http.HttpMethod;
  * @see GetMapping
  * @see PostMapping
  * @see PutMapping
- * @see PathMapping
+ * @see PatchMapping
  * @see DeleteMapping
  * @see OptionsMapping
  *

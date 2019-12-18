@@ -15,7 +15,7 @@ import java.lang.annotation.Target;
  * @see Everest.Framework.Mvc.Mapping.GetMapping
  * @see PostMapping
  * @see PutMapping
- * @see PathMapping
+ * @see PatchMapping
  * @see DeleteMapping
  * @see OptionsMapping
  *

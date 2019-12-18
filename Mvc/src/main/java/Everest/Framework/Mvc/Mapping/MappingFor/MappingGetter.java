@@ -29,7 +29,7 @@ public class MappingGetter {
         mappingHandlers.add(new MappingForGet());
         mappingHandlers.add(new MappingForPut());
         mappingHandlers.add(new MappingForHttp());
-        mappingHandlers.add(new MappingForPath());
+        mappingHandlers.add(new MappingForPatch());
         mappingHandlers.add(new MappingForOptions());
     }
 

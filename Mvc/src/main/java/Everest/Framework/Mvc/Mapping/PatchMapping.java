@@ -17,8 +17,8 @@ import java.lang.annotation.Target;
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.METHOD})
-@HttpMapping(verbs = HttpMethod.PATH)
-public @interface PathMapping {
+@HttpMapping(verbs = HttpMethod.PATCH)
+public @interface PatchMapping {
     String value() default "";
     String name() default "";
 }
