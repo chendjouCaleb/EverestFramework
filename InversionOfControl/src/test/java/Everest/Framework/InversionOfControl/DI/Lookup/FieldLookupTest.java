@@ -85,7 +85,9 @@ class FieldLookupTest {
     @Test
     void try_resolveField_WithMultipleValue_WithoutPrincipal() throws NoSuchFieldException {
         Field field = type.getDeclaredField("withoutPrincipal");
-        fieldLookup.look(field);
+
+        assertThrows(NoPrincipalComponentException.class, () -> fieldLookup.look(field));
+
     }
 
 

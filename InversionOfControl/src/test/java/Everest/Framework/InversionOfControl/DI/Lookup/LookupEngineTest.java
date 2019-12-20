@@ -8,6 +8,8 @@ import Everest.Framework.InversionOfControl.DI.ComponentRegister;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Date;
+
 class LookupEngineTest {
 
     private InjectionConstructorGetter constructorGetter;
@@ -23,6 +25,7 @@ class LookupEngineTest {
         register.addTransient(StarController.class);
         register.addTransient(IStarRepository.class, StarRepository.class);
         register.addSingleton(StarBuilder.class);
+        register.addSingleton(new Date());
         register.add().setInstanceType(Integer.class).setName("count").setValue(10).regist();
         components = builder.build(register);
 
@@ -38,7 +41,7 @@ class LookupEngineTest {
     void addScoped() {
     }
 
-    @Test
+
     void look() {
         StarController controller = (StarController) lookupEngine.look(StarController.class);
         System.out.println(controller);
@@ -46,19 +49,4 @@ class LookupEngineTest {
         System.out.println(controller.getStarRepository());
     }
 
-    @Test
-    void look1() {
-    }
-
-    @Test
-    void look2() {
-    }
-
-    @Test
-    void lookSingleton() {
-    }
-
-    @Test
-    void lookComponents() {
-    }
 }
