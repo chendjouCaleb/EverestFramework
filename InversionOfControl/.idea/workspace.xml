@@ -1,0 +1,1113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_TEST_SOURCES" value="false" />
+    <option name="SCOPE_TYPE" value="4" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="08140284-76fa-4ba6-b02b-6b41fedf92ae" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../Http/src/main/java/Everest/Framework/Http/FormFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j2.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/Everest/Framework/InversionOfControl/DI/Lookup/LookupEngineTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/Everest/Framework/InversionOfControl/DI/Lookup/Resolver/ResolverFactoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/log4j.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Core/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../Core/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Core/src/main/java/Everest/Framework/Core/FileUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Core/src/main/java/Everest/Framework/Core/FileUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Core/src/main/java/Everest/Framework/Core/Inject/Named.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Core/src/main/java/Everest/Framework/Core/Inject/Named.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Core/src/main/java/Everest/Framework/Core/Inject/UseNamed.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Core/src/main/java/Everest/Framework/Core/Inject/UseNamed.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Http/src/main/java/Everest/Framework/Http/IFormFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Http/src/main/java/Everest/Framework/Http/IFormFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/Abstractions/ComponentDescriptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/Abstractions/ComponentDescriptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/Abstractions/ComponentDescriptorBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/Abstractions/ComponentDescriptorBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Abstractions/InstanceComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Abstractions/InstanceComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Abstractions/TypeComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Abstractions/TypeComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/ComponentBuilder/ComponentCollectionBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/ComponentBuilder/ComponentCollectionBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/ComponentBuilder/InstanceComponentBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/ComponentBuilder/InstanceComponentBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/ComponentBuilder/TypeComponentBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/ComponentBuilder/TypeComponentBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/ComponentProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/ComponentProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/ComponentRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/ComponentRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/ComponentScope.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/ComponentScope.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/CollectionLookup.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/ComponentTypeDependencyLookup.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/DependencyLookupSetter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/LookupEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/LookupEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/MethodFactoryComponentDependencyLookup.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/NamedLookup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/NamedLookup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/PrincipalLookup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/PrincipalLookup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/Resolver/ResolverFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/Resolver/ResolverFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Everest/Framework/InversionOfControl/DI/Lookup/StarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Everest/Framework/InversionOfControl/DI/Lookup/StarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Everest/Framework/InversionOfControl/DI/Lookup/StarRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Everest/Framework/InversionOfControl/DI/Lookup/StarRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Everest/Framework/InversionOfControl/DI/Lookup/TypeComponentLookupTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Everest/Framework/InversionOfControl/DI/Lookup/TypeComponentLookupTest.java" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/../.gradle/" />
+    <ignored path="$PROJECT_DIR$/../build/" />
+    <ignored path="$PROJECT_DIR$/../out/" />
+    <ignored path="$PROJECT_DIR$/../Core/.gradle/" />
+    <ignored path="$PROJECT_DIR$/../Core/build/" />
+    <ignored path="$PROJECT_DIR$/../Core/out/" />
+    <ignored path="$PROJECT_DIR$/../Http/.gradle/" />
+    <ignored path="$PROJECT_DIR$/../Http/build/" />
+    <ignored path="$PROJECT_DIR$/../Http/out/" />
+    <ignored path="$PROJECT_DIR$/.gradle/" />
+    <ignored path="$PROJECT_DIR$/build/" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/../Mvc/.gradle/" />
+    <ignored path="$PROJECT_DIR$/../Mvc/build/" />
+    <ignored path="$PROJECT_DIR$/../Mvc/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="InversionOfControl" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/LookupEngine.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="93">
+              <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/ComponentScope.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="284">
+              <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1119#1120#0" expanded="true" />
+                <element signature="e#1169#1170#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/ComponentProvider.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="704">
+              <caret line="56" column="43" selection-start-line="56" selection-start-column="43" selection-end-line="56" selection-end-column="43" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1800#1801#0" expanded="true" />
+                <element signature="e#1885#1886#0" expanded="true" />
+                <element signature="e#1855#1856#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/Resolver/FactoryProviderResolver.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="302">
+              <caret line="14" column="66" selection-start-line="14" selection-start-column="66" selection-end-line="14" selection-end-column="66" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#436#437#0" expanded="true" />
+                <element signature="e#494#495#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/NamedLookup.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="327">
+              <caret line="32" column="39" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/Everest/Framework/InversionOfControl/DI/Lookup/LookupEngineTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="183">
+              <caret line="45" column="19" lean-forward="true" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
+              <folding>
+                <element signature="e#1464#1465#0" expanded="true" />
+                <element signature="e#1519#1520#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/Everest/Framework/InversionOfControl/DI/Lookup/Resolver/ResolverFactoryTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="188">
+              <caret line="24" column="92" selection-start-line="24" selection-start-column="92" selection-end-line="24" selection-end-column="92" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="AnnotationType" />
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>IComponentContainer</find>
+      <find>ArgumentNullException</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>ComponentContainer</replace>
+      <replace>IComponentRegister</replace>
+      <replace>NullArgumentException</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/test/java/Everest/Framework/InversionOfControl/DI/ComponentBuilder/PrincipalDuplicateGetterTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/ComponentBuilder/PrincipalDuplicateGetter.java" />
+        <option value="$PROJECT_DIR$/src/test/java/Everest/Framework/InversionOfControl/DI/DuplicateNameScannerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/Lookup.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/DependencyLookup.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/DependencyLookupSetter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/ComponentDependyLookup.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/ComponentDependencyLookup.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/NameLookup.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/TypeLookup.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/ComponentTypeDependencyLookup.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/MethodFactoryComponentDependencyLookup.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/ComponentProvider.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/IComponentProvider.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/ComponentLookup.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/Utils/InvokerUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/ComponentCollection.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/TypeComponentLookup.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/SingletonInstances.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Abstractions/IServiceScope.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Abstractions/IComponentScope.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Abstractions/IDisposable.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/ScopeComponentCache.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/SingletonComponentCache.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/IComponentScope.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/ComponentProviderBuilder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/ManySelectableException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/IComponentResolver.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/Resolver/ImplementationResolver.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/PrincipalLookup.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/Resolver/IComponentResolver.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/Resolver/InstanceResolver.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Abstractions/FactoryProviderComponent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/Resolver/FactoryProviderResolver.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Abstractions/FactoryMethodComponent.java" />
+        <option value="$PROJECT_DIR$/../Core/src/main/java/Everest/Framework/Core/Reflexions.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/Resolver/TypeResolver.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/ComponentNotFoundException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/NamedLookup.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/ResolutionException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/Resolver/FactoryMethodResolver.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/Resolver/TypeComponentLookup.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/Resolver/TypeComponentResolver.java" />
+        <option value="$PROJECT_DIR$/src/test/java/Everest/Framework/InversionOfControl/DI/Lookup/TypeComponentLookupTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/Resolver/ResolverFactory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/LookupEngine.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/ComponentScope.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/ComponentProvider.java" />
+        <option value="$PROJECT_DIR$/src/test/java/Everest/Framework/InversionOfControl/DI/Lookup/LookupEngineTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/Everest/Framework/InversionOfControl/DI/Lookup/Resolver/ResolverFactoryTest.java" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="10" />
+    <option name="y" value="20" />
+    <option name="width" value="1346" />
+    <option name="height" value="688" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="InversionOfControl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Framework" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="InversionOfControl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Framework" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="InversionOfControl" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="InversionOfControl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Framework" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="InversionOfControl" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="InversionOfControl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Framework" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="InversionOfControl" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="InversionOfControl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Framework" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="InversionOfControl" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="InversionOfControl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Framework" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="InversionOfControl" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="InversionOfControl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="InversionOfControl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Framework" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="InversionOfControl" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="InversionOfControl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Framework" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="InversionOfControl" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="InversionOfControl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Framework" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="InversionOfControl" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="DI" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="InversionOfControl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Framework" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="InversionOfControl" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="DI" type="462c0819:PsiDirectoryNode" />
+              <item name="Lookup" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="Everest.Framework.InversionOfControl.DI.Lookup" />
+      <recent name="Everest.Framework.InversionOfControl.DI.Lookup.Resolver" />
+      <recent name="Everest.Framework.InversionOfControl.DI" />
+      <recent name="Everest.Framework.InversionOfControl.DI.ComponentBuilder" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="Everest.Framework.InversionOfControl.DI.Abstractions" />
+      <recent name="Everest.Framework.InversionOfControl.DI.Lookup" />
+      <recent name="Everest.Framework.InversionOfControl.DI.ComponentBuilder" />
+      <recent name="Everest.Framework.InversionOfControl.Decorator" />
+      <recent name="Everest.Framework.InversionOfControl.Abstractions" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.LookupEngineTest.look">
+    <configuration name="DuplicateNameScannerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Everest.InversionOfControl.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Everest.Framework.InversionOfControl.DI.Lookup.Resolver.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Everest.Framework.InversionOfControl.DI" />
+      <option name="MAIN_CLASS_NAME" value="Everest.Framework.InversionOfControl.DI.DuplicateNameScannerTest" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DuplicateNameScannerTest.checkDuplicateName_WithoutDuplicate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Everest.InversionOfControl.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Everest.Framework.InversionOfControl.DI.Lookup.Resolver.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Everest.Framework.InversionOfControl.DI" />
+      <option name="MAIN_CLASS_NAME" value="Everest.Framework.InversionOfControl.DI.DuplicateNameScannerTest" />
+      <option name="METHOD_NAME" value="checkDuplicateName_WithoutDuplicate" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InjectionMethodGetterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Everest.InversionOfControl.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Everest.Framework.InversionOfControl.DI.ComponentBuilder.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Everest.Framework.InversionOfControl.DI.ComponentBuilder" />
+      <option name="MAIN_CLASS_NAME" value="Everest.Framework.InversionOfControl.DI.ComponentBuilder.InjectionMethodGetterTest" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LookupEngineTest.look" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Everest.InversionOfControl.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Everest.Framework.InversionOfControl.DI.Lookup.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Everest.Framework.InversionOfControl.DI.Lookup" />
+      <option name="MAIN_CLASS_NAME" value="Everest.Framework.InversionOfControl.DI.Lookup.LookupEngineTest" />
+      <option name="METHOD_NAME" value="look" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ResolverFactoryTest.getResolver" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Everest.InversionOfControl.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Everest.Framework.InversionOfControl.DI.Lookup.Resolver.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Everest.Framework.InversionOfControl.DI.Lookup.Resolver" />
+      <option name="MAIN_CLASS_NAME" value="Everest.Framework.InversionOfControl.DI.Lookup.Resolver.ResolverFactoryTest" />
+      <option name="METHOD_NAME" value="getResolver" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.LookupEngineTest.look" />
+        <item itemvalue="JUnit.ResolverFactoryTest.getResolver" />
+        <item itemvalue="JUnit.DuplicateNameScannerTest.checkDuplicateName_WithoutDuplicate" />
+        <item itemvalue="JUnit.DuplicateNameScannerTest" />
+        <item itemvalue="JUnit.InjectionMethodGetterTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="08140284-76fa-4ba6-b02b-6b41fedf92ae" name="Default Changelist" comment="" />
+      <created>1556419136360</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1556419136360</updated>
+      <workItem from="1556419144150" duration="83000" />
+      <workItem from="1556419244585" duration="22937000" />
+      <workItem from="1556587219889" duration="19040000" />
+      <workItem from="1556616962212" duration="32000" />
+      <workItem from="1556617011698" duration="49495000" />
+    </task>
+    <task id="LOCAL-00001" summary="component resolver">
+      <created>1556866920199</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1556866920200</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="InjectionConstructorGetterTest_getConstructorWithManySpecifiedConstructor_WillFail - 2019.04.30 at 12h 17m 45s.xml">
+      <configuration name="InjectionConstructorGetterTest.getConstructorWithManySpecifiedConstructor_WillFail" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="InjectionMethodGetterTest - 2019.04.30 at 12h 49m 37s.xml">
+      <configuration name="InjectionMethodGetterTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="InjectionMethodGetterTest - 2019.04.30 at 13h 08m 56s.xml">
+      <configuration name="InjectionMethodGetterTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DuplicateNameScannerTest - 2019.04.30 at 17h 40m 28s.xml">
+      <configuration name="DuplicateNameScannerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DuplicateNameScannerTest - 2019.04.30 at 17h 41m 00s.xml">
+      <configuration name="DuplicateNameScannerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DuplicateNameScannerTest - 2019.04.30 at 17h 41m 14s.xml">
+      <configuration name="DuplicateNameScannerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DuplicateNameScannerTest_checkDuplicateName_WithoutDuplicate - 2019.04.30 at 17h 42m 18s.xml">
+      <configuration name="DuplicateNameScannerTest.checkDuplicateName_WithoutDuplicate" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ResolverFactoryTest_getResolver - 2019.05.04 at 05h 31m 05s.xml">
+      <configuration name="ResolverFactoryTest.getResolver" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ResolverFactoryTest_getResolver - 2019.05.04 at 05h 31m 48s.xml">
+      <configuration name="ResolverFactoryTest.getResolver" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LookupEngineTest_look - 2019.05.04 at 06h 02m 00s.xml">
+      <configuration name="LookupEngineTest.look" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="91587000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26172465" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" weight="0.32991454" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32991454" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.31111112" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32991454" />
+      <window_info anchor="bottom" id="Version Control" order="11" />
+      <window_info anchor="bottom" id="Build" order="12" weight="0.32991454" />
+      <window_info anchor="bottom" id="Statistic" order="13" weight="0.50427353" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Gradle" order="3" weight="0.32980332" />
+      <window_info anchor="right" id="Maven" order="4" weight="0.32980332" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="component resolver" />
+    <option name="LAST_COMMIT_MESSAGE" value="component resolver" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/ComponentBuilder/FactoryMethodScanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-116">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/ComponentBuilder/FactoryMethodComponentBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="68" column="41" selection-start-line="68" selection-start-column="41" selection-end-line="68" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/util/stream/Stream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="331" column="7" lean-forward="true" selection-start-line="331" selection-start-column="7" selection-end-line="331" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/util/stream/ReferencePipeline.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="268" column="47" lean-forward="true" selection-start-line="268" selection-start-column="47" selection-end-line="268" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/TooManyConstructorException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Abstractions/Component.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="93" column="25" selection-start-line="93" selection-start-column="25" selection-end-line="93" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2778#2779#0" expanded="true" />
+            <element signature="e#2819#2820#0" expanded="true" />
+            <element signature="e#3022#3023#0" expanded="true" />
+            <element signature="e#3053#3054#0" expanded="true" />
+            <element signature="e#3214#3215#0" expanded="true" />
+            <element signature="e#3248#3249#0" expanded="true" />
+            <element signature="e#3395#3396#0" expanded="true" />
+            <element signature="e#3422#3423#0" expanded="true" />
+            <element signature="e#3575#3576#0" expanded="true" />
+            <element signature="e#3618#3619#0" expanded="true" />
+            <element signature="e#3846#3847#0" expanded="true" />
+            <element signature="e#3892#3893#0" expanded="true" />
+            <element signature="e#4145#4146#0" expanded="true" />
+            <element signature="e#4191#4192#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Abstractions/InstanceComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="30" column="127" selection-start-line="30" selection-start-column="127" selection-end-line="30" selection-end-column="127" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/Everest/Framework/InversionOfControl/DI/ComponentBuilder/PrincipalDuplicateGetterTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="24" column="9" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/ComponentBuilder/PrincipalDuplicateGetter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="17" column="72" selection-start-line="17" selection-start-column="72" selection-end-line="17" selection-end-column="72" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/Everest/Framework/InversionOfControl/DI/DuplicateNameScannerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="24" column="59" lean-forward="true" selection-start-line="24" selection-start-column="59" selection-end-line="24" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/ComponentDependencyLookup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="15" column="49" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/DefaultIComponentProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/DuplicateNameScanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="18" column="63" lean-forward="true" selection-start-line="18" selection-start-column="63" selection-end-line="18" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/Utils/InvokerUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/ComponentCollection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="59" column="96" selection-start-line="59" selection-start-column="96" selection-end-line="59" selection-end-column="96" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/ComponentBuilder/InjectionConstructorGetter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="26" column="60" selection-start-line="26" selection-start-column="60" selection-end-line="26" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/Abstractions/IDisposable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/IComponentProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="45" column="29" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/ScopeComponentCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/RootComponentCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="19" column="89" selection-start-line="19" selection-start-column="89" selection-end-line="19" selection-end-column="89" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/IComponentScope.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" column="72" selection-start-line="11" selection-start-column="72" selection-end-line="11" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/ComponentProviderBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="28" column="87" selection-start-line="28" selection-start-column="87" selection-end-line="28" selection-end-column="87" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/ManySelectableException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="38" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
+          <folding>
+            <element signature="e#208#209#0" expanded="true" />
+            <element signature="e#238#239#0" expanded="true" />
+            <element signature="e#309#310#0" expanded="true" />
+            <element signature="e#346#347#0" expanded="true" />
+            <element signature="e#401#402#0" expanded="true" />
+            <element signature="e#429#430#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/PrincipalLookup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="23" column="58" selection-start-line="23" selection-start-column="58" selection-end-line="23" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/Resolver/IComponentResolver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="55" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/Resolver/InstanceResolver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="78" selection-start-line="2" selection-start-column="78" selection-end-line="2" selection-end-column="78" />
+          <folding>
+            <element signature="e#267#268#0" expanded="true" />
+            <element signature="e#294#295#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Abstractions/FactoryProviderComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="31" column="45" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#655#656#0" expanded="true" />
+            <element signature="e#719#720#0" expanded="true" />
+            <element signature="e#892#893#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Core/src/main/java/Everest/Framework/Core/Reflexions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="75" column="42" selection-start-line="75" selection-start-column="42" selection-end-line="75" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Abstractions/FactoryMethodComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="49" column="38" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1606#1607#0" expanded="true" />
+            <element signature="e#1652#1653#0" expanded="true" />
+            <element signature="e#1728#1729#0" expanded="true" />
+            <element signature="e#1922#1923#0" expanded="true" />
+            <element signature="e#1958#1959#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/Resolver/FactoryMethodResolver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/ComponentNotFoundException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
+          <folding>
+            <element signature="e#218#219#0" expanded="true" />
+            <element signature="e#248#249#0" expanded="true" />
+            <element signature="e#322#323#0" expanded="true" />
+            <element signature="e#359#360#0" expanded="true" />
+            <element signature="e#417#418#0" expanded="true" />
+            <element signature="e#445#446#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/Resolver/TypeLookup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Abstractions/TypeComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/ResolutionException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="5" lean-forward="true" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
+          <folding>
+            <element signature="e#206#207#0" expanded="true" />
+            <element signature="e#236#237#0" expanded="true" />
+            <element signature="e#303#304#0" expanded="true" />
+            <element signature="e#340#341#0" expanded="true" />
+            <element signature="e#391#392#0" expanded="true" />
+            <element signature="e#419#420#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/Resolver/TypeComponentResolver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="29" column="83" selection-start-line="29" selection-start-column="83" selection-end-line="29" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/MethodFactoryComponentDependencyLookup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="27" column="33" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#983#984#0" expanded="true" />
+            <element signature="e#1023#1024#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/DependencyLookupSetter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/CollectionLookup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/ComponentLookup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/ComponentTypeDependencyLookup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="48" column="33" selection-start-line="48" selection-start-column="33" selection-end-line="48" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/NamedLookup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="32" column="39" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/Resolver/FactoryMethodResolver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="31" column="33" lean-forward="true" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/ComponentScope.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1119#1120#0" expanded="true" />
+            <element signature="e#1169#1170#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/LookupEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/Everest/Framework/InversionOfControl/DI/Lookup/TypeComponentLookupTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="22" column="5" lean-forward="true" selection-start-line="11" selection-start-column="3" selection-end-line="22" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/CircularDependencyDetector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/Resolver/FactoryProviderResolver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="14" column="66" selection-start-line="14" selection-start-column="66" selection-end-line="14" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#436#437#0" expanded="true" />
+            <element signature="e#494#495#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/Lookup/Resolver/ResolverFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="53">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Everest/Framework/InversionOfControl/DI/ComponentProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="704">
+          <caret line="56" column="43" selection-start-line="56" selection-start-column="43" selection-end-line="56" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1800#1801#0" expanded="true" />
+            <element signature="e#1885#1886#0" expanded="true" />
+            <element signature="e#1855#1856#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/Everest/Framework/InversionOfControl/DI/Lookup/LookupEngineTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="45" column="19" lean-forward="true" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
+          <folding>
+            <element signature="e#1464#1465#0" expanded="true" />
+            <element signature="e#1519#1520#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/Everest/Framework/InversionOfControl/DI/Lookup/Resolver/ResolverFactoryTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="24" column="92" selection-start-line="24" selection-start-column="92" selection-end-line="24" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

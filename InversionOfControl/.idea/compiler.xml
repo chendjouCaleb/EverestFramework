@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="Everest.Core.main" target="1.8" />
+      <module name="Everest.Core.test" target="1.8" />
+      <module name="Everest.Framework.main" target="1.8" />
+      <module name="Everest.Framework.test" target="1.8" />
+      <module name="Everest.Http.main" target="1.8" />
+      <module name="Everest.Http.test" target="1.8" />
+      <module name="Everest.InversionOfControl.main" target="1.8" />
+      <module name="Everest.InversionOfControl.test" target="1.8" />
+      <module name="Everest.Mvc.main" target="1.8" />
+      <module name="Everest.Mvc.test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
